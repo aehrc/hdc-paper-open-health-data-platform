@@ -1,11 +1,13 @@
 ---
 title: "Conceptualizing open health data platforms for low- and middle income countries"
 format:
-  typst:
-    columns: 1
-# acm-pdf:
-  #   keep-tex: true  
-  # acm-html: default
+  # docx
+  # typst:
+  #   columns: 1
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      cite-style: authoryear
 author:
   - name: Daniel Kapitan
     affiliations:
@@ -81,7 +83,7 @@ A commonly used perspective to scrutinize digital health is to consider it as a 
 
 Case studies on digital platforms in healthcare point to an emerging pattern where the focus shifts from the digital platform with its defining software and hardware components, to the data as the primary object of interest in and of itself [@ozalp2022digital;@alaimo2022organizations]. This observation ties into the proposed research agenda by de Reuver et al. to consider data platforms as a phenomenon distinct from digital platforms [@dereuver2022openness]. Generally, data platforms inherit the characteristics of digital platforms. For example, the economic perspective on digital platforms stresses their multi-sidedness with developers and consumers, while data platforms are used by data owners, data consumers and third party solution providers. At the same time, data platforms differ as their main offerings revolve around data. From a market perspective, data platforms have more moderate network effects and are more susceptible to fragmentation and heterogeneity.
 
-Particularly relevant in the context of health data platforms (HDPs), is the conceptualization of openness. The objective of openness, the ways to realize openness and the risks of opening up can be considered as elements within the ongoing debate on data spaces [@otto2022designing] and data solidarity [@kickbush2021governing;@prainsack2022data;@prainsack2023beyond] in the healthcare domain, which is a current issue for high income countries and LMICs alike. Openness is particularly relevant if we are to realize a solidarity-based approach to health data sharing that i) gives people a greater control over their data as active decision makers; ii) ensures that the value of data is harnessed for public good; and iii) moves society towards equity and justice by counteracting dynamics of data extraction [@otto2022designing]. 
+Particularly relevant in the context of health data platforms (HDPs), is the conceptualization of openness. The objective of openness, the ways to realize openness and the risks of opening up can be considered as elements within the ongoing debate on data spaces [@otto2022designing] and data solidarity [@kickbusch2021lancet;@prainsack2022data;@prainsack2023beyond] in the healthcare domain, which is a current issue for high income countries and LMICs alike. Openness is particularly relevant if we are to realize a solidarity-based approach to health data sharing that i) gives people a greater control over their data as active decision makers; ii) ensures that the value of data is harnessed for public good; and iii) moves society towards equity and justice by counteracting dynamics of data extraction [@otto2022designing]. 
 
 ### From health information exchanges to health data platforms
 
@@ -90,11 +92,11 @@ This paper is motivated by the conflation of a number of developments relevant t
 Conceptually, the OpenHIE framework constitutes a framework for an open digital platform. Openness for digital platforms refers to i) the use of open boundary resources, that is, specifications for the various healthcare specific workflows and information standards such as FHIR; and ii) the use of open source components that are available as digital public goods[@digitalpublicgoods]. If we are to use the OpenHIE framework as an open data platform, we need to extend the standards, technologies and architecture to include functionality for data sharing and re-use. Distinguishing four types of data sharing (@tbl-types-data-sharing), the purpose of this paper is to investigate how new standards and technologies that can establish openness of health data platforms can be integrated into the OpenHIE architecture framework. The lack of detailed specifications and consensus of this addition to OpenHIE currently stands in the way of development projects that aim to establish HDPs in LMICs.
 
 |   | __Type of data sharing__ | __New standards and technology enablers to create openness__ |
-|-|--|-------|
+|:-:|:-------|:-------------|
 | __1__ | Data at the most granular (patient) level, which is persisted and used to provide a longitudinal record. | __Bulk FHIR API__ which has by now been incorporated in all major FHIR implementations the FHIR standard can be readily used to support type 1 data sharing to patient-level data across a patient population [@mandl2020push;@jones2021landscape]. |
 | __2__ | Aggregated data, for example statistics for policy evaluation and benchmarking |__SQL-on-FHIR specification__ [@sql-on-fhir]: provides a standardised approach to make FHIR work well with familiar and efficient SQL engines that are most commonly used in analytical workflows. Builds on FHIRPath [@fhirpath] expressions in a logical structure to specify things like column names and unnested items. Implementations of this approach are available or forthcoming, including open source implementations such as Pathling [@grimes2022pathling] and commercial offerings like Aidbox [@aidbox].|
-| __3__ | Data analytics modules, that provide access to work and access the data. | __Federated learning (FL) and privacy- enhancing technologies (PETs)__ [@rieke2020future;@scheibner2021revolutionizing;@jordan2022selecting]: new paradigms that address the problem of data governance and privacy by training algorithms collaboratively without exchanging the data itself. Models can be trained on combined datasets and made available as open source artifacts for decision support. Data analysts can use FL and PETs to work with the data in a collaborative, decentralized fashion. |
-| __4__ | Trained models that have been derived from the data and can be used stand-alone for decision support. | ^^ |
+| __3__ | Data analytics modules, that provide access to work and access the data. | __Federated learning (FL)__ [@rieke2020future] and __privacy- enhancing technologies (PETs)__ [@scheibner2021revolutionizing;@jordan2022selecting]: new paradigms that address the problem of data governance and privacy by training algorithms collaboratively without exchanging the data itself. Models can be trained on combined datasets and made available as open source artifacts for decision support. Data analysts can use FL and PETs to work with the data in a collaborative, decentralized fashion. |
+| __4__ | Trained models that have been derived from the data and can be used stand-alone for decision support. | __ONNX__ [@onnx]: an open format built to represent machine learning models. |
 
 : Types of data sharing and in relation to new standards and technology enablers to create openness. {#tbl-types-data-sharing}
 
@@ -104,10 +106,123 @@ In the paper, we present a design that extends the OpenHIE specification to incl
 
 As part of our design research, we have taken a narrative approach in surveying existing scientific studies on health data platforms, focusing on the seminal reports and subsequently searching forward citations. In addition, we have searched the open source repositories (most notably GitHub) and the online communities (OpenHIE community, FHIR community) to search for relevant open standards, technologies and architectures. This paper should not be considered as a proper systematic review.
 
+### Momcare
+
+MomCare was launched in Kenya [@huisman2022digital;@sanctis2022maintaining] and Tanzania [@shija2021access;@mrema2021application] in 2017 and 2019 respectively, with the objective to create transparency on the journeys of pregnant mothers. The programme is built on three pillars: journey tracking, quality support and a mobile wallet (@fig-momcare). MomCare distinguishes two user groups: mothers are supported during their pregnancy through reminders and surveys, using SMS as the digital mode of engagement. Health workers are equipped with an Android-based application, in which visits, care activities and clinical observations are recorded. Reimbursements of the maternal clinic are based on the data captured with SMS and the app, thereby creating a conditional payment scheme, where providers are partially reimbursed up-front for a fixed bundle of activities, supplemented by bonus payments based on a predefined set of care activities.
+
+![Overview of the Momcare programme](images/momcare.png){width=auto #fig-momcare}
+
+### Use-case: ONA Canopy
+
+https://ona.io/home/services/canopy/
+
+### Evaluation of other reported HDP designs
+
+Besides the two case studies, we will discuss how the design relates to other reported open architectures
+
+- Ayaz et al. presented an end-to-end framework that automates the mapping from FHIR Resources to FHIR-compliant tables that are subsequently exposed for consumption [@ayaz2023transforming]
+- Mullie et al. presented the CODA project that aims to facilitate distributed computations for multi-institutional data analysis while avoiding the costs and complexity of data pooling [@mullie2023coda]
+- PHAS [@abbasian2023phas]
+- OpenHIM platform with analytics
+
+## Results
+
+### Open standards: using FHIR as the common data model
+
+The recent convergence to FHIR as the de facto standard for information exchange has fuelled the development of OpenHIE. FHIR is currently used both for routine healthcare settings40 and clinical research settings [@duda2022hl7;@vorisek2022fast] and is increasingly being used in LMICs as well. The FHIR-native OpenSRP platform [@mehl2020open] has been deployed in 14 countries targeting various patient populations, amongst which a reference implementation of the WHO antenatal and neonatal care guidelines for midwives in Lombok, Indonesia [@summitinstitutefordevelopment2023bunda;@kurniawan2019midwife]. In India, FHIR is used as the underlying technology for the open Health Claims Exchange protocol specification, which has been adopted by the Indian government as the standard for e-claims handling [@hcx]. Additionally, the guidelines and standards of the African Union explicitly state FHIR is to be used as the messaging standard [@2023african]. This range of utilizations showcase the standards’ widespread applicability. The proceedings of the OpenHIE conference 2023 attest to the fact that FHIR and open source technologies are embraced as critical enablers in implementing health information exchanges in LMICs [@ohie23].
+
+However, despite the increased use of FHIR as a common data model, various studies have investigated its merits and performance vis-a-vis other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP and FHIR have been made [@ayaz2023transforming;@mullie2023coda;@rinaldi2021openehr;@cremonesi2023need;@sinaci2023data]. A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR concluded that i) these three standards are functionally and technically compatible, and therefore can be used side by side; and that ii) each of these standards have their strengths and limitations that correlate with their intended use as summarized in the @tbl-comparison.
+
+![Comparison of OpenEHR, ISO 13606 and FHIR standards](images/comparison-ehr-standards.png){width=auto #tbl-comparison}
+
+For an infectious diseases dataset with a limited scope, OpenEHR, OMOP and FHIR have been compared and found all to be equally suitable [@rinaldi2021openehr]. Comparing OMOP and FHIR, the latter has been found to support more granular mappings required for analytics and was therefore chosen as the standard for the CODA project[@mullie2023coda].
+
+Although FHIR was originally designed only for exchange between systems, we propose to use it as the common data model for the design presented here for the following reasons:
+
+- Industry adoption has significantly increased, as exemplified by FHIR-based offering by major cloud providers such as Google, Azure and AWS. Also, Africa CDC has explicitly chosen FHIR as the preferred standard;
+- The concept of FHIR Profiles allow localisation to tailor the standard to a specific use case. A profile defines rules, extensions, and constraints for a resource. We posit that the possible penalty of this flexibility, namely having to manage different FHIR versions and/or profiles, is less of an issue in the context of LMICs where first priority is to exchange datasets such as the International Patient Summary (IPS) that are less complex compared to the requirements for high income countries;
+- Being based on webstandards, the FHIR standard lends itself best for further separation of concerns as envisioned by the composable data stack. This is an important enabler for the downward scalability of the solution;
+- With its inherent, graph-like nature, FHIR can be readily incorporated into the principles of FAIR data sharing, where FHIR-based data repositories can be integrated in an overarching netwerk of FAIR data stations [@sinaci2023data;@pedrera-jimenez2023can].
+
+### Open architecture: extending OpenHIE framework with a lakehouse data platform
+
+Data management and analytics platforms have undergone significant changes since the first generation of data warehouses were introduced. Recent studies have shown that the current practice has converged towards the lakehouse as one of the most commonly used solution designs [@armbrust2021lakehouse;@hai2023data;@harby2022data]. Lakehouses typically have a zonal architecture [@hai2023data] where data is ingested from the source systems in bulk (E), delivered to storage with aligned schemas (L) and transformed into a format ready for analysis (T). The discerning characteristic of the lakehouse architecture is its foundation on low-cost and directly-accessible storage that also provides traditional analytical DBMS management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization [@armbrust2021lakehouse]. Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter.
+
+With respect to current implementations of lakehouse data platform, we observe a proliferation of tools with as yet limited standards to improve technical interoperability. In the analysis of Pedreira et al. [@pedreira2023composable] the requirement for specialization in data management systems has evolved faster than our software development practices. This situation has created a siloed landscape composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. It has also affected the end users, who are often required to learn the idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects, and settle for systems with incomplete functionality and inconsistent semantics. To remedy this, Pedreira et al. call to (re-)design and implement modern data platforms in terms of a 'composable data stack’ as a means to decrease development and maintenance cost and pick-up the speed of innovation.
+
+While the lakehouse architecture separating the concerns of compute and storage, the composable data stack takes the separation of concerns is taken one step further. A composable data system (@fig-composable-data-stack), not only separates the storage (layer 3) and execution (layer 2), but also separates the user interface (layer 1) from the execution engine by introducing standards for Intermediate Representation (standard A) and Connectivity (standard B). The composable data stack can be implemented with current open source technologies (@fig-cds-examples). As an example, the Ibis user interface is currently sufficiently mature to offer a standardized dataframe interface to 19 different execution engines.
+
+![Composable data stack](images/composable-data-stack.png){#fig-composable-data-stack}
+
+![Examples of implementations of the composable data stack](images/composable-data-stack-implementation.png){#fig-cds-examples}
+
+### Extended OpenHIE framework
+Our proposal for extending HIE is as follows.
+
+- add diagram, explicitly adding the component
+- fit in structure of OpenHIE specification
+- check which workflows are related to analytics
+
+Following Hai we take a subset of the core functionalities of a data lake. Because the SHR is the key source, don’t need full stack of ingestion of various sources.
+
+- Query-driven data discovery
+
+### Open technologies: available digital public goods
+
+Many components of the OpenHIE specification are now available as a digital public good. @tbl-digital-public-goods lists components that are currently available for implementing the OpenHIE framework using open source, digital public goods that are compliant with the FHIR standard, illustrating the maturity of this ecosystem and development community. With the launch of the Instant OpenHIE configuration toolkit54, it has become easier to set up, explore and develop HIEs thereby reducing costs and skills required for software developers to deploy an OpenHIE architecture for quicker solution testing and as a starting point for faster production implementation and customisation. Several frameworks are available that offer a set of preconfigured components out of the box, such as for example:
+
+- the  “Open Smart Register Platform” (OpenSRP), that focuses on providing a mobile-first platform, including a FHIR native app designed to support the WHO Smart Guidelines
+- the OpenHIM Platform, a reference implementation of the Instant OpenHIE framework, providing an easy way to set up, manage and operate various HIE configurations
+
+![ Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document.](images/digital-public-goods.png){#tbl-digital-public-goods}
+
+
+
+### Evaluation: Momcare programme
+
+
+
+### Evaluation: ONA Canopy
+
+
+### Evaluation: reported HDP solutions
+
+## Discussion
+
+### Openness of data platforms
+
+We specifically address the notion of openness of HDPs in LMICs in terms of the design-related questions put forward by de Reuver at al.11:
+
+- Object of openness: what data-related resources should data platforms make available when opening up (e.g. data, data products, datadriven insights, analytics modules)? Which user groups derive value from accessing data-related resources from data platforms (e.g. data providers, data users, intermediaries, developers)?
+- Unit of analysis: what is platform-to-platform openness in the context of data platforms, given the expectation that different HDPs will emerge at various aggregation levels? How do we distinguish meta-platforms, forking, and platform interoperability?
+- Risk of openness: What are the novel (negative) implications of opening up data platforms? How can reflexivity in design help providers to resolve the negative implications of openness?
+
+
+### Comparison with HMIS component
+
+- Workflow requirements: Report aggregate data (link): receiver is HMIS, mADX
+- Functional requirements: https://guides.ohie.org/arch-spec/openhie-component-specifications-1/openhie-health-management-information-system-hmis
+
+Requirements are similar, but implementation differs: Datamodel is non-FHIR, focused on DataValue, which conceptually equates to FHIR Measure
+
+### FHIR and FAIR
+
+- How does FHIR relate to approaches taken by the FAIR community, which tend to take more an approach of using knowledge graphs. For example, VODAN Africa [@gebreslassie2023fhir4fair;@purnamajati2022data].
+- FAIR principles vs FHIR graph: is FHIR a FAIR Data Object
+
+
+
+
+
+### Attribute-based access control
+
+- Cerbos, attribute based on lineage or anonymized tables
+
 ## Abbreviations
 
 |    |    |
 |:---|:---|
+| ELT | Extract, Load and Transform |
 | FAIR |Findable, Accessible, Interoperable and Reusable |
 | FHIR |Fast Healthcare Interoperability Resources |
 | HDP	|	Health data platform, explicitly differentiated from health digital platform |

@@ -1,6 +1,27 @@
-\documentclass[manuscript,screen,review]{acmart}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  authoryear]{elsarticle}
 
-
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -16,54 +37,18 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-
-%%
-%% This is file `sample-manuscript.tex',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% samples.dtx  (with options: `manuscript')
-%% 
-%% IMPORTANT NOTICE:
-%% 
-%% For the copyright see the source file.
-%% 
-%% Any modified versions of this file must be renamed
-%% with new filenames distinct from sample-manuscript.tex.
-%% 
-%% For distribution of the original source see the terms
-%% for copying and modification in the file samples.dtx.
-%% 
-%% This generated file may be distributed as long as the
-%% original source files, as listed above, are part of the
-%% same distribution. (The sources need not necessarily be
-%% in the same archive or directory.)
-%%
-%%
-%% Commands for TeXCount
-%TC:macro \cite [option:text,text]
-%TC:macro \citep [option:text,text]
-%TC:macro \citet [option:text,text]
-%TC:envir table 0 1
-%TC:envir table* 0 1
-%TC:envir tabular [ignore] word
-%TC:envir displaymath 0 word
-%TC:envir math 0 word
-%TC:envir comment 0 0
-%%
-%%
-%% The first command in your LaTeX source must be the \documentclass command.
-
-
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-
-%% PANDOC PREAMBLE BEGINS
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
 
 \providecommand{\tightlist}{%
@@ -91,7 +76,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\definecolor{mypink}{RGB}{219, 48, 122}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -133,11 +117,15 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-%% PANDOC PREAMBLE ENDS
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{elsarticle-harv}
+\usepackage{bookmark}
 
-\setlength{\parindent}{10pt}
-\setlength{\parskip}{0pt}
-
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Conceptualizing open health data platforms for low- and middle income countries},
   pdfauthor={Daniel Kapitan; Femke Heddema; Julie Fleischer; Chris Ihure; Antragama Abbas; Steven Wanyee; XXX; John Grimes; Mark van der Graaf; Mark de Reuver},
@@ -146,457 +134,665 @@
   linkcolor={blue},
   filecolor={Maroon},
   citecolor={Blue},
-  urlcolor={red},
-  pdfcreator={LaTeX via pandoc, via quarto}}
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
 
-%% \BibTeX command to typeset BibTeX logo in the docs
-\AtBeginDocument{%
-  \providecommand\BibTeX{{%
-    Bib\TeX}}}
-
-%% Rights management information.  This information is sent to you
-%% when you complete the rights form.  These commands have SAMPLE
-%% values in them; it is your responsibility as an author to replace
-%% the commands and values with those provided to you when you
-%% complete the rights form.
-\setcopyright{}
-\copyrightyear{}
-\acmYear{}
-\acmDOI{}
-
-%% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[]{}{}{}
-\acmPrice{}
-\acmISBN{}
-
-%% Submission ID.
-%% Use this when submitting an article to a sponsored event. You'll
-%% receive a unique submission ID from the organizers
-%% of the event, and this ID should be used as the parameter to this command.
-%%\acmSubmissionID{123-A56-BU3}
-
-%%
-%% For managing citations, it is recommended to use bibliography
-%% files in BibTeX format.
-%%
-%% You can then either use BibTeX with the ACM-Reference-Format style,
-%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
-%% support for advanced citation of software artefact from the
-%% biblatex-software package, also separately available on CTAN.
-%%
-%% Look at the sample-*-biblatex.tex files for templates showcasing
-%% the biblatex styles.
-%%
-
-%%
-%% The majority of ACM publications use numbered citations and
-%% references.  The command \citestyle{authoryear} switches to the
-%% "author year" style.
-%%
-%% If you are preparing content for an event
-%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
-%% citations and references.
-%% Uncommenting
-%% the next command will enable that style.
-%%\citestyle{acmauthoryear}
-
-
-%% end of the preamble, start of the body of the document source.
+\setlength{\parindent}{6pt}
 \begin{document}
 
-
-%%
-%% The "title" command has an optional parameter,
-%% allowing the author to define a "short title" to be used in page headers.
+\begin{frontmatter}
 \title{Conceptualizing open health data platforms for low- and middle
 income countries}
+\author[1,2]{Daniel Kapitan%
+%
+}
+ \ead{daniel@kapitan.net} 
+\author[1]{Femke Heddema%
+%
+}
 
-%%
-%% The "author" command and its associated commands are used to define
-%% the authors and their affiliations.
-%% Of note is the shared affiliation of the first two authors, and the
-%% "authornote" and "authornotemark" commands
-%% used to denote shared contribution to the research.
+\author[1]{Julie Fleischer%
+%
+}
+
+\author[3]{Chris Ihure%
+%
+}
+
+\author[4]{Antragama Abbas%
+%
+}
+
+\author[5]{Steven Wanyee%
+%
+}
+
+\author[6]{XXX%
+%
+}
+
+\author[7]{John Grimes%
+%
+}
+
+\author[1]{Mark van der Graaf%
+%
+}
+
+\author[4]{Mark de Reuver%
+%
+}
 
 
-  \author{Daniel Kapitan}
-  \orcid{0000-0001-8979-9194}
-            \affiliation{%
-                  \institution{PharmAccess Foundation}
-                                  \city{Amsterdam}
-                                  \country{the Netherlands}
-                      }
-          \affiliation{%
-                  \institution{Eindhoven University of Technology}
-                                  \city{Eindhoven}
-                                  \country{the Netherlands}
-                      }
-        \author{Femke Heddema}
-  
-            \affiliation{%
-                  \institution{PharmAccess Foundation}
-                                  \city{Amsterdam}
-                                  \country{the Netherlands}
-                      }
-        \author{Julie Fleischer}
-  
-            \affiliation{%
-                  \institution{PharmAccess Foundation}
-                                  \city{Amsterdam}
-                                  \country{the Netherlands}
-                      }
-        \author{Chris Ihure}
-  
-            \affiliation{%
-                  \institution{PharmAccess Kenya}
-                                  \city{Nairobi}
-                                  \country{Kenya}
-                      }
-        \author{Antragama Abbas}
-  
-            \affiliation{%
-                  \institution{Delft University of Technology}
-                                  \city{Delft}
-                                  \country{the Netherlands}
-                      }
-        \author{Steven Wanyee}
-  
-            \affiliation{%
-                  \institution{IntelliSOFT}
-                                  \city{Nairobi}
-                                  \country{Kenya}
-                      }
-        \author{XXX}
-  
-            \affiliation{%
-                  \institution{ONA}
-                                  \city{Nairobi}
-                                  \country{Kenya}
-                      }
-        \author{John Grimes}
-  
-            \affiliation{%
-                  \institution{Australian e-Health Research Centre}
-                                  \city{Brisbane}
-                                  \country{Australia}
-                      }
-        \author{Mark van der Graaf}
-  
-            \affiliation{%
-                  \institution{PharmAccess Foundation}
-                                  \city{Amsterdam}
-                                  \country{the Netherlands}
-                      }
-        \author{Mark de Reuver}
-  
-            \affiliation{%
-                  \institution{Delft University of Technology}
-                                  \city{Delft}
-                                  \country{the Netherlands}
-                      }
-      
+\affiliation[1]{organization={PharmAccess
+Foundation},city={Amsterdam},country={the
+Netherlands},countrysep={,},postcodesep={}}
+\affiliation[2]{organization={Eindhoven University of
+Technology},city={Eindhoven},country={the
+Netherlands},countrysep={,},postcodesep={}}
+\affiliation[3]{organization={PharmAccess
+Kenya},city={Nairobi},country={Kenya},countrysep={,},postcodesep={}}
+\affiliation[4]{organization={Delft University of
+Technology},city={Delft},country={the
+Netherlands},countrysep={,},postcodesep={}}
+\affiliation[5]{organization={IntelliSOFT},city={Nairobi},country={Kenya},countrysep={,},postcodesep={}}
+\affiliation[6]{organization={ONA},city={Nairobi},country={Kenya},countrysep={,},postcodesep={}}
+\affiliation[7]{organization={Australian e-Health Research
+Centre},city={Brisbane},country={Australia},countrysep={,},postcodesep={}}
 
-%% By default, the full list of authors will be used in the page
-%% headers. Often, this list is too long, and will overlap
-%% other information printed in the page headers. This command allows
-%% the author to define a more concise list
-%% of authors' names for this purpose.
-%\renewcommand{\shortauthors}{Trovato et al.}
-%%  
-%% The abstract is a short summary of the work to be presented in the
-%% article.
+\cortext[cor1]{Corresponding author}
+
+
+
+
+
+
+
+
+
+
+        
 \begin{abstract}
-This document is only a demo explaining how to use the template.    
+This document is only a demo explaining how to use the template.
 \end{abstract}
 
-%%
-%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
-%% Please copy and paste the code instead of the example below.
-%%
-
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
 
 
-%%
-%% This command processes the author and affiliation and title
-%% information and builds the first part of the formatted document.
-\maketitle
 
-\setlength{\parskip}{-0.1pt}
 
-\subsection{Introduction}\label{sec-intro}
+\begin{keyword}
+    template \sep 
+    demo
+\end{keyword}
+\end{frontmatter}
+    
+\section{Introduction}\label{sec-intro}
 
-This is a dummy example only for the purpose to use this repo as a
-template starter for creating new formats. For this
-\texttt{article-format-template} we call our dummy article \texttt{aft}.
+\subsection{Digital platforms vs.~data platforms for
+healthcare}\label{digital-platforms-vs.-data-platforms-for-healthcare}
 
-This quarto extension format supports PDF and HTML outputs.
-\texttt{quarto-journals} is aiming at porting existing {\LaTeX} template
-from journals to be used with quarto. PDF format is what require the
-most work to fit the journals guideline, but Quarto offer a nice
-rendering for HTML output too. This demo format template only use basic
-HTML format without any customization for now.
+It is a widely held belief that digital technologies have an important
+role to play in strengthening health systems in low- and middle income
+countries (LMICs), as exemplified by the WHO global strategy on digital
+health \citep{who2021global}. The adoption rate of mobile phones in
+LMICs has been an important driver in implementing digital health
+solutions \citep{mccool2022mobile}. Yet, there are many shortcomings and
+challenges, including the current fragmentation of digital platforms and
+the lack of clear-cut pathways of scaling up digital health programmes,
+such that they can support sustainable and equitable change of national
+health systems in LMICs
+\citep{mccool2022mobile, who2019recommendations, neumark2021digital}.
 
-\subsection{About Quarto Extensions formats And Quarto Journals
-Article}\label{about-quarto-extensions-formats-and-quarto-journals-article}
+A commonly used perspective to scrutinize digital health is to consider
+it as a digital platform \citep{dereuver2018digital}. Digital platforms
+have disrupted many sectors but have just started to make inroads into
+highly regulated industries such as healthcare \citep{ozalp2022digital}.
+In this light, the challenges faced by LMICs in establishing national
+digital health platforms have a lot in common with those faced by high
+income countries. From a technological perspective, interoperability
+issues, weak integrations, siloed data repositories and overall lack of
+openness are often reported as key impediments
+\citep{malm-nicolais2023exploring, mehl2023fullstac}. From a societal
+perspective, issues pertaining to the winner-takes-all nature of digital
+platforms are hotly debated as many jurisdictions make work to ensure
+these platforms indeed serve the common good of achieving universal
+health coverage \citep{sharon2018when}.
 
-First, please get familiar with the following resources:
+Case studies on digital platforms in healthcare point to an emerging
+pattern where the focus shifts from the digital platform with its
+defining software and hardware components, to the data as the primary
+object of interest in and of itself
+\citep{ozalp2022digital, alaimo2022organizations}. This observation ties
+into the proposed research agenda by de Reuver et al.~to consider data
+platforms as a phenomenon distinct from digital platforms
+\citep{dereuver2022openness}. Generally, data platforms inherit the
+characteristics of digital platforms. For example, the economic
+perspective on digital platforms stresses their multi-sidedness with
+developers and consumers, while data platforms are used by data owners,
+data consumers and third party solution providers. At the same time,
+data platforms differ as their main offerings revolve around data. From
+a market perspective, data platforms have more moderate network effects
+and are more susceptible to fragmentation and heterogeneity.
 
-\begin{itemize}
-\tightlist
-\item
-  \href{https://quarto.org/docs/extensions/formats.html}{Creating
-  Formats} in Quarto as part of the
-  \href{https://quarto.org/docs/extensions/}{Extensions} mechanism.
-\item
-  \href{https://quarto.org/docs/journals/}{Journals Articles} for
-  Quarto.
-\end{itemize}
+Particularly relevant in the context of health data platforms (HDPs), is
+the conceptualization of openness. The objective of openness, the ways
+to realize openness and the risks of opening up can be considered as
+elements within the ongoing debate on data spaces
+\citep{otto2022designing} and data solidarity
+\citep{kickbusch2021lancet, prainsack2022data, prainsack2023beyond} in
+the healthcare domain, which is a current issue for high income
+countries and LMICs alike. Openness is particularly relevant if we are
+to realize a solidarity-based approach to health data sharing that i)
+gives people a greater control over their data as active decision
+makers; ii) ensures that the value of data is harnessed for public good;
+and iii) moves society towards equity and justice by counteracting
+dynamics of data extraction \citep{otto2022designing}.
 
-\subsection{Structure of this
-repository}\label{structure-of-this-repository}
+\subsection{From health information exchanges to health data
+platforms}\label{from-health-information-exchanges-to-health-data-platforms}
 
-Everything for the extensions is in \texttt{\_extensions}. See Quarto
-doc for details.
+This paper is motivated by the conflation of a number of developments
+relevant to the design and implementation of solidarity-based HDPs in
+LMICs. First, the OpenHIE framework \citep{openhie} has been adopted by
+many sub-Saharan African countries \citep{mamuye2022health} as the
+architectural blueprint for implementing nation-wide health information
+exchanges (HIE), including Nigeria \citep{ohienigeria}, Kenya
+\citep{khisif} and Tanzania \citep{tzhea2020}. These countries have, as
+a matter of course, extended the framework to include ``analytics
+services'' as an additional domain. The rationale for this addition is
+to facilitate primary and secondary re-use of health data for academic
+research, real-world evidence studies etc. which can be framed within
+the context of ongoing efforts towards Findable, Accessible,
+Interoperable and Reusable (FAIR) sharing of health data
+\citep{guillot2023fair}. In doing so, however, we have implicitly moved
+from conceptualizing digital health platforms (the original OpenHIE
+specification) to health data platforms. This is problematic because the
+notion of openness, which is assumed to be essential in establishing
+solidarity-based approaches to data sharing, is inherently different for
+a data platform compared to a digital platform.
 
-\begin{itemize}
-\item
-  In \texttt{partials}, you'll find the \texttt{.tex} partials that can
-  be used and should be removed or tweaked,s
-\item
-  Your extension can make shortcodes and lua filters available. This
-  document shows the effect of the one provided in the \texttt{aft}
-  format.
-\item
-  \texttt{aft} format sets some defaults which are different from
-  \texttt{pdf} or \texttt{html}, link setting links to URL in read
-  inside PDF output.
-\end{itemize}
+Conceptually, the OpenHIE framework constitutes a framework for an open
+digital platform. Openness for digital platforms refers to i) the use of
+open boundary resources, that is, specifications for the various
+healthcare specific workflows and information standards such as FHIR;
+and ii) the use of open source components that are available as digital
+public goods\citep{digitalpublicgoods}. If we are to use the OpenHIE
+framework as an open data platform, we need to extend the standards,
+technologies and architecture to include functionality for data sharing
+and re-use. Distinguishing four types of data sharing
+(Table~\ref{tbl-types-data-sharing}), the purpose of this paper is to
+investigate how new standards and technologies that can establish
+openness of health data platforms can be integrated into the OpenHIE
+architecture framework. The lack of detailed specifications and
+consensus of this addition to OpenHIE currently stands in the way of
+development projects that aim to establish HDPs in LMICs.
 
-Source repository for this template format can found on
-\href{https://github.com/quarto-journals/article-format-template}{Github}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3200}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5600}}@{}}
+\caption{Types of data sharing and in relation to new standards and
+technology enablers to create
+openness.}\label{tbl-types-data-sharing}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Type of data sharing}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{New standards and technology enablers to create openness}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Type of data sharing}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{New standards and technology enablers to create openness}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1} & Data at the most granular (patient) level, which is
+persisted and used to provide a longitudinal record. & \textbf{Bulk FHIR
+API} which has by now been incorporated in all major FHIR
+implementations the FHIR standard can be readily used to support type 1
+data sharing to patient-level data across a patient population
+\citep{mandl2020push, jones2021landscape}. \\
+\textbf{2} & Aggregated data, for example statistics for policy
+evaluation and benchmarking & \textbf{SQL-on-FHIR specification}
+\citep{sql-on-fhir}: provides a standardised approach to make FHIR work
+well with familiar and efficient SQL engines that are most commonly used
+in analytical workflows. Builds on FHIRPath \citep{fhirpath} expressions
+in a logical structure to specify things like column names and unnested
+items. Implementations of this approach are available or forthcoming,
+including open source implementations such as Pathling
+\citep{grimes2022pathling} and commercial offerings like Aidbox
+\citep{aidbox}. \\
+\textbf{3} & Data analytics modules, that provide access to work and
+access the data. & \textbf{Federated learning (FL)
+\citep{rieke2020future} and privacy- enhancing technologies (PETs)}
+\citep{scheibner2021revolutionizing, jordan2022selecting}: new paradigms
+that address the problem of data governance and privacy by training
+algorithms collaboratively without exchanging the data itself. Models
+can be trained on combined datasets and made available as open source
+artifacts for decision support. Data analysts can use FL and PETs to
+work with the data in a collaborative, decentralized fashion. \\
+\textbf{4} & Trained models that have been derived from the data and can
+be used stand-alone for decision support. & \textbf{ONNX} \citep{onnx}:
+an open format built to represent machine learning models. \\
+\end{longtable}
 
-\subsubsection{\texorpdfstring{\texttt{\_extensions\textbackslash{}aft}}{\_extensions\textbackslash aft}}\label{extensionsaft}
+\section{Methods}\label{methods}
 
-In this folder you'll find everything that defines the extensions which
-could be installed using \texttt{quarto\ install\ extension} or be part
-of the template when using \texttt{quarto\ use\ template}
+In the paper, we present a design that extends the OpenHIE specification
+to include the four types of data sharing mentioned above. Using the
+full-STAC approach \citep{mehl2023fullstac} we combine open standards,
+open technologies and open architectures into a coherent modular HDP
+platform that can be configured and re-used across a variety of
+use-cases. Subsequently, we employ the Framework for Evaluation of
+Design Science (FEDS) research \citep{venable2016feds} to evaluate the
+design. The purpose of this evaluation is formative: we aim to to help
+improve the outcomes of the design and the artifacts presented. We do so
+by taking a naturalistic approach, that is, the expected performance of
+the design is considered with its real environment where we draw on our
+experience in two use-cases, namely the Momcare programme and the ONA
+Canopy data platform.
 
-\begin{description}
-\item[Format Metadata]
-This is in \texttt{\_extension.yml} is where all the metadata about the
-format are defined so that Quarto knows what to use. Adapt this file for
-you own template.
-\item[Partials]
-In \texttt{partials}, there are the \texttt{.tex} files that will be
-used as Pandoc's template. We provide here all the partials supported by
-Quarto and custom one for this format. Quarto allows to provide partials
-to ease the process of tweaking the default latex Pandoc's template and
-keeping it up to date.\\
-This template repo contains all the relevant partials that you can use
-with Quarto \emph{as example}. We only tweaked \texttt{title.tex} to
-show the usage of a custom partials called \texttt{\_custom.tex}.\\
-\textbf{Only keep the partials that you need to tweak for the format you
-are creating}
+As part of our design research, we have taken a narrative approach in
+surveying existing scientific studies on health data platforms, focusing
+on the seminal reports and subsequently searching forward citations. In
+addition, we have searched the open source repositories (most notably
+GitHub) and the online communities (OpenHIE community, FHIR community)
+to search for relevant open standards, technologies and architectures.
+This paper should not be considered as a proper systematic review.
 
-If you need to completely change the default template (i.g customizing
-partials is not enough), then you need to provide your own template to
-Pandoc based on
-\href{https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/template.tex}{\texttt{template.tex}}
-and also using partials or not. This can be provided using the
-\texttt{template} YAML key in \texttt{\_extension.yml} for Quarto to use
-it.
+\subsection{Momcare}\label{momcare}
 
-This is considered advanced configuration as it will be harder to
-maintain than only using partials but could be required for some
-specific format. Be aware that this may lead to loose some Pandoc or
-Quarto features tied to default \texttt{template.tex} content if you
-remove some specific parts.
-\item[Lua Filters]
-Most of the time, custom formats will need Lua filters to provide
-specific features like cross format supports or provides custom
-shortcodes through the Quarto extension mechanism. Those filters will be
-available to the user and could be used in the custom formats (according
-to \texttt{\_extensions} metadata). We have provided two examples:
+MomCare was launched in Kenya
+\citep{huisman2022digital, sanctis2022maintaining} and Tanzania
+\citep{shija2021access, mrema2021application} in 2017 and 2019
+respectively, with the objective to create transparency on the journeys
+of pregnant mothers. The programme is built on three pillars: journey
+tracking, quality support and a mobile wallet
+(Figure~\ref{fig-momcare}). MomCare distinguishes two user groups:
+mothers are supported during their pregnancy through reminders and
+surveys, using SMS as the digital mode of engagement. Health workers are
+equipped with an Android-based application, in which visits, care
+activities and clinical observations are recorded. Reimbursements of the
+maternal clinic are based on the data captured with SMS and the app,
+thereby creating a conditional payment scheme, where providers are
+partially reimbursed up-front for a fixed bundle of activities,
+supplemented by bonus payments based on a predefined set of care
+activities.
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{color-text.lua}, a Lua filter used to add color to inline text
-  for PDF and HTML outputs using the same Markdown syntax
-\item
-  \texttt{shorcodes.lua}, a Lua filter which follow
-  \href{https://quarto.org/docs/authoring/shortcodes.html\#custom-shortcodes}{Quarto
-  custom shortcodes} guidelines to provide a \texttt{} shortcode to
-  nicely print LaTeX in PDF and HTML.
-\end{itemize}
+\begin{figure}
 
-\textbf{Remove or replace with your own Lua filters}
-\item[Format resources]
-Resources required by the format needs to be available. We have provided
-two examples:
+\centering{
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{te.bst} is a biblio style file for demo. It has been
-  downloaded from
-  https://www.economics.utoronto.ca/osborne/latex/TEBST.HTM
-  (http://econtheory.org/technical/te.bst) - Licence
-  \href{https://www.latex-project.org/lppl/}{LPPL}
-\item
-  \texttt{aft.cls} is a dummy class file for this example format. It is
-  a copy of official \texttt{article.cls}, the one provided in LaTeX
-  installation (i.e at \texttt{kpsewhich\ article.cls}) and renamed as
-  example (Licence LaTeX Project Public License)
-\item
-  \texttt{custom.scss} is a style file to have a custom theme for our
-  HTML format so that our Lua filter feature \texttt{color-tex.lua}
-  works.
-\end{itemize}
+\includegraphics{images/momcare.png}
 
-Those files are referenced within the \texttt{\_extension.yml} to be
-used with our example format.
+}
 
-\textbf{Remove and replace with your own resources}
-\item[\texttt{.quartoignore}]
-Sometimes it is useful to have some files only needed for reference or
-for development. They should be available in the source repository but
-not downloaded to the user when \texttt{quarto\ use\ template} is used.
+\caption{\label{fig-momcare}Overview of the Momcare programme}
 
-\textbf{Use \texttt{.quartoignore} to register such file and folder (one
-file or folder per line)}
-\item[\texttt{style-guide} folder]
-For \texttt{quarto-journals} format, use \texttt{style-guide} folder to
-include any documentation and resourced used for format creation, like a
-journal style guide or original \texttt{.tex} template. This folder is
-already added in \texttt{.quartoignore} in this example repo.
+\end{figure}%
 
-\textbf{Remove, rename or add to this folder}
-\item[\texttt{template.qmd}]
-This file is the template document that shows how to use the custom
-format. It will be downloaded with other resource by
-\texttt{quarto\ use\ template}, and even offered to be renamed if the
-name \texttt{template.qmd} is used.
+\subsection{Use-case: ONA Canopy}\label{use-case-ona-canopy}
 
-This file will usually use the custom format (here \texttt{aft-pdf} and
-\texttt{aft-html}) and show how to use the template. When you'll copy
-this template, you should be able to render this document to the demo
-format.
+https://ona.io/home/services/canopy/
 
-\textbf{Adapt this file to provide a suitable template for your custom
-format}
-\item[Other files]
-Other files are needed by the template and are usually user provided -
-they are not part of the custom format.
+\subsection{Evaluation of other reported HDP
+designs}\label{evaluation-of-other-reported-hdp-designs}
 
-Here \texttt{bibliography.bib} is here to demo the usage of the bst file
-from the custom format.
-
-\textbf{Remove this file and provide a suitable one for your template}
-\end{description}
-
-\newpage{}
-
-\subsection{Checklist: Creating a custom
-format}\label{checklist-creating-a-custom-format}
-
-Here is the checklist to help you know what to modify:
-
-\begin{itemize}
-\tightlist
-\item
-  Read the resources mentioned at the top,
-\item
-  Use this template repo to create a new repository for your format
-  (Click on ``Use this template'' to create new github repo)
-\item
-  Once you are acquainted with the content, remove the resources that
-  are there only as example (see above)
-\item
-  Update README by replacing \texttt{aft} and
-  \texttt{Article\ Format\ Template} mentions for your journal format
-\item
-  Keep only the template partials that you need to tweak, and add custom
-  ones if needed
-\item
-  Add any Lua filters for shortcodes and other that would be useful to
-  create the expected output format
-\item
-  Add any external resource your format will need, and that should be
-  part of the extension format that will be downloaded,
-\item
-  Check \texttt{\_extension.yml} is updated correctly
-\item
-  Modify the skeleton \texttt{template.qmd} to your format and add any
-  required resources to be downloaded to user.
-\item
-  Check \texttt{.quartoignore} is updated which everything that should
-  not be downloaded.
-\item
-  Publish a demo of you format to github pages of the repo by using
-  \texttt{quarto\ publish} command
-\end{itemize}
-
-\subsection{Demo of some features found in this demo journal
-template}\label{demo-of-some-features-found-in-this-demo-journal-template}
-
-\subsubsection{Shortcode demo}\label{sec-shortcode}
-
-PDF are rendered using {\LaTeX} but it is best if one can use a Markdown
-syntax for cross format support.
-
-\texttt{} used in source is a shortcode syntax where the shortcode is
-included in the extension folder \texttt{\_extensions}
-
-\subsubsection{Code chunk}\label{sec-chunks}
-
-This format hide chunks by default as option has been set in
-\texttt{\_extension.yml} file.
-
-\subsubsection{Text color}\label{sec-summary}
-
-Our format makes applying color on inline text possible using the
-\texttt{{[}content{]}\{color=\textless{}name\textgreater{}\}} syntax.
-Let's see an example.
-
-Here we are using a special feature of our format which is the coloring
-because \textcolor{mypink}{pink is a \textbf{nice} color}.
-
-This is possible thanks to the Lua Filter included in the custom
-extension format.
-
-\subsubsection*{Using references}\label{using-references}
-\addcontentsline{toc}{subsubsection}{Using references}
-
-I did not read this book \citep{CameronTrivedi2013} but it must be
-interesting.
-
-Differences between \texttt{aft-html} and \texttt{aft-pdf}:
+Besides the two case studies, we will discuss how the design relates to
+other reported open architectures
 
 \begin{itemize}
 \tightlist
 \item
-  For the HTML format, we are using Pandoc citeproc to include the
-  bibliography. Here \texttt{reference-section-title} controls the title
-  for the chapter that will be used.
+  Ayaz et al.~presented an end-to-end framework that automates the
+  mapping from FHIR Resources to FHIR-compliant tables that are
+  subsequently exposed for consumption \citep{ayaz2023transforming}
 \item
-  For the PDF format, \texttt{natbib} is used by default and the
-  bibliography is included with a title by the LaTeX template.
+  Mullie et al.~presented the CODA project that aims to facilitate
+  distributed computations for multi-institutional data analysis while
+  avoiding the costs and complexity of data pooling
+  \citep{mullie2023coda}
+\item
+  PHAS \citep{abbasian2023phas}
+\item
+  OpenHIM platform with analytics
 \end{itemize}
 
-%% begin pandoc before-bib
-%% end pandoc before-bib
-%% begin pandoc biblio
-%% end pandoc biblio
-%% begin pandoc include-after
-%% end pandoc include-after
-%% begin pandoc after-body
-%% end pandoc after-body
+\section{Results}\label{results}
+
+\subsection{Open standards: using FHIR as the common data
+model}\label{open-standards-using-fhir-as-the-common-data-model}
+
+The recent convergence to FHIR as the de facto standard for information
+exchange has fuelled the development of OpenHIE. FHIR is currently used
+both for routine healthcare settings40 and clinical research settings
+\citep{duda2022hl7, vorisek2022fast} and is increasingly being used in
+LMICs as well. The FHIR-native OpenSRP platform \citep{mehl2020open} has
+been deployed in 14 countries targeting various patient populations,
+amongst which a reference implementation of the WHO antenatal and
+neonatal care guidelines for midwives in Lombok, Indonesia
+\citep{summitinstitutefordevelopment2023bunda, kurniawan2019midwife}. In
+India, FHIR is used as the underlying technology for the open Health
+Claims Exchange protocol specification, which has been adopted by the
+Indian government as the standard for e-claims handling \citep{hcx}.
+Additionally, the guidelines and standards of the African Union
+explicitly state FHIR is to be used as the messaging standard
+\citep{2023african}. This range of utilizations showcase the standards'
+widespread applicability. The proceedings of the OpenHIE conference 2023
+attest to the fact that FHIR and open source technologies are embraced
+as critical enablers in implementing health information exchanges in
+LMICs \citep{ohie23}.
+
+However, despite the increased use of FHIR as a common data model,
+various studies have investigated its merits and performance vis-a-vis
+other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP
+and FHIR have been made
+\citep{ayaz2023transforming, mullie2023coda, rinaldi2021openehr, cremonesi2023need, sinaci2023data}.
+A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR
+concluded that i) these three standards are functionally and technically
+compatible, and therefore can be used side by side; and that ii) each of
+these standards have their strengths and limitations that correlate with
+their intended use as summarized in the Table~\ref{tbl-comparison}.
+
+\begin{table}
+
+\caption{\label{tbl-comparison}Comparison of OpenEHR, ISO 13606 and FHIR
+standards}
+
+\centering{
+
+\includegraphics{images/comparison-ehr-standards.png}
+
+}
+
+\end{table}%
+
+For an infectious diseases dataset with a limited scope, OpenEHR, OMOP
+and FHIR have been compared and found all to be equally suitable
+\citep{rinaldi2021openehr}. Comparing OMOP and FHIR, the latter has been
+found to support more granular mappings required for analytics and was
+therefore chosen as the standard for the CODA
+project\citep{mullie2023coda}.
+
+Although FHIR was originally designed only for exchange between systems,
+we propose to use it as the common data model for the design presented
+here for the following reasons:
+
+\begin{itemize}
+\tightlist
+\item
+  Industry adoption has significantly increased, as exemplified by
+  FHIR-based offering by major cloud providers such as Google, Azure and
+  AWS. Also, Africa CDC has explicitly chosen FHIR as the preferred
+  standard;
+\item
+  The concept of FHIR Profiles allow localisation to tailor the standard
+  to a specific use case. A profile defines rules, extensions, and
+  constraints for a resource. We posit that the possible penalty of this
+  flexibility, namely having to manage different FHIR versions and/or
+  profiles, is less of an issue in the context of LMICs where first
+  priority is to exchange datasets such as the International Patient
+  Summary (IPS) that are less complex compared to the requirements for
+  high income countries;
+\item
+  Being based on webstandards, the FHIR standard lends itself best for
+  further separation of concerns as envisioned by the composable data
+  stack. This is an important enabler for the downward scalability of
+  the solution;
+\item
+  With its inherent, graph-like nature, FHIR can be readily incorporated
+  into the principles of FAIR data sharing, where FHIR-based data
+  repositories can be integrated in an overarching netwerk of FAIR data
+  stations \citep{sinaci2023data, pedrera-jimenez2023can}.
+\end{itemize}
+
+\subsection{Open architecture: extending OpenHIE framework with a
+lakehouse data
+platform}\label{open-architecture-extending-openhie-framework-with-a-lakehouse-data-platform}
+
+Data management and analytics platforms have undergone significant
+changes since the first generation of data warehouses were introduced.
+Recent studies have shown that the current practice has converged
+towards the lakehouse as one of the most commonly used solution designs
+\citep{armbrust2021lakehouse, hai2023data, harby2022data}. Lakehouses
+typically have a zonal architecture \citep{hai2023data} where data is
+ingested from the source systems in bulk (E), delivered to storage with
+aligned schemas (L) and transformed into a format ready for analysis
+(T). The discerning characteristic of the lakehouse architecture is its
+foundation on low-cost and directly-accessible storage that also
+provides traditional analytical DBMS management and performance features
+such as ACID transactions, data versioning, auditing, indexing, caching,
+and query optimization \citep{armbrust2021lakehouse}. Lakehouses thus
+combine the key benefits of data lakes and data warehouses: low-cost
+storage in an open format accessible by a variety of systems from the
+former, and powerful management and optimization features from the
+latter.
+
+With respect to current implementations of lakehouse data platform, we
+observe a proliferation of tools with as yet limited standards to
+improve technical interoperability. In the analysis of Pedreira et al.
+\citep{pedreira2023composable} the requirement for specialization in
+data management systems has evolved faster than our software development
+practices. This situation has created a siloed landscape composed of
+hundreds of products developed and maintained as monoliths, with limited
+reuse between systems. It has also affected the end users, who are often
+required to learn the idiosyncrasies of dozens of incompatible SQL and
+non-SQL API dialects, and settle for systems with incomplete
+functionality and inconsistent semantics. To remedy this, Pedreira et
+al.~call to (re-)design and implement modern data platforms in terms of
+a `composable data stack' as a means to decrease development and
+maintenance cost and pick-up the speed of innovation.
+
+While the lakehouse architecture separating the concerns of compute and
+storage, the composable data stack takes the separation of concerns is
+taken one step further. A composable data system
+(Figure~\ref{fig-composable-data-stack}), not only separates the storage
+(layer 3) and execution (layer 2), but also separates the user interface
+(layer 1) from the execution engine by introducing standards for
+Intermediate Representation (standard A) and Connectivity (standard B).
+The composable data stack can be implemented with current open source
+technologies (Figure~\ref{fig-cds-examples}). As an example, the Ibis
+user interface is currently sufficiently mature to offer a standardized
+dataframe interface to 19 different execution engines.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{images/composable-data-stack.png}
+
+}
+
+\caption{\label{fig-composable-data-stack}Composable data stack}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{images/composable-data-stack-implementation.png}
+
+}
+
+\caption{\label{fig-cds-examples}Examples of implementations of the
+composable data stack}
+
+\end{figure}%
+
+\subsection{Extended OpenHIE
+framework}\label{extended-openhie-framework}
+
+Our proposal for extending HIE is as follows.
+
+\begin{itemize}
+\tightlist
+\item
+  add diagram, explicitly adding the component
+\item
+  fit in structure of OpenHIE specification
+\item
+  check which workflows are related to analytics
+\end{itemize}
+
+Following Hai we take a subset of the core functionalities of a data
+lake. Because the SHR is the key source, don't need full stack of
+ingestion of various sources.
+
+\begin{itemize}
+\tightlist
+\item
+  Query-driven data discovery
+\end{itemize}
+
+\subsection{Open technologies: available digital public
+goods}\label{open-technologies-available-digital-public-goods}
+
+Many components of the OpenHIE specification are now available as a
+digital public good. Table~\ref{tbl-digital-public-goods} lists
+components that are currently available for implementing the OpenHIE
+framework using open source, digital public goods that are compliant
+with the FHIR standard, illustrating the maturity of this ecosystem and
+development community. With the launch of the Instant OpenHIE
+configuration toolkit54, it has become easier to set up, explore and
+develop HIEs thereby reducing costs and skills required for software
+developers to deploy an OpenHIE architecture for quicker solution
+testing and as a starting point for faster production implementation and
+customisation. Several frameworks are available that offer a set of
+preconfigured components out of the box, such as for example:
+
+\begin{itemize}
+\tightlist
+\item
+  the ``Open Smart Register Platform'' (OpenSRP), that focuses on
+  providing a mobile-first platform, including a FHIR native app
+  designed to support the WHO Smart Guidelines
+\item
+  the OpenHIM Platform, a reference implementation of the Instant
+  OpenHIE framework, providing an easy way to set up, manage and operate
+  various HIE configurations
+\end{itemize}
+
+\begin{table}
+
+\caption{\label{tbl-digital-public-goods}Overview of current open source
+implementations of components included in the OpenHIE specification that
+are FHIR-compatible. The category Analytics Services is not a part of
+the original OpenHIE and is discussed in the paper. Point-of-Service
+systems are excluded for brevity. A systematic review of such digital
+public goods is beyond the scope of this document.}
+
+\centering{
+
+\includegraphics{images/digital-public-goods.png}
+
+}
+
+\end{table}%
+
+\subsection{Evaluation: Momcare
+programme}\label{evaluation-momcare-programme}
+
+\subsection{Evaluation: ONA Canopy}\label{evaluation-ona-canopy}
+
+\subsection{Evaluation: reported HDP
+solutions}\label{evaluation-reported-hdp-solutions}
+
+\section{Discussion}\label{discussion}
+
+\subsection{Openness of data
+platforms}\label{openness-of-data-platforms}
+
+We specifically address the notion of openness of HDPs in LMICs in terms
+of the design-related questions put forward by de Reuver at al.11:
+
+\begin{itemize}
+\tightlist
+\item
+  Object of openness: what data-related resources should data platforms
+  make available when opening up (e.g.~data, data products, datadriven
+  insights, analytics modules)? Which user groups derive value from
+  accessing data-related resources from data platforms (e.g.~data
+  providers, data users, intermediaries, developers)?
+\item
+  Unit of analysis: what is platform-to-platform openness in the context
+  of data platforms, given the expectation that different HDPs will
+  emerge at various aggregation levels? How do we distinguish
+  meta-platforms, forking, and platform interoperability?
+\item
+  Risk of openness: What are the novel (negative) implications of
+  opening up data platforms? How can reflexivity in design help
+  providers to resolve the negative implications of openness?
+\end{itemize}
+
+\subsection{Comparison with HMIS
+component}\label{comparison-with-hmis-component}
+
+\begin{itemize}
+\tightlist
+\item
+  Workflow requirements: Report aggregate data (link): receiver is HMIS,
+  mADX
+\item
+  Functional requirements:
+  https://guides.ohie.org/arch-spec/openhie-component-specifications-1/openhie-health-management-information-system-hmis
+\end{itemize}
+
+Requirements are similar, but implementation differs: Datamodel is
+non-FHIR, focused on DataValue, which conceptually equates to FHIR
+Measure
+
+\subsection{FHIR and FAIR}\label{fhir-and-fair}
+
+\begin{itemize}
+\tightlist
+\item
+  How does FHIR relate to approaches taken by the FAIR community, which
+  tend to take more an approach of using knowledge graphs. For example,
+  VODAN Africa \citep{gebreslassie2023fhir4fair, purnamajati2022data}.
+\item
+  FAIR principles vs FHIR graph: is FHIR a FAIR Data Object
+\end{itemize}
+
+\subsection{Attribute-based access
+control}\label{attribute-based-access-control}
+
+\begin{itemize}
+\tightlist
+\item
+  Cerbos, attribute based on lineage or anonymized tables
+\end{itemize}
+
+\section{Abbreviations}\label{abbreviations}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ELT & Extract, Load and Transform \\
+FAIR & Findable, Accessible, Interoperable and Reusable \\
+FHIR & Fast Healthcare Interoperability Resources \\
+HDP & Health data platform, explicitly differentiated from health
+digital platform \\
+HIE & Health Information Exchange \\
+FL & Federated learning \\
+LMIC & Low- and middle income countries \\
+PET & Privacy-enhancing technologies \\
+\end{longtable}
+
+
+  \bibliography{pharmaccess.bib}
+
 
 \end{document}
-\endinput
-%%
-%% End of file `sample-manuscript.tex'.
