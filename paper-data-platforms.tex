@@ -474,12 +474,13 @@ model}\label{open-standards-using-fhir-as-the-common-data-model}
 
 The recent convergence to FHIR as the de facto standard for information
 exchange has fuelled the development of OpenHIE. FHIR is currently used
-both for routine healthcare settings40 and clinical research settings
-\citep{duda2022hl7, vorisek2022fast} and is increasingly being used in
-LMICs as well. The FHIR-native OpenSRP platform \citep{mehl2020open} has
-been deployed in 14 countries targeting various patient populations,
-amongst which a reference implementation of the WHO antenatal and
-neonatal care guidelines for midwives in Lombok, Indonesia
+both for routine healthcare settings\citep{ayaz2021fast} and clinical
+research settings \citep{duda2022hl7, vorisek2022fast} and is
+increasingly being used in LMICs as well. The FHIR-native OpenSRP
+platform \citep{mehl2020open} has been deployed in 14 countries
+targeting various patient populations, amongst which a reference
+implementation of the WHO antenatal and neonatal care guidelines for
+midwives in Lombok, Indonesia
 \citep{summitinstitutefordevelopment2023bunda, kurniawan2019midwife}. In
 India, FHIR is used as the underlying technology for the open Health
 Claims Exchange protocol specification, which has been adopted by the
@@ -520,8 +521,8 @@ For an infectious diseases dataset with a limited scope, OpenEHR, OMOP
 and FHIR have been compared and found all to be equally suitable
 \citep{rinaldi2021openehr}. Comparing OMOP and FHIR, the latter has been
 found to support more granular mappings required for analytics and was
-therefore chosen as the standard for the CODA
-project\citep{mullie2023coda}.
+therefore chosen as the standard for the CODA project
+\citep{mullie2023coda}.
 
 Although FHIR was originally designed only for exchange between systems,
 we propose to use it as the common data model for the design presented
@@ -577,7 +578,7 @@ storage in an open format accessible by a variety of systems from the
 former, and powerful management and optimization features from the
 latter.
 
-With respect to current implementations of lakehouse data platform, we
+With respect to current implementations of lakehouse data platforms, we
 observe a proliferation of tools with as yet limited standards to
 improve technical interoperability. In the analysis of Pedreira et al.
 \citep{pedreira2023composable} the requirement for specialization in
@@ -592,7 +593,7 @@ al.~call to (re-)design and implement modern data platforms in terms of
 a `composable data stack' as a means to decrease development and
 maintenance cost and pick-up the speed of innovation.
 
-While the lakehouse architecture separating the concerns of compute and
+While the lakehouse architecture separates the concerns of compute and
 storage, the composable data stack takes the separation of concerns is
 taken one step further. A composable data system
 (Figure~\ref{fig-composable-data-stack}), not only separates the storage
@@ -658,17 +659,18 @@ ingestion of various sources.
 goods}\label{open-technologies-available-digital-public-goods}
 
 Many components of the OpenHIE specification are now available as a
-digital public good. Table~\ref{tbl-digital-public-goods} lists
+digital public goods. Table~\ref{tbl-digital-public-goods} lists
 components that are currently available for implementing the OpenHIE
 framework using open source, digital public goods that are compliant
 with the FHIR standard, illustrating the maturity of this ecosystem and
 development community. With the launch of the Instant OpenHIE
-configuration toolkit54, it has become easier to set up, explore and
-develop HIEs thereby reducing costs and skills required for software
-developers to deploy an OpenHIE architecture for quicker solution
-testing and as a starting point for faster production implementation and
-customisation. Several frameworks are available that offer a set of
-preconfigured components out of the box, such as for example:
+configuration toolkit\citep{InstantOpenHIEv2}, it has become easier to
+set up, explore and develop HIEs thereby reducing costs and skills
+required for software developers to deploy an OpenHIE architecture for
+quicker solution testing and as a starting point for faster production
+implementation and customisation. Several frameworks are available that
+offer a set of preconfigured components out of the box, such as for
+example:
 
 \begin{itemize}
 \tightlist
