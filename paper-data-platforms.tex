@@ -130,7 +130,8 @@
 \hypersetup{
   pdftitle={Conceptualizing open health data platforms for low- and middle income countries},
   pdfauthor={Daniel Kapitan; Femke Heddema; Julie Fleischer; Chris Ihure; Antragama Abbas; Steven Wanyee; XXX; John Grimes; Mark van der Graaf; Mark de Reuver},
-  pdfkeywords={template, demo},
+  pdfkeywords={Analytics-on-FHIR, SQL-on-FHIR, HIE, data
+platforms, LMICs, digital health},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -214,7 +215,7 @@ Centre},city={Brisbane},country={Australia},countrysep={,},postcodesep={}}
 
         
 \begin{abstract}
-This document is only a demo explaining how to use the template.
+TO DO: add abstract.
 \end{abstract}
 
 
@@ -222,8 +223,9 @@ This document is only a demo explaining how to use the template.
 
 
 \begin{keyword}
-    template \sep 
-    demo
+    Analytics-on-FHIR \sep SQL-on-FHIR \sep HIE \sep data
+platforms \sep LMICs \sep 
+    digital health
 \end{keyword}
 \end{frontmatter}
     
@@ -326,7 +328,10 @@ investigate how new standards and technologies that can establish
 openness of health data platforms can be integrated into the OpenHIE
 architecture framework. The lack of detailed specifications and
 consensus of this addition to OpenHIE currently stands in the way of
-development projects that aim to establish HDPs in LMICs.
+development projects that aim to establish HDPs in LMICs. In addition,
+we explicitly address the requirement of downward scalability as we aim
+to implement health data platforms in resource constrained setting of
+LMICs.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1200}}
@@ -392,16 +397,17 @@ to include the four types of data sharing mentioned above. Using the
 full-STAC approach \citep{mehl2023fullstac} we combine open standards,
 open technologies and open architectures into a coherent modular HDP
 platform that can be configured and re-used across a variety of
-use-cases. Subsequently, we employ the Framework for Evaluation of
-Design Science (FEDS) research \citep{venable2016feds} to evaluate the
-design. The purpose of this evaluation is formative: we aim to to help
-improve the outcomes of the design and the artifacts presented. We do so
-by taking a naturalistic approach, that is, the expected performance of
-the design is considered with its real environment where we draw on our
-experience in two use-cases, namely the Momcare programme and the ONA
-Canopy data platform.
-
-As part of our design research, we have taken a narrative approach in
+use-cases. Subsequently, we employ a formative, naturalistic evaluation
+to assess the technical risk and efficacy of the design
+\citep{venable2016feds}. Given that it is prohibitively expensive to
+evaluate with real users and real systems in the real setting, we aim to
+minimize technological risks and maximize the efficacy of the design by
+considering three real-world examples of health data platoform in LMICs,
+namely i) the OpenHIM platform
+(\url{https://jembi.gitbook.io/openhim-platform/}); ii) the ONA Canopy
+platform \url{https://ona.io/home/services/canopy/}; and iii) the
+MomCare platform (\url{https://health-data-commons.pharmaccess.org}. As
+part of our design research, we have taken a narrative approach in
 surveying existing scientific studies on health data platforms, focusing
 on the seminal reports and subsequently searching forward citations. In
 addition, we have searched the open source repositories (most notably
@@ -409,65 +415,7 @@ GitHub) and the online communities (OpenHIE community, FHIR community)
 to search for relevant open standards, technologies and architectures.
 This paper should not be considered as a proper systematic review.
 
-\subsection{Momcare}\label{momcare}
-
-MomCare was launched in Kenya
-\citep{huisman2022digital, sanctis2022maintaining} and Tanzania
-\citep{shija2021access, mrema2021application} in 2017 and 2019
-respectively, with the objective to create transparency on the journeys
-of pregnant mothers. The programme is built on three pillars: journey
-tracking, quality support and a mobile wallet
-(Figure~\ref{fig-momcare}). MomCare distinguishes two user groups:
-mothers are supported during their pregnancy through reminders and
-surveys, using SMS as the digital mode of engagement. Health workers are
-equipped with an Android-based application, in which visits, care
-activities and clinical observations are recorded. Reimbursements of the
-maternal clinic are based on the data captured with SMS and the app,
-thereby creating a conditional payment scheme, where providers are
-partially reimbursed up-front for a fixed bundle of activities,
-supplemented by bonus payments based on a predefined set of care
-activities.
-
-\begin{figure}
-
-\centering{
-
-\includegraphics{images/momcare.png}
-
-}
-
-\caption{\label{fig-momcare}Overview of the Momcare programme}
-
-\end{figure}%
-
-\subsection{Use-case: ONA Canopy}\label{use-case-ona-canopy}
-
-https://ona.io/home/services/canopy/
-
-\subsection{Evaluation of other reported HDP
-designs}\label{evaluation-of-other-reported-hdp-designs}
-
-Besides the two case studies, we will discuss how the design relates to
-other reported open architectures
-
-\begin{itemize}
-\tightlist
-\item
-  Ayaz et al.~presented an end-to-end framework that automates the
-  mapping from FHIR Resources to FHIR-compliant tables that are
-  subsequently exposed for consumption \citep{ayaz2023transforming}
-\item
-  Mullie et al.~presented the CODA project that aims to facilitate
-  distributed computations for multi-institutional data analysis while
-  avoiding the costs and complexity of data pooling
-  \citep{mullie2023coda}
-\item
-  PHAS \citep{abbasian2023phas}
-\item
-  OpenHIM platform with analytics
-\end{itemize}
-
-\section{Results}\label{results}
+\section{Design}\label{design}
 
 \subsection{Open standards: using FHIR as the common data
 model}\label{open-standards-using-fhir-as-the-common-data-model}
@@ -476,22 +424,21 @@ The recent convergence to FHIR as the de facto standard for information
 exchange has fuelled the development of OpenHIE. FHIR is currently used
 both for routine healthcare settings\citep{ayaz2021fast} and clinical
 research settings \citep{duda2022hl7, vorisek2022fast} and is
-increasingly being used in LMICs as well. The FHIR-native OpenSRP
-platform \citep{mehl2020open} has been deployed in 14 countries
-targeting various patient populations, amongst which a reference
-implementation of the WHO antenatal and neonatal care guidelines for
-midwives in Lombok, Indonesia
+increasingly being used in LMICs as well. The guidelines and standards
+of the African Union explicitly state FHIR is to be used as the
+messaging standard \citep{2023african}. The FHIR-native OpenSRP platform
+\citep{mehl2020open} has been deployed in 14 countries targeting various
+patient populations, amongst which a reference implementation of the WHO
+antenatal and neonatal care guidelines for midwives in Lombok, Indonesia
 \citep{summitinstitutefordevelopment2023bunda, kurniawan2019midwife}. In
 India, FHIR is used as the underlying technology for the open Health
 Claims Exchange protocol specification, which has been adopted by the
 Indian government as the standard for e-claims handling \citep{hcx}.
-Additionally, the guidelines and standards of the African Union
-explicitly state FHIR is to be used as the messaging standard
-\citep{2023african}. This range of utilizations showcase the standards'
-widespread applicability. The proceedings of the OpenHIE conference 2023
-attest to the fact that FHIR and open source technologies are embraced
-as critical enablers in implementing health information exchanges in
-LMICs \citep{ohie23}.
+This range of utilizations showcase the standards' widespread
+applicability. The proceedings of the OpenHIE conference 2023 attest to
+the fact that FHIR and open source technologies are embraced as critical
+enablers in implementing health information exchanges in LMICs
+\citep{ohie23}.
 
 However, despite the increased use of FHIR as a common data model,
 various studies have investigated its merits and performance vis-a-vis
@@ -536,6 +483,11 @@ here for the following reasons:
   AWS. Also, Africa CDC has explicitly chosen FHIR as the preferred
   standard;
 \item
+  The widespread availibility of the Bulk FHIR API
+  \citep{mandl2020push, jones2021landscape} enables bulk, fileb-based
+  nbatchwise processing for analytics using the lakehouse architecture
+  as detailed in the next section;
+\item
   The concept of FHIR Profiles allow localisation to tailor the standard
   to a specific use case. A profile defines rules, extensions, and
   constraints for a resource. We posit that the possible penalty of this
@@ -555,6 +507,11 @@ here for the following reasons:
   repositories can be integrated in an overarching netwerk of FAIR data
   stations \citep{sinaci2023data, pedrera-jimenez2023can}.
 \end{itemize}
+
+Possible risks pertaining to the use of FHIR as the common data model,
+most notably the possible incompatibilities and/or high costs of
+maintenance in supporting different versions, will be addressed in the
+Discussion.
 
 \subsection{Open architecture: extending OpenHIE framework with a
 lakehouse data
@@ -630,8 +587,29 @@ composable data stack}
 
 \end{figure}%
 
-\subsection{Extended OpenHIE
-framework}\label{extended-openhie-framework}
+The premise of separating the user interface from the execution engine
+is directly related to the key objective of the SQL-on-FHIR project
+(\url{https://build.fhir.org/ig/FHIR/sql-on-fhir-v2/}), namely to make
+large-scale analysis of FHIR data accessible to a larger audience,
+portable between systems and to make FHIR data work well with the best
+available analytic tools, regardless of the technology stack. However,
+as FHIR is represented as a graph of resources, with detailed semantics
+defined for references between resources, data types, terminology,
+extensions, and many other aspects of the specification; to use FHIR
+effectively analysts require a thorough understanding of the
+specification. Most analytic and machine learning use cases require the
+preparation of FHIR data using transformations and tabular projections
+from its original form. The task of authoring these transformations and
+projections is not trivial and there is currently no standard mechanisms
+to support reuse.
+
+The solution of the SQL-on-FHIR project is to provide a specification
+for defining tabular, use case-specific views of FHIR data. The view
+definition and the execution of the view are separated, in such a way
+that the definition is portable across systems while the execution
+engine (called runners) are system-specific tools or libraries that
+apply view definitions to the underlying data layer, optionally making
+use of annotations to optimize performance.
 
 Our proposal for extending HIE is as follows.
 
@@ -648,6 +626,8 @@ Our proposal for extending HIE is as follows.
 Following Hai we take a subset of the core functionalities of a data
 lake. Because the SHR is the key source, don't need full stack of
 ingestion of various sources.
+
+\includegraphics{./images/hie.png}
 
 \begin{itemize}
 \tightlist
@@ -701,13 +681,57 @@ public goods is beyond the scope of this document.}
 
 \end{table}%
 
-\subsection{Evaluation: Momcare
-programme}\label{evaluation-momcare-programme}
+\section{Evaluation}\label{evaluation}
 
-\subsection{Evaluation: ONA Canopy}\label{evaluation-ona-canopy}
+\subsection{OpenHIM platform}\label{openhim-platform}
 
-\subsection{Evaluation: reported HDP
-solutions}\label{evaluation-reported-hdp-solutions}
+\begin{itemize}
+\tightlist
+\item
+  View generation in different packages, not portable
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Logstash for bulk
+  \item
+    Kafka for streaming
+  \end{itemize}
+\item
+\end{itemize}
+
+\subsection{ONA Canopy}\label{ona-canopy}
+
+\subsection{Momcare programme}\label{momcare-programme}
+
+MomCare was launched in Kenya
+\citep{huisman2022digital, sanctis2022maintaining} and Tanzania
+\citep{shija2021access, mrema2021application} in 2017 and 2019
+respectively, with the objective to create transparency on the journeys
+of pregnant mothers. The programme is built on three pillars: journey
+tracking, quality support and a mobile wallet
+(Figure~\ref{fig-momcare}). MomCare distinguishes two user groups:
+mothers are supported during their pregnancy through reminders and
+surveys, using SMS as the digital mode of engagement. Health workers are
+equipped with an Android-based application, in which visits, care
+activities and clinical observations are recorded. Reimbursements of the
+maternal clinic are based on the data captured with SMS and the app,
+thereby creating a conditional payment scheme, where providers are
+partially reimbursed up-front for a fixed bundle of activities,
+supplemented by bonus payments based on a predefined set of care
+activities.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{images/momcare.png}
+
+}
+
+\caption{\label{fig-momcare}Overview of the Momcare programme}
+
+\end{figure}%
 
 \section{Discussion}\label{discussion}
 
@@ -770,6 +794,9 @@ control}\label{attribute-based-access-control}
 
 \begin{itemize}
 \tightlist
+\item
+  TO DO: if you have generated flattened SQL tables, how are you going
+  to manage security?
 \item
   Cerbos, attribute based on lineage or anonymized tables
 \end{itemize}
