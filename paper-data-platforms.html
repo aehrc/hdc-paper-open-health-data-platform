@@ -16,7 +16,7 @@
 <meta name="author" content="John Grimes">
 <meta name="author" content="Mark van der Graaf">
 <meta name="author" content="Mark de Reuver">
-<meta name="keywords" content="template, demo">
+<meta name="keywords" content="Analytics-on-FHIR, SQL-on-FHIR, HIE, data platforms, LMICs, digital health">
 
 <title>Conceptualizing open health data platforms for low- and middle income countries</title>
 <style>
@@ -65,35 +65,6 @@ div.csl-indent {
 <link href="paper-data-platforms_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="paper-data-platforms_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -104,24 +75,16 @@ window.Quarto = {
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul>
-  <li><a href="#sec-intro" id="toc-sec-intro" class="nav-link active" data-scroll-target="#sec-intro"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#about-quarto-extensions-formats-and-quarto-journals-article" id="toc-about-quarto-extensions-formats-and-quarto-journals-article" class="nav-link" data-scroll-target="#about-quarto-extensions-formats-and-quarto-journals-article"><span class="header-section-number">2</span> About Quarto Extensions formats And Quarto Journals Article</a></li>
-  <li><a href="#structure-of-this-repository" id="toc-structure-of-this-repository" class="nav-link" data-scroll-target="#structure-of-this-repository"><span class="header-section-number">3</span> Structure of this repository</a>
   <ul class="collapse">
-  <li><a href="#extensionsaft" id="toc-extensionsaft" class="nav-link" data-scroll-target="#extensionsaft"><span class="header-section-number">3.1</span> <code>_extensions\aft</code></a></li>
-  </ul></li>
-  <li><a href="#checklist-creating-a-custom-format" id="toc-checklist-creating-a-custom-format" class="nav-link" data-scroll-target="#checklist-creating-a-custom-format"><span class="header-section-number">4</span> Checklist: Creating a custom format</a></li>
-  <li><a href="#demo-of-some-features-found-in-this-demo-journal-template" id="toc-demo-of-some-features-found-in-this-demo-journal-template" class="nav-link" data-scroll-target="#demo-of-some-features-found-in-this-demo-journal-template"><span class="header-section-number">5</span> Demo of some features found in this demo journal template</a>
-  <ul class="collapse">
-  <li><a href="#sec-shortcode" id="toc-sec-shortcode" class="nav-link" data-scroll-target="#sec-shortcode"><span class="header-section-number">5.1</span> Shortcode demo</a></li>
-  <li><a href="#sec-chunks" id="toc-sec-chunks" class="nav-link" data-scroll-target="#sec-chunks"><span class="header-section-number">5.2</span> Code chunk</a></li>
-  <li><a href="#sec-summary" id="toc-sec-summary" class="nav-link" data-scroll-target="#sec-summary"><span class="header-section-number">5.3</span> Text color</a></li>
-  <li><a href="#using-references" id="toc-using-references" class="nav-link" data-scroll-target="#using-references">Using references</a></li>
-  </ul></li>
+  <li><a href="#sec-intro" id="toc-sec-intro" class="nav-link active" data-scroll-target="#sec-intro">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#design" id="toc-design" class="nav-link" data-scroll-target="#design">Design</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#abbreviations" id="toc-abbreviations" class="nav-link" data-scroll-target="#abbreviations">Abbreviations</a></li>
   <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">References</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="paper-data-platforms.pdf"><i class="bi bi-file-pdf"></i>PDF (acm)</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="paper-data-platforms.pdf"><i class="bi bi-file-pdf"></i>PDF (elsevier)</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -230,156 +193,572 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This document is only a demo explaining how to use the template.</p>
+    <p>TO DO: add abstract.</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>template, demo</p>
+    <p>Analytics-on-FHIR, SQL-on-FHIR, HIE, data platforms, LMICs, digital health</p>
   </div>
 </div>
 
 </header>
 
 
-<section id="sec-intro" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="sec-intro"><span class="header-section-number">1</span> Introduction</h2>
-<p>This is a dummy example only for the purpose to use this repo as a template starter for creating new formats. For this <code>article-format-template</code> we call our dummy article <code>aft</code>.</p>
-<p>This quarto extension format supports PDF and HTML outputs. <code>quarto-journals</code> is aiming at porting existing <span class="math inline">\(\LaTeX\)</span> template from journals to be used with quarto. PDF format is what require the most work to fit the journals guideline, but Quarto offer a nice rendering for HTML output too. This demo format template only use basic HTML format without any customization for now.</p>
+<section id="sec-intro" class="level2">
+<h2 class="anchored" data-anchor-id="sec-intro">Introduction</h2>
+<section id="digital-platforms-vs.-data-platforms-for-healthcare" class="level3">
+<h3 class="anchored" data-anchor-id="digital-platforms-vs.-data-platforms-for-healthcare">Digital platforms vs.&nbsp;data platforms for healthcare</h3>
+<p>It is a widely held belief that digital technologies have an important role to play in strengthening health systems in low- and middle income countries (LMICs), as exemplified by the WHO global strategy on digital health <span class="citation" data-cites="who2021global">(<a href="#ref-who2021global" role="doc-biblioref">World Health Organization, 2021</a>)</span>. The adoption rate of mobile phones in LMICs has been an important driver in implementing digital health solutions <span class="citation" data-cites="mccool2022mobile">(<a href="#ref-mccool2022mobile" role="doc-biblioref">McCool et al., 2022</a>)</span>. Yet, there are many shortcomings and challenges, including the current fragmentation of digital platforms and the lack of clear-cut pathways of scaling up digital health programmes, such that they can support sustainable and equitable change of national health systems in LMICs <span class="citation" data-cites="mccool2022mobile who2019recommendations neumark2021digital">(<a href="#ref-mccool2022mobile" role="doc-biblioref">McCool et al., 2022</a>; <a href="#ref-neumark2021digital" role="doc-biblioref">Neumark and Prince, 2021</a>; <a href="#ref-who2019recommendations" role="doc-biblioref">World Health Organization, 2019</a>)</span>.</p>
+<p>A commonly used perspective to scrutinize digital health is to consider it as a digital platform <span class="citation" data-cites="dereuver2018digital">(<a href="#ref-dereuver2018digital" role="doc-biblioref">de Reuver et al., 2018</a>)</span>. Digital platforms have disrupted many sectors but have just started to make inroads into highly regulated industries such as healthcare <span class="citation" data-cites="ozalp2022digital">(<a href="#ref-ozalp2022digital" role="doc-biblioref">Ozalp et al., 2022</a>)</span>. In this light, the challenges faced by LMICs in establishing national digital health platforms have a lot in common with those faced by high income countries. From a technological perspective, interoperability issues, weak integrations, siloed data repositories and overall lack of openness are often reported as key impediments <span class="citation" data-cites="malm-nicolais2023exploring mehl2023fullstac">(<a href="#ref-malm-nicolais2023exploring" role="doc-biblioref">Malm-Nicolaisen et al., 2023</a>; <a href="#ref-mehl2023fullstac" role="doc-biblioref">Mehl et al., 2023</a>)</span>. From a societal perspective, issues pertaining to the winner-takes-all nature of digital platforms are hotly debated as many jurisdictions make work to ensure these new digital health platforms indeed serve the common good of achieving universal health coverage <span class="citation" data-cites="sharon2018when">(<a href="#ref-sharon2018when" role="doc-biblioref">Sharon, 2018</a>)</span>.</p>
+<p>Case studies on digital platforms in healthcare point to an emerging pattern where the focus shifts from the digital platform with its defining software and hardware components, to the data as the primary object of interest in and of itself <span class="citation" data-cites="ozalp2022digital alaimo2022organizations">(<a href="#ref-alaimo2022organizations" role="doc-biblioref">Alaimo and Kallinikos, 2022</a>; <a href="#ref-ozalp2022digital" role="doc-biblioref">Ozalp et al., 2022</a>)</span>. This observation ties into the proposed research agenda by de Reuver et al.&nbsp;to consider data platforms as a phenomenon distinct from digital platforms <span class="citation" data-cites="dereuver2022openness">(<a href="#ref-dereuver2022openness" role="doc-biblioref">de Reuver et al., 2022</a>)</span>. Generally, data platforms inherit the characteristics of digital platforms. For example, the economic perspective on digital platforms stresses their multi-sidedness with developers and consumers, while data platforms are used by data owners, data consumers and third party solution providers. At the same time, data platforms differ as their main offerings revolve around data. From a market perspective, data platforms have more moderate network effects and are more susceptible to fragmentation and heterogeneity.</p>
+<p>Particularly relevant in the context of health data platforms (HDPs), is the conceptualization of openness. The shift in perspective from digital platforms to data platforms coincides with the paradox of open <span class="citation" data-cites="keller2021paradox">(<a href="#ref-keller2021paradox" role="doc-biblioref">Keller and Tarkowski, 2021</a>)</span>. Originally, openness of digital platforms focused on open source, open standards and copyrights, which by has been superseded by “… conflicts about privacy, economic value extraction, the emergence of artificial intelligence, and the destabilizing effects of dominant platforms on (democratic) societies. Instead of access to information, the control of personal data has emerged in the age of platforms as the critical contention.” <span class="citation" data-cites="keller2021paradox">(<a href="#ref-keller2021paradox" role="doc-biblioref">Keller and Tarkowski, 2021</a>)</span>. These conflicts are particularly salient in the healthcare domain, as is evidenced by polemic surrounding data spaces <span class="citation" data-cites="otto2022designing">(<a href="#ref-otto2022designing" role="doc-biblioref">Otto et al., 2022</a>)</span> and data solidarity <span class="citation" data-cites="kickbusch2021lancet prainsack2022data prainsack2023beyond">(<a href="#ref-kickbusch2021lancet" role="doc-biblioref">Kickbusch et al., 2021</a>; <a href="#ref-prainsack2022data" role="doc-biblioref">Prainsack et al., 2022</a>; <a href="#ref-prainsack2023beyond" role="doc-biblioref">Prainsack and El-Sayed, 2023</a>)</span>. Openness is particularly relevant if we are to realize a solidarity-based approach to health data sharing that i) gives people a greater control over their data as active decision makers; ii) ensures that the value of data is harnessed for public good; and iii) moves society towards equity and justice by counteracting dynamics of data extraction <span class="citation" data-cites="prainsack2022data">(<a href="#ref-prainsack2022data" role="doc-biblioref">Prainsack et al., 2022</a>)</span>.</p>
 </section>
-<section id="about-quarto-extensions-formats-and-quarto-journals-article" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="about-quarto-extensions-formats-and-quarto-journals-article"><span class="header-section-number">2</span> About Quarto Extensions formats And Quarto Journals Article</h2>
-<p>First, please get familiar with the following resources:</p>
+<section id="from-health-information-exchanges-to-health-data-platforms" class="level3">
+<h3 class="anchored" data-anchor-id="from-health-information-exchanges-to-health-data-platforms">From health information exchanges to health data platforms</h3>
+<p>This paper is motivated by the conflation of a number of developments relevant to the design and implementation of solidarity-based HDPs in LMICs. First, the OpenHIE framework <span class="citation" data-cites="openhie">(<a href="#ref-openhie" role="doc-biblioref"><span>“<span>OpenHIE Framework</span> v5.0,”</span> 2022</a>)</span> has been adopted by many sub-Saharan African countries <span class="citation" data-cites="mamuye2022health">(<a href="#ref-mamuye2022health" role="doc-biblioref">Mamuye et al., 2022</a>)</span> as the architectural blueprint for implementing nation-wide health information exchanges (HIE), including Nigeria <span class="citation" data-cites="dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>)</span>, Kenya <span class="citation" data-cites="thaiya2021adoption">(<a href="#ref-thaiya2021adoption" role="doc-biblioref">Thaiya et al., 2021</a>)</span> and Tanzania <span class="citation" data-cites="nsaghurwe2021one">(<a href="#ref-nsaghurwe2021one" role="doc-biblioref">Nsaghurwe et al., 2021</a>)</span>. These countries have, as a matter of course, extended the framework to include “analytics services” as an additional domain. The rationale for this addition is to facilitate secondary reuse of health data for academic research, real-world evidence studies etc. which can be framed within the context of ongoing efforts towards Findable, Accessible, Interoperable and Reusable (FAIR) sharing of health data <span class="citation" data-cites="guillot2023fair">(<a href="#ref-guillot2023fair" role="doc-biblioref">Guillot et al., 2023</a>)</span>. In doing so, however, we have implicitly moved from conceptualizing digital health platforms (the original OpenHIE specification) to health data platforms. This is problematic because the notion of openness, which is assumed to be essential in establishing solidarity-based approaches to data sharing, is inherently different for a data platform compared to a digital platform.</p>
+<p>Conceptually, the OpenHIE framework constitutes a framework for an open digital platform. Openness for digital platforms refers to i) the use of open boundary resources, that is, specifications for the various healthcare specific workflows and information standards such as FHIR; and ii) the use of open source components that are available as digital public goods<span class="citation" data-cites="digitalpublicgoods">(<a href="#ref-digitalpublicgoods" role="doc-biblioref"><span>“Digital <span>Public Goods Alliance</span>,”</span> 2024</a>)</span>. If we are to use the OpenHIE framework as an open data platform, we need to extend the standards, technologies and architecture to include functionality for data sharing and reuse. Distinguishing four types of data sharing (<a href="#tbl-types-data-sharing" class="quarto-xref">Table&nbsp;1</a>), the purpose of this paper is to investigate how new standards and technologies that can establish openness of health data platforms can be integrated into the OpenHIE architecture framework. The lack of detailed specifications and consensus of this addition to OpenHIE currently stands in the way of development projects that aim to establish HDPs in LMICs. In addition, we explicitly address the requirement of downward scalability as we aim to implement health data platforms in resource constrained setting of LMICs.</p>
+<div id="tbl-types-data-sharing" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-types-data-sharing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Types of data sharing and in relation to new standards and technology enablers to create openness.
+</figcaption>
+<div aria-describedby="tbl-types-data-sharing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 32%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: left;"><strong>Type of data sharing</strong></th>
+<th style="text-align: left;"><strong>Technology enablers to create openness of health data platforms</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Data at the most granular (patient) level, which is persisted and used to provide a longitudinal record.</td>
+<td style="text-align: left;"><strong>Bulk FHIR API</strong>: has by now been incorporated in all major FHIR implementations the FHIR standard can be readily used to support data sharing to patient-level data across a patient population <span class="citation" data-cites="mandl2020push jones2021landscape">(<a href="#ref-jones2021landscape" role="doc-biblioref">Jones et al., 2021</a>; <a href="#ref-mandl2020push" role="doc-biblioref">Mandl et al., 2020</a>)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Aggregated data, for example statistics for policy evaluation and benchmarking</td>
+<td style="text-align: left;"><strong>SQL-on-FHIR specification</strong> <span class="citation" data-cites="sql-on-fhir">(<a href="#ref-sql-on-fhir" role="doc-biblioref"><span>“<span>SQL</span> on <span>FHIR</span> speciification v0.0.1-pre,”</span> 2024</a>)</span>: provides a standardised approach to make FHIR work well with familiar and efficient SQL engines that are most commonly used in analytical workflows. Builds on FHIRPath <span class="citation" data-cites="hl72020fhirpath">(<a href="#ref-hl72020fhirpath" role="doc-biblioref">HL7, 2020</a>)</span> expressions in a logical structure to specify things like column names and unnested items. Implementations of this approach are available or forthcoming, including open source implementations such as Pathling <span class="citation" data-cites="grimes2022pathling">(<a href="#ref-grimes2022pathling" role="doc-biblioref">Grimes et al., 2022</a>)</span> and commercial offerings like Aidbox <span class="citation" data-cites="aidbox">(<a href="#ref-aidbox" role="doc-biblioref">Health Samurai, 2024</a>)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Data analytics modules, that provide access to work and access the data.</td>
+<td style="text-align: left;"><strong>Federated learning (FL)</strong> <span class="citation" data-cites="rieke2020future">(<a href="#ref-rieke2020future" role="doc-biblioref">Rieke et al., 2020</a>)</span> and <strong>privacy- enhancing technologies (PETs)</strong> <span class="citation" data-cites="scheibner2021revolutionizing jordan2022selecting">(<a href="#ref-jordan2022selecting" role="doc-biblioref">Jordan et al., 2022</a>; <a href="#ref-scheibner2021revolutionizing" role="doc-biblioref">Scheibner et al., 2021</a>)</span>: new paradigms that address the problem of data governance and privacy by training algorithms collaboratively without exchanging the data itself. Models can be trained on combined datasets and made available as open source artifacts for decision support. Data analysts can use FL and PETs to work with the data in a collaborative, decentralized fashion.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Trained models that have been derived from the data and can be used stand-alone for decision support.</td>
+<td style="text-align: left;"><strong>ONNX</strong> <span class="citation" data-cites="onnx">(<a href="#ref-onnx" role="doc-biblioref"><span>“<span>ONNX</span> v1.15.0,”</span> 2023</a>)</span>: an open format built to represent machine learning models.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>In the paper, we present a design that extends the OpenHIE specification to include the four types of data sharing mentioned above. Using the full-STAC approach <span class="citation" data-cites="mehl2023fullstac">(<a href="#ref-mehl2023fullstac" role="doc-biblioref">Mehl et al., 2023</a>)</span> we combine open standards, open technologies and open architectures into a coherent modular HDP platform that can be configured and reused across a variety of use-cases. Subsequently, we employ a formative, naturalistic evaluation to assess the technical risk and efficacy of the design <span class="citation" data-cites="venable2016feds">(<a href="#ref-venable2016feds" role="doc-biblioref">Venable et al., 2016</a>)</span>. Given that it is prohibitively expensive to evaluate with real users and real systems in the real setting, we aim to minimize technological risks and maximize the efficacy of the design by considering three real-world examples of health data platoform in LMICs, namely i) the OpenHIM platform (<a href="https://jembi.gitbook.io/openhim-platform/">https://jembi.gitbook.io/openhim-platform/</a>); ii) the ONA Canopy platform <a href="https://ona.io/home/services/canopy/">https://ona.io/home/services/canopy/</a>; and iii) the work conducted at PharmAccess Foundation as part of the MomCare programme (<a href="https://health-data-commons.pharmaccess.org">https://health-data-commons.pharmaccess.org</a>). As part of our design research, we have taken a narrative approach in surveying existing scientific studies on health data platforms, focusing on the seminal reports and subsequently searching forward citations. In addition, we have searched the open source repositories (most notably GitHub) and the online communities (OpenHIE community, FHIR community) to search for relevant open standards, technologies and architectures. This paper should not be considered as a proper systematic review.</p>
+</section>
+<section id="design" class="level2">
+<h2 class="anchored" data-anchor-id="design">Design</h2>
+<section id="open-standards-using-fhir-as-the-common-data-model" class="level3">
+<h3 class="anchored" data-anchor-id="open-standards-using-fhir-as-the-common-data-model">Open standards: using FHIR as the common data model</h3>
+<p>The recent convergence to FHIR as the de facto standard for information exchange has fuelled the development of OpenHIE. FHIR is currently used both for routine healthcare settings <span class="citation" data-cites="ayaz2021fast">(<a href="#ref-ayaz2021fast" role="doc-biblioref">Ayaz et al., 2021</a>)</span> and clinical research settings <span class="citation" data-cites="duda2022hl7 vorisek2022fast">(<a href="#ref-duda2022hl7" role="doc-biblioref">Duda et al., 2022</a>; <a href="#ref-vorisek2022fast" role="doc-biblioref">Vorisek et al., 2022</a>)</span> and is increasingly being used in LMICs as well. The guidelines and standards of the African Union explicitly state FHIR is to be used as the messaging standard <span class="citation" data-cites="2023african">(<a href="#ref-2023african" role="doc-biblioref"><em>African <span>Union Health Information Exchange Guidelines</span> and <span>Standards</span></em>, 2023</a>)</span>. The FHIR-native OpenSRP platform <span class="citation" data-cites="mehl2020open">(<a href="#ref-mehl2020open" role="doc-biblioref">Mehl, 2020</a>)</span> has been deployed in 14 countries targeting various patient populations, amongst which a reference implementation of the WHO antenatal and neonatal care guidelines for midwives in Lombok, Indonesia <span class="citation" data-cites="summitinstitutefordevelopment2023bunda kurniawan2019midwife">(<a href="#ref-kurniawan2019midwife" role="doc-biblioref">Kurniawan et al., 2019</a>; <a href="#ref-summitinstitutefordevelopment2023bunda" role="doc-biblioref">Summit Institute for Development, 2023</a>)</span>. In India, FHIR is used as the underlying technology for the open Health Claims Exchange protocol specification, which has been adopted by the Indian government as the standard for e-claims handling <span class="citation" data-cites="hcx">(<a href="#ref-hcx" role="doc-biblioref"><span>“<span>HCX Protocol</span> v0.9,”</span> 2023</a>)</span>. This range of utilizations showcase the standards’ widespread applicability. The proceedings of the OpenHIE conference 2023 attest to the fact that FHIR and open source technologies are embraced as critical enablers in implementing health information exchanges in LMICs <span class="citation" data-cites="ohie2023unconference">(<a href="#ref-ohie2023unconference" role="doc-biblioref"><span>“<span>OHIE23 Unconference</span> 101,”</span> 2023</a>)</span>.</p>
+<p>Various studies have investigated the merits of FHIR and its performance vis-a-vis other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP and FHIR have been made <span class="citation" data-cites="ayaz2023transforming mullie2023coda rinaldi2021openehr cremonesi2023need sinaci2023data">(<a href="#ref-ayaz2023transforming" role="doc-biblioref">Ayaz et al., 2023</a>; <a href="#ref-cremonesi2023need" role="doc-biblioref">Cremonesi et al., 2023</a>; <a href="#ref-mullie2023coda" role="doc-biblioref">Mullie et al., 2023</a>; <a href="#ref-rinaldi2021openehr" role="doc-biblioref">Rinaldi and Thun, 2021</a>; <a href="#ref-sinaci2023data" role="doc-biblioref">Sinaci et al., 2023</a>)</span>. A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR concluded that i) these three standards are functionally and technically compatible, and therefore can be used side by side; and that ii) each of these standards have their strengths and limitations that correlate with their intended use as summarized in the <a href="#tbl-comparison" class="quarto-xref">Table&nbsp;2</a>.</p>
+<div id="tbl-comparison" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Comparison of OpenEHR, ISO 13606 and FHIR standards
+</figcaption>
+<div aria-describedby="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/comparison-ehr-standards.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p>For an infectious diseases dataset with a limited scope, OpenEHR, OMOP and FHIR have been compared and found all to be equally suitable <span class="citation" data-cites="rinaldi2021openehr">(<a href="#ref-rinaldi2021openehr" role="doc-biblioref">Rinaldi and Thun, 2021</a>)</span>. Comparing OMOP and FHIR, the latter has been found to support more granular mappings required for analytics and was therefore chosen as the standard for the CODA project <span class="citation" data-cites="mullie2023coda">(<a href="#ref-mullie2023coda" role="doc-biblioref">Mullie et al., 2023</a>)</span>.</p>
+<p>Although FHIR was originally designed only for exchange between systems, we propose to use it as the common data model for the design presented here for the following reasons:</p>
 <ul>
-<li><a href="https://quarto.org/docs/extensions/formats.html">Creating Formats</a> in Quarto as part of the <a href="https://quarto.org/docs/extensions/">Extensions</a> mechanism.</li>
-<li><a href="https://quarto.org/docs/journals/">Journals Articles</a> for Quarto.</li>
+<li>Industry adoption has significantly increased, as exemplified by FHIR-based offering by major cloud providers such as Google, Azure and AWS. Also, Africa CDC has explicitly chosen FHIR as the preferred standard;</li>
+<li>The widespread availibility of the Bulk FHIR API <span class="citation" data-cites="mandl2020push jones2021landscape">(<a href="#ref-jones2021landscape" role="doc-biblioref">Jones et al., 2021</a>; <a href="#ref-mandl2020push" role="doc-biblioref">Mandl et al., 2020</a>)</span> enables bulk, fileb-based nbatchwise processing for analytics using the lakehouse architecture as detailed in the next section;</li>
+<li>The concept of FHIR Profiles allow localisation to tailor the standard to a specific use case. A profile defines rules, extensions, and constraints for a resource. We posit that the possible penalty of this flexibility, namely having to manage different FHIR versions and/or profiles, is less of an issue in the context of LMICs where first priority is to exchange datasets such as the International Patient Summary (IPS) that are less complex compared to the requirements for high income countries;</li>
+<li>Being based on webstandards, the FHIR standard lends itself best for further separation of concerns as envisioned by the composable data stack. This is an important enabler for the downward scalability of the solution;</li>
+<li>With its inherent, graph-like nature, FHIR can be readily incorporated into the principles of FAIR data sharing, where FHIR-based data repositories can be integrated in an overarching netwerk of FAIR data stations <span class="citation" data-cites="sinaci2023data pedrera-jimenez2023can">(<a href="#ref-pedrera-jimenez2023can" role="doc-biblioref">Pedrera-Jiménez et al., 2023</a>; <a href="#ref-sinaci2023data" role="doc-biblioref">Sinaci et al., 2023</a>)</span>.</li>
+</ul>
+<p>Possible risks pertaining to the use of FHIR as the common data model, most notably the possible incompatibilities and/or high costs of maintenance in supporting different versions, will be addressed in the Discussion.</p>
+</section>
+<section id="open-architecture-extending-openhie-with-a-composable-data-stack" class="level3">
+<h3 class="anchored" data-anchor-id="open-architecture-extending-openhie-with-a-composable-data-stack">Open architecture: extending OpenHIE with a composable data stack</h3>
+<section id="evolving-the-data-lakehouse-to-a-composable-data-stack" class="level4">
+<h4 class="anchored" data-anchor-id="evolving-the-data-lakehouse-to-a-composable-data-stack">Evolving the data lakehouse to a composable data stack</h4>
+<p>Data management and analytics platforms have undergone significant changes since the first generation of data warehouses were introduced. Recent studies have shown that the current practice has converged towards the lakehouse as one of the most commonly used solution designs <span class="citation" data-cites="armbrust2021lakehouse hai2023data harby2022data">(<a href="#ref-armbrust2021lakehouse" role="doc-biblioref">Armbrust et al., 2021</a>; <a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>; <a href="#ref-harby2022data" role="doc-biblioref">Harby and Zulkernine, 2022</a>)</span>. Lakehouses typically have a zonal architecture that follow the Extract-Load-Transform pattern (ELT) <span class="citation" data-cites="hai2023data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>)</span> where data is ingested from the source systems in bulk (E), delivered to storage with aligned schemas (L) and transformed into a format ready for analysis (T). The discerning characteristic of the lakehouse architecture is its foundation on low-cost and directly-accessible storage that also provides traditional analytical DBMS management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization <span class="citation" data-cites="armbrust2021lakehouse">(<a href="#ref-armbrust2021lakehouse" role="doc-biblioref">Armbrust et al., 2021</a>)</span>. Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter.</p>
+<p>With respect to current implementations of lakehouse data platforms, we observe a proliferation of tools with as yet limited standards to improve technical interoperability. In the analysis of Pedreira et al. <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span> the requirement for specialization in data management systems has evolved faster than our software development practices. This situation has created a siloed landscape composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. It has also affected the end users, who are often required to learn the idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects, and settle for systems with incomplete functionality and inconsistent semantics. To remedy this, Pedreira et al.&nbsp;call to (re-)design and implement modern data platforms in terms of a ‘composable data stack’ as a means to decrease development and maintenance cost and pick-up the speed of innovation.</p>
+<p>While the lakehouse architecture separates the concerns of compute and storage, the composable data stack takes the separation of concerns is taken one step further. A composable data system (<a href="#fig-composable-data-stack" class="quarto-xref">Figure&nbsp;1</a>), not only separates the storage (layer 3) and execution (layer 2), but also separates the user interface (layer 1) from the execution engine by introducing standards including Substrait for Intermediate Representation (standard A) and Apache Arrow (standard B and C). The composable data stack can be implemented with current open source technologies (<a href="#fig-cds-examples" class="quarto-xref">Figure&nbsp;2</a>). As an example, the Ibis user interface is currently sufficiently mature to offer a standardized dataframe interface to 19 different execution engines.</p>
+<div id="fig-composable-data-stack" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-composable-data-stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/composable-data-stack.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-composable-data-stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Composable data stack
+</figcaption>
+</figure>
+</div>
+<div id="fig-cds-examples" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cds-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/composable-data-stack-implementation-2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cds-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Examples of implementations of the composable data stack
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sql-on-fhir-v2-as-an-intermediate-representation-for-fhir-data-in-tabular-format" class="level4">
+<h4 class="anchored" data-anchor-id="sql-on-fhir-v2-as-an-intermediate-representation-for-fhir-data-in-tabular-format">SQL-on-FHIR v2 as an intermediate representation for FHIR data in tabular format</h4>
+<p>The premise of separating the user interface from the execution engine is directly related to the key objective of the SQL-on-FHIR project (<a href="https://build.fhir.org/ig/FHIR/sql-on-fhir-v2/">https://build.fhir.org/ig/FHIR/sql-on-fhir-v2/</a>), namely to make large-scale analysis of FHIR data accessible to a larger audience, portable between systems and to make FHIR data work well with the best available analytic tools, regardless of the technology stack. However, as FHIR is represented as a graph of resources, with detailed semantics defined for references between resources, data types, terminology, extensions, and many other aspects of the specification. To use FHIR effectively analysts require a thorough understanding of the specification. Most analytic and machine learning use cases require the preparation of FHIR data using transformations and tabular projections from its original form. The task of authoring these transformations and projections is not trivial and there is currently no standard mechanisms to support reuse.</p>
+<p>The solution of the SQL-on-FHIR project is to provide a specification for defining tabular, use case-specific views of FHIR data. The view definition and the execution of the view are separated, in such a way that the definition is portable across systems while the execution engine (called runners) are system-specific tools or libraries that apply view definitions to the underlying data layer, optionally making use of annotations to optimize performance.</p>
+</section>
+<section id="extending-openhie-with-a-fhir-based-composable-data-stack" class="level4">
+<h4 class="anchored" data-anchor-id="extending-openhie-with-a-fhir-based-composable-data-stack">Extending OpenHIE with a FHIR-based composable data stack</h4>
+<p>We propose to extend the OpenHIE architecture with a “Data and Analytics Services” domain with 5 services by synthesizing the architecture of Hai et al. <span class="citation" data-cites="hai2023data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>)</span> and the composable data stack <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span> (<a href="#fig-ohie" class="quarto-xref">Figure&nbsp;3</a>, <a href="#tbl-data-and-analysis-services" class="quarto-xref">Table&nbsp;3</a>).</p>
+<div id="fig-ohie" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ohie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/hie.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ohie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Proposed extension of the OpenHIE architecture that includes “Data and Analytics Services” as an additional service domain.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-data-and-analysis-services" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-and-analysis-services-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Definition of Data and Analysis Services
+</figcaption>
+<div aria-describedby="tbl-data-and-analysis-services-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Service</th>
+<th>Functional requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ingestion</td>
+<td><ul>
+<li>Metadata extraction</li>
+<li>Metadata modeling</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Storage</td>
+<td><ul>
+<li>File-based blob storage</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Query &amp; Processing</td>
+<td><ul>
+<li>SQL-on-FHIR Runner</li>
+<li>Execution engine on tabular data as defined in composable data stack</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Maintenance</td>
+<td><ul>
+<li>SQL-on-FHIR View defintions</li>
+<li>Maintenance-related functions as defined by Hai et al.</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Exploration</td>
+<td><ul>
+<li>Interactive computing environment <span class="citation" data-cites="granger2021jupyter">(<a href="#ref-granger2021jupyter" role="doc-biblioref">Granger and Perez, 2021</a>)</span></li>
+<li>Capability to participate as a node in a federative learning network, including MPC</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="ingestion" class="level5">
+<h5 class="anchored" data-anchor-id="ingestion">Ingestion</h5>
+<p>Default workflow is extraction of data from SHR using Bulk FHIR API. Data contains metadata (incl.&nbsp;FHIR versions) and fully qualified semantics, for example, coding systems. Despite this, metadata extraction and metadata modeling is still required to meet the FAIR requirements. Issues that need to be solved by these services:</p>
+<ul>
+<li>To prepare for future updates of FHIR versions</li>
+<li>Implement late-binding principle of having increasingly more specific FHIR profiles as bulk FHIR data propagates through lakehouse</li>
 </ul>
 </section>
-<section id="structure-of-this-repository" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="structure-of-this-repository"><span class="header-section-number">3</span> Structure of this repository</h2>
-<p>Everything for the extensions is in <code>_extensions</code>. See Quarto doc for details.</p>
+<section id="storage" class="level5">
+<h5 class="anchored" data-anchor-id="storage">Storage</h5>
 <ul>
-<li><p>In <code>partials</code>, you’ll find the <code>.tex</code> partials that can be used and should be removed or tweaked,s</p></li>
-<li><p>Your extension can make shortcodes and lua filters available. This document shows the effect of the one provided in the <code>aft</code> format.</p></li>
-<li><p><code>aft</code> format sets some defaults which are different from <code>pdf</code> or <code>html</code>, link setting links to URL in read inside PDF output.</p></li>
-</ul>
-<p>Source repository for this template format can found on <a href="https://github.com/quarto-journals/article-format-template">Github</a></p>
-<section id="extensionsaft" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="extensionsaft"><span class="header-section-number">3.1</span> <code>_extensions\aft</code></h3>
-<p>In this folder you’ll find everything that defines the extensions which could be installed using <code>quarto install extension</code> or be part of the template when using <code>quarto use template</code></p>
-<dl>
-<dt>Format Metadata</dt>
-<dd>
-This is in <code>_extension.yml</code> is where all the metadata about the format are defined so that Quarto knows what to use. Adapt this file for you own template.
-</dd>
-<dt>Partials</dt>
-<dd>
-<p>In <code>partials</code>, there are the <code>.tex</code> files that will be used as Pandoc’s template. We provide here all the partials supported by Quarto and custom one for this format. Quarto allows to provide partials to ease the process of tweaking the default latex Pandoc’s template and keeping it up to date.<br>
-This template repo contains all the relevant partials that you can use with Quarto <em>as example</em>. We only tweaked <code>title.tex</code> to show the usage of a custom partials called <code>_custom.tex</code>.<br>
-<strong>Only keep the partials that you need to tweak for the format you are creating</strong></p>
-<p>If you need to completely change the default template (i.g customizing partials is not enough), then you need to provide your own template to Pandoc based on <a href="https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/template.tex"><code>template.tex</code></a> and also using partials or not. This can be provided using the <code>template</code> YAML key in <code>_extension.yml</code> for Quarto to use it.</p>
-<p>This is considered advanced configuration as it will be harder to maintain than only using partials but could be required for some specific format. Be aware that this may lead to loose some Pandoc or Quarto features tied to default <code>template.tex</code> content if you remove some specific parts.</p>
-</dd>
-<dt>Lua Filters</dt>
-<dd>
-<p>Most of the time, custom formats will need Lua filters to provide specific features like cross format supports or provides custom shortcodes through the Quarto extension mechanism. Those filters will be available to the user and could be used in the custom formats (according to <code>_extensions</code> metadata). We have provided two examples:</p>
-<ul>
-<li><code>color-text.lua</code>, a Lua filter used to add color to inline text for PDF and HTML outputs using the same Markdown syntax</li>
-<li><code>shorcodes.lua</code>, a Lua filter which follow <a href="https://quarto.org/docs/authoring/shortcodes.html#custom-shortcodes">Quarto custom shortcodes</a> guidelines to provide a <code></code> shortcode to nicely print LaTeX in PDF and HTML.</li>
-</ul>
-<p><strong>Remove or replace with your own Lua filters</strong></p>
-</dd>
-<dt>Format resources</dt>
-<dd>
-<p>Resources required by the format needs to be available. We have provided two examples:</p>
-<ul>
-<li><code>te.bst</code> is a biblio style file for demo. It has been downloaded from https://www.economics.utoronto.ca/osborne/latex/TEBST.HTM (http://econtheory.org/technical/te.bst) - Licence <a href="https://www.latex-project.org/lppl/">LPPL</a></li>
-<li><code>aft.cls</code> is a dummy class file for this example format. It is a copy of official <code>article.cls</code>, the one provided in LaTeX installation (i.e at <code>kpsewhich article.cls</code>) and renamed as example (Licence LaTeX Project Public License)</li>
-<li><code>custom.scss</code> is a style file to have a custom theme for our HTML format so that our Lua filter feature <code>color-tex.lua</code> works.</li>
-</ul>
-<p>Those files are referenced within the <code>_extension.yml</code> to be used with our example format.</p>
-<p><strong>Remove and replace with your own resources</strong></p>
-</dd>
-<dt><code>.quartoignore</code></dt>
-<dd>
-<p>Sometimes it is useful to have some files only needed for reference or for development. They should be available in the source repository but not downloaded to the user when <code>quarto use template</code> is used.</p>
-<p><strong>Use <code>.quartoignore</code> to register such file and folder (one file or folder per line)</strong></p>
-</dd>
-<dt><code>style-guide</code> folder</dt>
-<dd>
-<p>For <code>quarto-journals</code> format, use <code>style-guide</code> folder to include any documentation and resourced used for format creation, like a journal style guide or original <code>.tex</code> template. This folder is already added in <code>.quartoignore</code> in this example repo.</p>
-<p><strong>Remove, rename or add to this folder</strong></p>
-</dd>
-<dt><code>template.qmd</code></dt>
-<dd>
-<p>This file is the template document that shows how to use the custom format. It will be downloaded with other resource by <code>quarto use template</code>, and even offered to be renamed if the name <code>template.qmd</code> is used.</p>
-<p>This file will usually use the custom format (here <code>aft-pdf</code> and <code>aft-html</code>) and show how to use the template. When you’ll copy this template, you should be able to render this document to the demo format.</p>
-<p><strong>Adapt this file to provide a suitable template for your custom format</strong></p>
-</dd>
-<dt>Other files</dt>
-<dd>
-<p>Other files are needed by the template and are usually user provided - they are not part of the custom format.</p>
-<p>Here <code>bibliography.bib</code> is here to demo the usage of the bst file from the custom format.</p>
-<p><strong>Remove this file and provide a suitable one for your template</strong></p>
-</dd>
-</dl>
-<div style="page-break-after: always;"></div>
-</section>
-</section>
-<section id="checklist-creating-a-custom-format" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="checklist-creating-a-custom-format"><span class="header-section-number">4</span> Checklist: Creating a custom format</h2>
-<p>Here is the checklist to help you know what to modify:</p>
-<ul>
-<li>Read the resources mentioned at the top,</li>
-<li>Use this template repo to create a new repository for your format (Click on “Use this template” to create new github repo)</li>
-<li>Once you are acquainted with the content, remove the resources that are there only as example (see above)</li>
-<li>Update README by replacing <code>aft</code> and <code>Article Format Template</code> mentions for your journal format</li>
-<li>Keep only the template partials that you need to tweak, and add custom ones if needed</li>
-<li>Add any Lua filters for shortcodes and other that would be useful to create the expected output format</li>
-<li>Add any external resource your format will need, and that should be part of the extension format that will be downloaded,</li>
-<li>Check <code>_extension.yml</code> is updated correctly</li>
-<li>Modify the skeleton <code>template.qmd</code> to your format and add any required resources to be downloaded to user.</li>
-<li>Check <code>.quartoignore</code> is updated which everything that should not be downloaded.</li>
-<li>Publish a demo of you format to github pages of the repo by using <code>quarto publish</code> command</li>
+<li>from ndjson to parquet</li>
+<li>possibly used delta lake for time versioning</li>
+<li>separation of storage from compute not only for benefits of lower TCO, but also be ready for federated learning and MPC in future</li>
 </ul>
 </section>
-<section id="demo-of-some-features-found-in-this-demo-journal-template" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="demo-of-some-features-found-in-this-demo-journal-template"><span class="header-section-number">5</span> Demo of some features found in this demo journal template</h2>
-<section id="sec-shortcode" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="sec-shortcode"><span class="header-section-number">5.1</span> Shortcode demo</h3>
-<p>PDF are rendered using <span class="math inline">\(\LaTeX\)</span> but it is best if one can use a Markdown syntax for cross format support.</p>
-<p><code>\LaTeX</code> used in source is a shortcode syntax where the shortcode is included in the extension folder <code>_extensions</code></p>
-</section>
-<section id="sec-chunks" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="sec-chunks"><span class="header-section-number">5.2</span> Code chunk</h3>
-<p>This format hide chunks by default as option has been set in <code>_extension.yml</code> file.</p>
-</section>
-<section id="sec-summary" class="level3" data-number="5.3">
-<h3 data-number="5.3" class="anchored" data-anchor-id="sec-summary"><span class="header-section-number">5.3</span> Text color</h3>
-<p>Our format makes applying color on inline text possible using the <code>[content]{color=&lt;name&gt;}</code> syntax. Let’s see an example.</p>
-<p>Here we are using a special feature of our format which is the coloring because <span class="color-mypink">pink is a <strong>nice</strong> color</span>.</p>
-<p>This is possible thanks to the Lua Filter included in the custom extension format.</p>
-</section>
-<section id="using-references" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="using-references">Using references</h3>
-<p>I did not read this book <span class="citation" data-cites="CameronTrivedi2013">[<a href="#ref-CameronTrivedi2013" role="doc-biblioref">1</a>]</span> but it must be interesting.</p>
-<p>Differences between <code>aft-html</code> and <code>aft-pdf</code>:</p>
+<section id="query-processing" class="level5">
+<h5 class="anchored" data-anchor-id="query-processing">Query &amp; Processing</h5>
 <ul>
-<li>For the HTML format, we are using Pandoc citeproc to include the bibliography. Here <code>reference-section-title</code> controls the title for the chapter that will be used.</li>
-<li>For the PDF format, <code>natbib</code> is used by default and the bibliography is included with a title by the LaTeX template.</li>
+<li>fit in structure of OpenHIE specification</li>
+<li>check which workflows are related to analytics</li>
+<li>Hai calls this ‘Maintenance’</li>
 </ul>
 </section>
+<section id="maintenance" class="level5">
+<h5 class="anchored" data-anchor-id="maintenance">Maintenance</h5>
+<ul>
+<li>SQL-on-FHIR Views provide new standard to support mADX aggregate reporting</li>
+<li>Maintenance-related functions remain the same</li>
+<li>NB: orchestration falls under data provenance</li>
+</ul>
+</section>
+<section id="exploration" class="level5">
+<h5 class="anchored" data-anchor-id="exploration">Exploration</h5>
+</section>
+</section>
+</section>
+<section id="open-technologies-available-digital-public-goods" class="level3">
+<h3 class="anchored" data-anchor-id="open-technologies-available-digital-public-goods">Open technologies: available digital public goods</h3>
+<p>Many components of the OpenHIE specification are now available as a digital public goods. <a href="#tbl-digital-public-goods" class="quarto-xref">Table&nbsp;4</a> lists components that are currently available for implementing the OpenHIE framework using open source, digital public goods that are compliant with the FHIR standard, illustrating the maturity of this ecosystem and development community. With the launch of the Instant OpenHIE configuration toolkit<span class="citation" data-cites="InstantOpenHIEv2">(<a href="#ref-InstantOpenHIEv2" role="doc-biblioref"><span>“Instant <span>OpenHIE</span> v2.2.0,”</span> 2024</a>)</span>, it has become easier to set up, explore and develop HIEs thereby reducing costs and skills required for software developers to deploy an OpenHIE architecture for quicker solution testing and as a starting point for faster production implementation and customisation. Several frameworks are available that offer a set of preconfigured components out of the box, such as for example:</p>
+<ul>
+<li>the “Open Smart Register Platform” (OpenSRP), that focuses on providing a mobile-first platform, including a FHIR native app designed to support the WHO Smart Guidelines</li>
+<li>the OpenHIM Platform, a reference implementation of the Instant OpenHIE framework, providing an easy way to set up, manage and operate various HIE configurations</li>
+</ul>
+<div id="tbl-digital-public-goods" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-digital-public-goods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document.
+</figcaption>
+<div aria-describedby="tbl-digital-public-goods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/digital-public-goods.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
+<section id="openhim-platform" class="level3">
+<h3 class="anchored" data-anchor-id="openhim-platform">OpenHIM platform</h3>
+<ul>
+<li>View generation in different packages, not portable
+<ul>
+<li>Logstash for bulk</li>
+<li>Kafka for streaming</li>
+</ul></li>
+<li></li>
+</ul>
+</section>
+<section id="ona-canopy" class="level3">
+<h3 class="anchored" data-anchor-id="ona-canopy">ONA Canopy</h3>
+</section>
+<section id="momcare-programme" class="level3">
+<h3 class="anchored" data-anchor-id="momcare-programme">Momcare programme</h3>
+<p>MomCare was launched in Kenya <span class="citation" data-cites="huisman2022digital sanctis2022maintaining">(<a href="#ref-huisman2022digital" role="doc-biblioref">Huisman et al., 2022</a>; <a href="#ref-sanctis2022maintaining" role="doc-biblioref">Sanctis et al., 2022</a>)</span> and Tanzania <span class="citation" data-cites="shija2021access mrema2021application">(<a href="#ref-mrema2021application" role="doc-biblioref">Mrema, 2021</a>; <a href="#ref-shija2021access" role="doc-biblioref">Shija et al., 2021</a>)</span> in 2017 and 2019 respectively, with the objective to create transparency on the journeys of pregnant mothers. The programme is built on three pillars: journey tracking, quality support and a mobile wallet (<a href="#fig-momcare" class="quarto-xref">Figure&nbsp;4</a>). MomCare distinguishes two user groups: mothers are supported during their pregnancy through reminders and surveys, using SMS as the digital mode of engagement. Health workers are equipped with an Android-based application, in which visits, care activities and clinical observations are recorded. Reimbursements of the maternal clinic are based on the data captured with SMS and the app, thereby creating a conditional payment scheme, where providers are partially reimbursed up-front for a fixed bundle of activities, supplemented by bonus payments based on a predefined set of care activities.</p>
+<div id="fig-momcare" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-momcare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/momcare.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-momcare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Overview of the Momcare programme
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<section id="openness-of-data-platforms" class="level3">
+<h3 class="anchored" data-anchor-id="openness-of-data-platforms">Openness of data platforms</h3>
+<p>We specifically address the notion of openness of HDPs in LMICs in terms of the design-related questions put forward by de Reuver at al.11:</p>
+<ul>
+<li>Object of openness: what data-related resources should data platforms make available when opening up (e.g.&nbsp;data, data products, datadriven insights, analytics modules)? Which user groups derive value from accessing data-related resources from data platforms (e.g.&nbsp;data providers, data users, intermediaries, developers)?</li>
+<li>Unit of analysis: what is platform-to-platform openness in the context of data platforms, given the expectation that different HDPs will emerge at various aggregation levels? How do we distinguish meta-platforms, forking, and platform interoperability?</li>
+<li>Risk of openness: What are the novel (negative) implications of opening up data platforms? How can reflexivity in design help providers to resolve the negative implications of openness?</li>
+</ul>
+</section>
+<section id="comparison-with-hmis-component" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-with-hmis-component">Comparison with HMIS component</h3>
+<ul>
+<li>Workflow requirements: Report aggregate data (link): receiver is HMIS, mADX</li>
+<li>Functional requirements: https://guides.ohie.org/arch-spec/openhie-component-specifications-1/openhie-health-management-information-system-hmis</li>
+</ul>
+<p>Requirements are similar, but implementation differs: Datamodel is non-FHIR, focused on DataValue, which conceptually equates to FHIR Measure</p>
+</section>
+<section id="fhir-and-fair" class="level3">
+<h3 class="anchored" data-anchor-id="fhir-and-fair">FHIR and FAIR</h3>
+<ul>
+<li>How does FHIR relate to approaches taken by the FAIR community, which tend to take more an approach of using knowledge graphs. For example, VODAN Africa <span class="citation" data-cites="gebreslassie2023fhir4fair purnamajati2022data">(<a href="#ref-gebreslassie2023fhir4fair" role="doc-biblioref">Gebreslassie et al., 2023</a>; <a href="#ref-purnamajati2022data" role="doc-biblioref">Purnama Jati et al., 2022</a>)</span>.</li>
+<li>FAIR principles vs FHIR graph: is FHIR a FAIR Data Object</li>
+</ul>
+</section>
+<section id="attribute-based-access-control" class="level3">
+<h3 class="anchored" data-anchor-id="attribute-based-access-control">Attribute-based access control</h3>
+<ul>
+<li>TO DO: if you have generated flattened SQL tables, how are you going to manage security?</li>
+<li>Cerbos, attribute based on lineage or anonymized tables</li>
+</ul>
+</section>
+<section id="federated-learning-and-multiparty-computation" class="level3">
+<h3 class="anchored" data-anchor-id="federated-learning-and-multiparty-computation">Federated learning and multiparty computation</h3>
+<ul>
+<li>data stations??!</li>
+</ul>
+</section>
+</section>
+<section id="abbreviations" class="level2">
+<h2 class="anchored" data-anchor-id="abbreviations">Abbreviations</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ELT</td>
+<td style="text-align: left;">Extract, Load and Transform</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FAIR</td>
+<td style="text-align: left;">Findable, Accessible, Interoperable and Reusable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FHIR</td>
+<td style="text-align: left;">Fast Healthcare Interoperability Resources</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HDP</td>
+<td style="text-align: left;">Health data platform, explicitly differentiated from health digital platform</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HIE</td>
+<td style="text-align: left;">Health Information Exchange</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FL</td>
+<td style="text-align: left;">Federated learning</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LMIC</td>
+<td style="text-align: left;">Low- and middle income countries</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PET</td>
+<td style="text-align: left;">Privacy-enhancing technologies</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="bibliography" class="level1 unnumbered">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-CameronTrivedi2013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Colin Cameron and Pravin K. Trivedi. 2013. <em>Regression analysis of count data</em> (2nd ed.). Cambridge University Press, Cambridge.</div>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-2023african" class="csl-entry" role="listitem">
+African <span>Union Health Information Exchange Guidelines</span> and <span>Standards</span>, 2023. African Union.
+</div>
+<div id="ref-alaimo2022organizations" class="csl-entry" role="listitem">
+Alaimo, C., Kallinikos, J., 2022. Organizations <span>Decentered</span>: <span>Data Objects</span>, <span>Technology</span> and <span>Knowledge</span>. Organization Science 33, 19–37. <a href="https://doi.org/10.1287/orsc.2021.1552">https://doi.org/10.1287/orsc.2021.1552</a>
+</div>
+<div id="ref-armbrust2021lakehouse" class="csl-entry" role="listitem">
+Armbrust, M., Ghodsi, A., Xin, R., Zaharia, M., 2021. Lakehouse: <span>A New Generation</span> of <span>Open Platforms</span> that <span>Unify Data Warehousing</span> and <span>Advanced Analytics</span>, in: 11th <span>Annual Conference</span> on <span>Innovative Data Systems Research</span> (<span>CIDR</span> ’21). p. 8.
+</div>
+<div id="ref-ayaz2023transforming" class="csl-entry" role="listitem">
+Ayaz, M., Pasha, M.F., Alahmadi, T.J., Abdullah, N.N.B., Alkahtani, H.K., 2023. Transforming <span>Healthcare Analytics</span> with <span>FHIR</span>: <span>A Framework</span> for <span>Standardizing</span> and <span>Analyzing Clinical Data</span>. Healthcare 11, 1729. <a href="https://doi.org/10.3390/healthcare11121729">https://doi.org/10.3390/healthcare11121729</a>
+</div>
+<div id="ref-ayaz2021fast" class="csl-entry" role="listitem">
+Ayaz, M., Pasha, M.F., Alzahrani, M.Y., Budiarto, R., Stiawan, D., 2021. The <span>Fast Health Interoperability Resources</span> (<span>FHIR</span>) <span>Standard</span>: <span>Systematic Literature Review</span> of <span>Implementations</span>, <span>Applications</span>, <span>Challenges</span> and <span>Opportunities</span>. JMIR Medical Informatics 9, e21929. <a href="https://doi.org/10.2196/21929">https://doi.org/10.2196/21929</a>
+</div>
+<div id="ref-cremonesi2023need" class="csl-entry" role="listitem">
+Cremonesi, F., Planat, V., Kalokyri, V., Kondylakis, H., Sanavia, T., Miguel Mateos Resinas, V., Singh, B., Uribe, S., 2023. The need for multimodal health data modeling: <span>A</span> practical approach for a federated-learning healthcare platform. Journal of Biomedical Informatics 141, 104338. <a href="https://doi.org/10.1016/j.jbi.2023.104338">https://doi.org/10.1016/j.jbi.2023.104338</a>
+</div>
+<div id="ref-dalhatu2023paper" class="csl-entry" role="listitem">
+Dalhatu, I., Aniekwe, C., Bashorun, A., Abdulkadir, A., Dirlikov, E., Ohakanu, S., Adedokun, O., Oladipo, A., Jahun, I., Murie, L., Yoon, S., Abdu-Aguye, M.G., Sylvanus, A., Indyer, S., Abbas, I., Bello, M., Nalda, N., Alagi, M., Odafe, S., Adebajo, S., Ogorry, O., Akpu, M., Okoye, I., Kakanfo, K., Onovo, A.A., Ashefor, G., Nzelu, C., Ikpeazu, A., Aliyu, G., Ellerbrock, T., Boyd, M., Stafford, K.A., Swaminathan, M., 2023. From <span>Paper Files</span> to <span>Web-Based Application</span> for <span>Data-Driven Monitoring</span> of <span>HIV Programs</span>: <span>Nigeria</span>’s <span>Journey</span> to a <span>National Data Repository</span> for <span>Decision-Making</span> and <span>Patient Care</span>. Methods of Information in Medicine 62, 130–139. <a href="https://doi.org/10.1055/s-0043-1768711">https://doi.org/10.1055/s-0043-1768711</a>
+</div>
+<div id="ref-dereuver2022openness" class="csl-entry" role="listitem">
+de Reuver, M., Ofe, H., Agahari, W., Abbas, A.E., Zuiderwijk, A., 2022. The openness of data platforms: A research agenda, in: Proceedings of the 1st <span>International Workshop</span> on <span>Data Economy</span>, <span>DE</span> ’22. Association for Computing Machinery, New York, NY, USA, pp. 34–41. <a href="https://doi.org/10.1145/3565011.3569056">https://doi.org/10.1145/3565011.3569056</a>
+</div>
+<div id="ref-dereuver2018digital" class="csl-entry" role="listitem">
+de Reuver, M., Sørensen, C., Basole, R.C., 2018. The <span>Digital Platform</span>: <span>A Research Agenda</span>. Journal of Information Technology 33, 124–135. <a href="https://doi.org/10.1057/s41265-016-0033-3">https://doi.org/10.1057/s41265-016-0033-3</a>
+</div>
+<div id="ref-digitalpublicgoods" class="csl-entry" role="listitem">
+Digital <span>Public Goods Alliance</span>, 2024. Digital Public Goods Alliance - Promoting digital public goods to create a more equitable world.
+</div>
+<div id="ref-duda2022hl7" class="csl-entry" role="listitem">
+Duda, S.N., Kennedy, N., Conway, D., Cheng, A.C., Nguyen, V., Zayas-Cabán, T., Harris, P.A., 2022. <span class="nocase">HL7 FHIR-based</span> tools and initiatives to support clinical research: A scoping review. Journal of the American Medical Informatics Association 29, 1642–1653. <a href="https://doi.org/10.1093/jamia/ocac105">https://doi.org/10.1093/jamia/ocac105</a>
+</div>
+<div id="ref-gebreslassie2023fhir4fair" class="csl-entry" role="listitem">
+Gebreslassie, T.G., van Reisen, M., Amare, S.Y., Taye, G.T., Plug, R., 2023. <span>FHIR4FAIR</span>: <span>Leveraging FHIR</span> in health data <span>FAIRfication</span> process: <span>In</span> the case of <span>VODAN-A</span>. FAIR Connect 1, 49–54. <a href="https://doi.org/10.3233/FC-230504">https://doi.org/10.3233/FC-230504</a>
+</div>
+<div id="ref-granger2021jupyter" class="csl-entry" role="listitem">
+Granger, B.E., Perez, F., 2021. Jupyter: <span>Thinking</span> and <span>Storytelling With Code</span> and <span>Data</span>. Computing in Science &amp; Engineering 23, 7–14. <a href="https://doi.org/10.1109/MCSE.2021.3059263">https://doi.org/10.1109/MCSE.2021.3059263</a>
+</div>
+<div id="ref-grimes2022pathling" class="csl-entry" role="listitem">
+Grimes, J., Szul, P., Metke-Jimenez, A., Lawley, M., Loi, K., 2022. Pathling: Analytics on <span>FHIR</span>. Journal of Biomedical Semantics 13, 23. <a href="https://doi.org/10.1186/s13326-022-00277-1">https://doi.org/10.1186/s13326-022-00277-1</a>
+</div>
+<div id="ref-guillot2023fair" class="csl-entry" role="listitem">
+Guillot, P., Bøgsted, M., Vesteghem, C., 2023. <span>FAIR</span> sharing of health data: A systematic review of applicable solutions. Health and Technology 13, 869–882. <a href="https://doi.org/10.1007/s12553-023-00789-5">https://doi.org/10.1007/s12553-023-00789-5</a>
+</div>
+<div id="ref-hai2023data" class="csl-entry" role="listitem">
+Hai, R., Koutras, C., Quix, C., Jarke, M., 2023. Data <span>Lakes</span>: <span>A Survey</span> of <span>Functions</span> and <span>Systems</span>. IEEE Transactions on Knowledge and Data Engineering 35, 12571–12590. <a href="https://doi.org/10.1109/TKDE.2023.3270101">https://doi.org/10.1109/TKDE.2023.3270101</a>
+</div>
+<div id="ref-harby2022data" class="csl-entry" role="listitem">
+Harby, A.A., Zulkernine, F., 2022. From <span>Data Warehouse</span> to <span>Lakehouse</span>: <span>A Comparative Review</span>, in: 2022 <span>IEEE International Conference</span> on <span>Big Data</span> (<span>Big Data</span>). IEEE, Osaka, Japan, pp. 389–395. <a href="https://doi.org/10.1109/BigData55660.2022.10020719">https://doi.org/10.1109/BigData55660.2022.10020719</a>
+</div>
+<div id="ref-hcx" class="csl-entry" role="listitem">
+<span>HCX Protocol</span> v0.9, 2023.
+</div>
+<div id="ref-aidbox" class="csl-entry" role="listitem">
+Health Samurai, 2024. Aidbox.
+</div>
+<div id="ref-hl72020fhirpath" class="csl-entry" role="listitem">
+HL7, 2020. <span>FHIRPath</span> (<span>Normative Release</span>).
+</div>
+<div id="ref-huisman2022digital" class="csl-entry" role="listitem">
+Huisman, L., van Duijn, S.M., Silva, N., van Doeveren, R., Michuki, J., Kuria, M., Otieno Okeyo, D., Okoth, I., Houben, N., Rinke de Wit, T.F., Rogo, K., 2022. A digital mobile health platform increasing efficiency and transparency towards universal health coverage in low- and middle-income countries. Digital Health 8, 20552076221092213. <a href="https://doi.org/10.1177/20552076221092213">https://doi.org/10.1177/20552076221092213</a>
+</div>
+<div id="ref-InstantOpenHIEv2" class="csl-entry" role="listitem">
+Instant <span>OpenHIE</span> v2.2.0, 2024.
+</div>
+<div id="ref-jones2021landscape" class="csl-entry" role="listitem">
+Jones, J., Gottlieb, D., Mandel, J.C., Ignatov, V., Ellis, A., Kubick, W., Mandl, K.D., 2021. A landscape survey of planned <span>SMART</span>/<span>HL7</span> bulk <span>FHIR</span> data access <span>API</span> implementations and tools. Journal of the American Medical Informatics Association 28, 1284–1287. <a href="https://doi.org/10.1093/jamia/ocab028">https://doi.org/10.1093/jamia/ocab028</a>
+</div>
+<div id="ref-jordan2022selecting" class="csl-entry" role="listitem">
+Jordan, S., Fontaine, C., Hendricks-Sturrup, R., 2022. Selecting <span>Privacy-Enhancing Technologies</span> for <span>Managing Health Data Use</span>. Frontiers in Public Health 10, 814163. <a href="https://doi.org/10.3389/fpubh.2022.814163">https://doi.org/10.3389/fpubh.2022.814163</a>
+</div>
+<div id="ref-keller2021paradox" class="csl-entry" role="listitem">
+Keller, P., Tarkowski, A., 2021. The <span>Paradox</span> of <span>Open</span>. Open Future.
+</div>
+<div id="ref-kickbusch2021lancet" class="csl-entry" role="listitem">
+Kickbusch, I., Piselli, D., Agrawal, A., Balicer, R., Banner, O., Adelhardt, M., Capobianco, E., Fabian, C., Singh Gill, A., Lupton, D., Medhora, R.P., Ndili, N., Ryś, A., Sambuli, N., Settle, D., Swaminathan, S., Morales, J.V., Wolpert, M., Wyckoff, A.W., Xue, L., Bytyqi, A., Franz, C., Gray, W., Holly, L., Neumann, M., Panda, L., Smith, R.D., Georges Stevens, E.A., Wong, B.L.H., 2021. The <span>Lancet</span> and <span>Financial Times Commission</span> on governing health futures 2030: Growing up in a digital world. The Lancet 398, 1727–1776. <a href="https://doi.org/10.1016/S0140-6736(21)01824-9">https://doi.org/10.1016/S0140-6736(21)01824-9</a>
+</div>
+<div id="ref-kurniawan2019midwife" class="csl-entry" role="listitem">
+Kurniawan, K., FitriaSyah, I., Jayakusuma, A.R., Armis, R.A., Lubis, Y., Haryono, M.A., Harefa, B., Shankar, A., 2019. Midwife service coverage, quality of work, and client health improved after deployment of an <span class="nocase">OpenSRP-driven</span> client management application in <span>Indonesia</span>, in: 5th <span>International Conference</span> on <span>Health Sciences</span> (<span>ICHS</span> 2018). Atlantis Press, pp. 155–162. <a href="https://doi.org/10.2991/ichs-18.2019.21">https://doi.org/10.2991/ichs-18.2019.21</a>
+</div>
+<div id="ref-malm-nicolais2023exploring" class="csl-entry" role="listitem">
+Malm-Nicolaisen, K., Pedersen, R., Fagerlund, A.J., 2023. Exploring the <span>Emergence</span> of <span>Open Platforms</span> in <span>Healthcare</span>: <span>Design Considerations</span> and <span>Experiences</span> from an <span>Initial Case</span> in <span>Norwegian Primary Care</span>, in: 56th <span>Hawaii International Conference</span> on <span>System Sciences</span>.
+</div>
+<div id="ref-mamuye2022health" class="csl-entry" role="listitem">
+Mamuye, A.L., Yilma, T.M., Abdulwahab, A., Broomhead, S., Zondo, P., Kyeng, M., Maeda, J., Abdulaziz, M., Wuhib, T., Tilahun, B.C., 2022. Health information exchange policy and standards for digital health systems in africa: <span>A</span> systematic review. PLOS Digital Health 1, e0000118. <a href="https://doi.org/10.1371/journal.pdig.0000118">https://doi.org/10.1371/journal.pdig.0000118</a>
+</div>
+<div id="ref-mandl2020push" class="csl-entry" role="listitem">
+Mandl, K.D., Gottlieb, D., Mandel, J.C., Ignatov, V., Sayeed, R., Grieve, G., Jones, J., Ellis, A., Culbertson, A., 2020. Push <span>Button Population Health</span>: <span>The SMART</span>/<span>HL7 FHIR Bulk Data Access Application Programming Interface</span>. npj Digital Medicine 3, 1–9. <a href="https://doi.org/10.1038/s41746-020-00358-4">https://doi.org/10.1038/s41746-020-00358-4</a>
+</div>
+<div id="ref-mccool2022mobile" class="csl-entry" role="listitem">
+McCool, J., Dobson, R., Whittaker, R., Paton, C., 2022. Mobile <span>Health</span> (<span class="nocase">mHealth</span>) in <span>Low-</span> and <span>Middle-Income Countries</span>. Annual Review of Public Health 43, 525–539. <a href="https://doi.org/10.1146/annurev-publhealth-052620-093850">https://doi.org/10.1146/annurev-publhealth-052620-093850</a>
+</div>
+<div id="ref-mehl2020open" class="csl-entry" role="listitem">
+Mehl, G., 2020. Open <span>Smart Register Platform</span> (<span>OpenSRP</span>). mHealth Compendium 5, 42–43.
+</div>
+<div id="ref-mehl2023fullstac" class="csl-entry" role="listitem">
+Mehl, G.L., Seneviratne, M.G., Berg, M.L., Bidani, S., Distler, R.L., Gorgens, M., Kallander, K.E., Labrique, A.B., Landry, M.S., Leitner, C., Lubell-Doughtie, P.B., Marcelo, A.D., Matias, Y., Nelson, J., Nguyen, V., Nsengimana, J.P., Orton, M., Otzoy Garcia, D.R., Oyaole, D.R., Ratanaprayul, N., Roth, S., Schaefer, M.P., Settle, D., Tang, J., Tien-Wahser, B., Wanyee, S., Hersch, F., 2023. A full-<span>STAC</span> remedy for global digital health transformation: Open standards, technologies, architectures and content. Oxford Open Digital Health 1, oqad018. <a href="https://doi.org/10.1093/oodh/oqad018">https://doi.org/10.1093/oodh/oqad018</a>
+</div>
+<div id="ref-mrema2021application" class="csl-entry" role="listitem">
+Mrema, A., 2021. Application of <span>Digital Platform</span> to <span>Enhance Quality Improvement</span> in <span>Momcare Facilities</span> in <span>Manyara</span>. AIJR Abstracts.
+</div>
+<div id="ref-mullie2023coda" class="csl-entry" role="listitem">
+Mullie, L., Afilalo, J., Archambault, P., Bouchakri, R., Brown, K., Buckeridge, D.L., Cavayas, Y.A., Turgeon, A.F., Martineau, D., Lamontagne, F., Lebrasseur, M., Lemieux, R., Li, J., Sauthier, M., St-Onge, P., Tang, A., Witteman, W., Chassé, M., 2023. <span>CODA</span>: An open-source platform for federated analysis and machine learning on distributed healthcare data. Journal of the American Medical Informatics Association ocad235. <a href="https://doi.org/10.1093/jamia/ocad235">https://doi.org/10.1093/jamia/ocad235</a>
+</div>
+<div id="ref-neumark2021digital" class="csl-entry" role="listitem">
+Neumark, T., Prince, R.J., 2021. Digital <span>Health</span> in <span>East Africa</span>: <span>Innovation</span>, <span>Experimentation</span> and the <span>Market</span>. Global Policy 12, 65–74. <a href="https://doi.org/10.1111/1758-5899.12990">https://doi.org/10.1111/1758-5899.12990</a>
+</div>
+<div id="ref-nsaghurwe2021one" class="csl-entry" role="listitem">
+Nsaghurwe, A., Dwivedi, V., Ndesanjo, W., Bamsi, H., Busiga, M., Nyella, E., Massawe, J.V., Smith, D., Onyejekwe, K., Metzger, J., Taylor, P., 2021. One country’s journey to interoperability: <span>Tanzania</span>’s experience developing and implementing a national health information exchange. BMC Medical Informatics and Decision Making 21, 139. <a href="https://doi.org/10.1186/s12911-021-01499-6">https://doi.org/10.1186/s12911-021-01499-6</a>
+</div>
+<div id="ref-ohie2023unconference" class="csl-entry" role="listitem">
+<span>OHIE23 Unconference</span> 101, 2023.
+</div>
+<div id="ref-onnx" class="csl-entry" role="listitem">
+<span>ONNX</span> v1.15.0, 2023.
+</div>
+<div id="ref-openhie" class="csl-entry" role="listitem">
+<span>OpenHIE Framework</span> v5.0, 2022. OpenHIE.
+</div>
+<div id="ref-otto2022designing" class="csl-entry" role="listitem">
+Otto, B., Ten Hompel, M., Wrobel, S. (Eds.), 2022. Designing <span>Data Spaces</span>: <span>The Ecosystem Approach</span> to <span>Competitive Advantage</span>. Springer International Publishing, Cham. <a href="https://doi.org/10.1007/978-3-030-93975-5">https://doi.org/10.1007/978-3-030-93975-5</a>
+</div>
+<div id="ref-ozalp2022digital" class="csl-entry" role="listitem">
+Ozalp, H., Ozcan, P., Dinckol, D., Zachariadis, M., Gawer, A., 2022. <span>“<span>Digital Colonization</span>”</span> of <span>Highly Regulated Industries</span>: <span>An Analysis</span> of <span>Big Tech Platforms</span>’ <span>Entry</span> into <span>Health Care</span> and <span>Education</span>. California Management Review 64, 78–107. <a href="https://doi.org/10.1177/00081256221094307">https://doi.org/10.1177/00081256221094307</a>
+</div>
+<div id="ref-pedreira2023composable" class="csl-entry" role="listitem">
+Pedreira, P., Erling, O., Karanasos, K., Schneider, S., McKinney, W., Valluri, S.R., Zait, M., Nadeau, J., 2023. The <span>Composable Data Management System Manifesto</span>. Proceedings of the VLDB Endowment 16, 2679–2685. <a href="https://doi.org/10.14778/3603581.3603604">https://doi.org/10.14778/3603581.3603604</a>
+</div>
+<div id="ref-pedrera-jimenez2023can" class="csl-entry" role="listitem">
+Pedrera-Jiménez, M., García-Barrio, N., Frid, S., Moner, D., Boscá-Tomás, D., Lozano-Rubí, R., Kalra, D., Beale, T., Muñoz-Carrero, A., Serrano-Balazote, P., 2023. Can <span>OpenEHR</span>, <span>ISO</span> 13606, and <span>HL7 FHIR Work Together</span>? <span>An Agnostic Approach</span> for the <span>Selection</span> and <span>Application</span> of <span>Electronic Health Record Standards</span> to the <span>Next-Generation Health Data Spaces</span>. Journal of Medical Internet Research 25, e48702. <a href="https://doi.org/10.2196/48702">https://doi.org/10.2196/48702</a>
+</div>
+<div id="ref-prainsack2023beyond" class="csl-entry" role="listitem">
+Prainsack, B., El-Sayed, S., 2023. Beyond <span>Individual Rights</span>: <span>How Data Solidarity Gives People Meaningful Control</span> over <span>Data</span>. The American Journal of Bioethics 23, 36–39. <a href="https://doi.org/10.1080/15265161.2023.2256267">https://doi.org/10.1080/15265161.2023.2256267</a>
+</div>
+<div id="ref-prainsack2022data" class="csl-entry" role="listitem">
+Prainsack, B., El-Sayed, S., Forgó, N., Szoszkiewicz, Ł., Baumer, P., 2022. Data solidarity: A blueprint for governing health futures. The Lancet Digital Health 4, e773–e774. <a href="https://doi.org/10.1016/S2589-7500(22)00189-3">https://doi.org/10.1016/S2589-7500(22)00189-3</a>
+</div>
+<div id="ref-purnamajati2022data" class="csl-entry" role="listitem">
+Purnama Jati, P.H., van Reisen, M., Flikkenschild, E., Oladipo, F., Meerman, B., Plug, R., Nodehi, S., 2022. Data <span>Access</span>, <span>Control</span>, and <span>Privacy Protection</span> in the <span>VODAN-Africa Architecture</span>. Data Intelligence 4, 938–954. <a href="https://doi.org/10.1162/dint_a_00180">https://doi.org/10.1162/dint_a_00180</a>
+</div>
+<div id="ref-rieke2020future" class="csl-entry" role="listitem">
+Rieke, N., Hancox, J., Li, W., Milletarì, F., Roth, H.R., Albarqouni, S., Bakas, S., Galtier, M.N., Landman, B.A., Maier-Hein, K., Ourselin, S., Sheller, M., Summers, R.M., Trask, A., Xu, D., Baust, M., Cardoso, M.J., 2020. The future of digital health with federated learning. npj Digital Medicine 3, 1–7. <a href="https://doi.org/10.1038/s41746-020-00323-1">https://doi.org/10.1038/s41746-020-00323-1</a>
+</div>
+<div id="ref-rinaldi2021openehr" class="csl-entry" role="listitem">
+Rinaldi, E., Thun, S., 2021. From <span>OpenEHR</span> to <span>FHIR</span> and <span>OMOP Data Model</span> for <span>Microbiology Findings</span>. Studies in Health Technology and Informatics 281, 402–406. <a href="https://doi.org/10.3233/SHTI210189">https://doi.org/10.3233/SHTI210189</a>
+</div>
+<div id="ref-sanctis2022maintaining" class="csl-entry" role="listitem">
+Sanctis, T.D., Etiebet, M.-A., Janssens, W., Graaf, M.H. van der, Montfort, C. van, Waiyaiya, E., Spieker, N., 2022. Maintaining <span>Continuity</span> of <span>Care</span> for <span>Expectant Mothers</span> in <span>Kenya During</span> the <span>COVID-19 Pandemic</span>: <span>A Study</span> of <span>MomCare</span>. Global Health: Science and Practice 10. <a href="https://doi.org/10.9745/GHSP-D-21-00665">https://doi.org/10.9745/GHSP-D-21-00665</a>
+</div>
+<div id="ref-scheibner2021revolutionizing" class="csl-entry" role="listitem">
+Scheibner, J., Raisaro, J.L., Troncoso-Pastoriza, J.R., Ienca, M., Fellay, J., Vayena, E., Hubaux, J.-P., 2021. Revolutionizing <span>Medical Data Sharing Using Advanced Privacy-Enhancing Technologies</span>: <span>Technical</span>, <span>Legal</span>, and <span>Ethical Synthesis</span>. Journal of Medical Internet Research 23, e25120. <a href="https://doi.org/10.2196/25120">https://doi.org/10.2196/25120</a>
+</div>
+<div id="ref-sharon2018when" class="csl-entry" role="listitem">
+Sharon, T., 2018. When digital health meets digital capitalism, how many common goods are at stake? Big Data &amp; Society 5, 2053951718819032. <a href="https://doi.org/10.1177/2053951718819032">https://doi.org/10.1177/2053951718819032</a>
+</div>
+<div id="ref-shija2021access" class="csl-entry" role="listitem">
+Shija, L., Yokoyana, J., Mrema, A., Bwakea, J., Kiwale, T., Massawe, N., 2021. Access to <span>Essential Maternal Health Commodities Key</span> to <span>Improving Quality</span> and <span>Adherence</span> to <span>Maternal Healthcare Regimes</span>: <span>Experience</span> from a <span>MomCare Project</span> in <span>Northern Tanzania</span>. AIJR Abstracts.
+</div>
+<div id="ref-sinaci2023data" class="csl-entry" role="listitem">
+Sinaci, A.A., Gencturk, M., Teoman, H.A., Laleci Erturkmen, G.B., Alvarez-Romero, C., Martinez-Garcia, A., Poblador-Plou, B., Carmona-Pírez, J., Löbe, M., Parra-Calderon, C.L., 2023. A <span>Data Transformation Methodology</span> to <span>Create Findable</span>, <span>Accessible</span>, <span>Interoperable</span>, and <span>Reusable Health Data</span>: <span>Software Design</span>, <span>Development</span>, and <span>Evaluation Study</span>. Journal of Medical Internet Research 25, e42822. <a href="https://doi.org/10.2196/42822">https://doi.org/10.2196/42822</a>
+</div>
+<div id="ref-sql-on-fhir" class="csl-entry" role="listitem">
+<span>SQL</span> on <span>FHIR</span> speciification v0.0.1-pre, 2024.
+</div>
+<div id="ref-summitinstitutefordevelopment2023bunda" class="csl-entry" role="listitem">
+Summit Institute for Development, 2023. <span>BUNDA App</span>. Summit Institute.
+</div>
+<div id="ref-thaiya2021adoption" class="csl-entry" role="listitem">
+Thaiya, M.S., Julia, K., Joram, M., Benard, M., Nambiro, D.A., 2021. Adoption of <span>ICT</span> to <span>Enhance Access</span> to <span>Healthcare</span> in <span>Kenya</span>.
+</div>
+<div id="ref-venable2016feds" class="csl-entry" role="listitem">
+Venable, J., Pries-Heje, J., Baskerville, R., 2016. <span>FEDS</span>: A <span>Framework</span> for <span>Evaluation</span> in <span>Design Science Research</span>. European Journal of Information Systems 25, 77–89. <a href="https://doi.org/10.1057/ejis.2014.36">https://doi.org/10.1057/ejis.2014.36</a>
+</div>
+<div id="ref-vorisek2022fast" class="csl-entry" role="listitem">
+Vorisek, C.N., Lehne, M., Klopfenstein, S.A.I., Mayer, P.J., Bartschke, A., Haese, T., Thun, S., 2022. Fast <span>Healthcare Interoperability Resources</span> (<span>FHIR</span>) for <span>Interoperability</span> in <span>Health Research</span>: <span>Systematic Review</span>. JMIR Medical Informatics 10, e35724. <a href="https://doi.org/10.2196/35724">https://doi.org/10.2196/35724</a>
+</div>
+<div id="ref-who2021global" class="csl-entry" role="listitem">
+World Health Organization, 2021. Global strategy on digital health 2020-2025. World Health Organization, Geneva.
+</div>
+<div id="ref-who2019recommendations" class="csl-entry" role="listitem">
+World Health Organization, 2019. Recommendations on digital interventions for health system strengthening. World Health Organization.
 </div>
 </div></section></div></main>
 <!-- /main column -->
