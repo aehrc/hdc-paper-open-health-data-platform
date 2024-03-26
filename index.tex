@@ -302,9 +302,9 @@ extraction \citep{prainsack2022data}.
 platforms}\label{from-health-information-exchanges-to-health-data-platforms}
 
 This paper is motivated by the conflation of a number of developments
-relevant to the design and implementation of solidarity-based HDPs in
-LMICs. First, the OpenHIE framework \citep{openhie} has been adopted by
-many sub-Saharan African countries \citep{mamuye2022health} as the
+relevant to the design and implementation of open, solidarity-based HDPs
+in LMICs. First, the OpenHIE framework \citep{openhie} has been adopted
+by many sub-Saharan African countries \citep{mamuye2022health} as the
 architectural blueprint for implementing nation-wide health information
 exchanges (HIE), including Nigeria \citep{dalhatu2023paper}, Kenya
 \citep{thaiya2021adoption} and Tanzania \citep{nsaghurwe2021one}. These
@@ -532,18 +532,18 @@ Recent studies have shown that the current practice has converged
 towards the lakehouse as one of the most commonly used solution designs
 \citep{armbrust2021lakehouse, hai2023data, harby2022data}. Lakehouses
 typically have a zonal architecture that follow the
-Extract-Load-Transform pattern (ELT) \citep{hai2023data} where data is
-ingested from the source systems in bulk (E), delivered to storage with
-aligned schemas (L) and transformed into a format ready for analysis
-(T). The discerning characteristic of the lakehouse architecture is its
-foundation on low-cost and directly-accessible storage that also
-provides traditional analytical DBMS management and performance features
-such as ACID transactions, data versioning, auditing, indexing, caching,
-and query optimization \citep{armbrust2021lakehouse}. Lakehouses thus
-combine the key benefits of data lakes and data warehouses: low-cost
-storage in an open format accessible by a variety of systems from the
-former, and powerful management and optimization features from the
-latter.
+Extract-Load-Transform pattern (ELT) where data is ingested from the
+source systems in bulk (E), delivered to storage with aligned schemas
+(L) and transformed into a format ready for analysis (T)
+\citep{hai2023data}. The discerning characteristic of the lakehouse
+architecture is its foundation on low-cost and directly-accessible
+storage that also provides traditional analytical DBMS management and
+performance features such as ACID transactions, data versioning,
+auditing, indexing, caching, and query optimization
+\citep{armbrust2021lakehouse}. Lakehouses thus combine the key benefits
+of data lakes and data warehouses: low-cost storage in an open format
+accessible by a variety of systems from the former, and powerful
+management and optimization features from the latter.
 
 With respect to current implementations of lakehouse data platforms, we
 observe a proliferation of tools with as yet limited standards to
@@ -566,12 +566,12 @@ taken one step further. A composable data system
 (Figure~\ref{fig-composable-data-stack}), not only separates the storage
 (layer 3) and execution (layer 2), but also separates the user interface
 (layer 1) from the execution engine by introducing standards including
-Substrait for Intermediate Representation (standard A) and Apache Arrow
-(standard B and C). The composable data stack can be implemented with
-current open source technologies (Figure~\ref{fig-cds-examples}). As an
-example, the Ibis user interface is currently sufficiently mature to
-offer a standardized dataframe interface to 19 different execution
-engines.
+Substrait for Intermediate Representation (standard A, IR) and Apache
+Arrow for data connectivity and data memory layout (standards B and C,
+respectively). The composable data stack can be implemented with current
+open source technologies (Figure~\ref{fig-cds-examples}). As an example,
+the Ibis user interface is currently sufficiently mature to offer a
+standardized dataframe interface to 19 different execution engines.
 
 \begin{figure}
 
@@ -581,7 +581,8 @@ engines.
 
 }
 
-\caption{\label{fig-composable-data-stack}Composable data stack}
+\caption{\label{fig-composable-data-stack}The composable data stack.
+Image source: \url{https://voltrondata.com/codex}.}
 
 \end{figure}%
 
@@ -594,7 +595,8 @@ engines.
 }
 
 \caption{\label{fig-cds-examples}Examples of implementations of the
-composable data stack}
+composable data stack. Image source:
+\url{https://voltrondata.com/codex}.}
 
 \end{figure}%
 
@@ -849,29 +851,59 @@ MomCare was launched in Kenya
 \citep{shija2021access, mrema2021application} in 2017 and 2019
 respectively, with the objective to create transparency on the journeys
 of pregnant mothers. The programme is built on three pillars: journey
-tracking, quality support and a mobile wallet
-(Figure~\ref{fig-momcare}). MomCare distinguishes two user groups:
-mothers are supported during their pregnancy through reminders and
-surveys, using SMS as the digital mode of engagement. Health workers are
-equipped with an Android-based application, in which visits, care
-activities and clinical observations are recorded. Reimbursements of the
-maternal clinic are based on the data captured with SMS and the app,
-thereby creating a conditional payment scheme, where providers are
-partially reimbursed up-front for a fixed bundle of activities,
-supplemented by bonus payments based on a predefined set of care
-activities.
+tracking, quality support and a mobile wallet. MomCare distinguishes two
+user groups: mothers are supported during their pregnancy through
+reminders and surveys, using SMS as the digital mode of engagement.
+Health workers are equipped with an Android-based application, in which
+visits, care activities and clinical observations are recorded.
+Reimbursements of the maternal clinic are based on the data captured
+with SMS and the app, thereby creating a conditional payment scheme,
+where providers are partially reimbursed up-front for a fixed bundle of
+activities, supplemented by bonus payments based on a predefined set of
+care activities.
 
-\begin{figure}
+In its original form, the MomCare programme uses predominantly closed
+digital platforms. In Kenya, M-TIBA is the primary digital platform, on
+top of which a relatively lightweight custom app has been built as the
+engagement layer for the health workers \citep{huisman2022digital}.
+M-TIBA provides data access through its data warehouse platform for the
+MomCare programme, however, this is not a standardized, general purpose
+API. In the case of Tanzania, a stand-alone custom app is used which
+does not provide an interface of any kind for interacting with the
+platform \citep{mrema2021application}. Given these constraints, to date
+the MomCare programme uses a custom-built data warehouse environment as
+its main data platform, on which data extractions, transformations and
+analysis are performed to generate the operational reports. Feedback
+reports for the health workers, in the form of operational dashboards,
+are made accessible through the app. Similar reports are provided to the
+back-office for the periodic reimbursement to the clinics.
 
-\centering{
+In the periode 2022-2023, a new iteration of MomCare \ldots One of the
+practical objectives of the DataCare project was to assess the
+complexity and effort required to implement the data transformation
+scripts, and reproduce the existing analytic reports. The data was
+transformed into 10 FHIR v4 resources as listed in table 1 with the
+number of records per resource type. The conceptual data model of the
+existing MomCare app could readily be transformed into the FHIR standard
+using SQL and validated with a Python library \citep{islam2023fhir}.
 
-\includegraphics{images/momcare.png}
+The largest challenge during the transformation process pertained to the
+absence of unique business identifiers for patients and healthcare
+organizations. For patients, either the mobile phone number or the
+healthcare insurance number was taken, depending on availability. A
+combination of name, address and latitude/longitude coordinates were
+used to uniquely identify organizations and locations, as Tanzania does
+not have a system in place for this purpose.
 
-}
-
-\caption{\label{fig-momcare}Overview of the Momcare programme}
-
-\end{figure}%
+The transformed and validated data is uploaded into the FHIR server on a
+daily basis using an automated cloud function. Analysis of bulk data was
+done by directly reading the standard newline delimited JSON into the
+Python pandas data analysis library. Cross checking the output with
+queries on the original data confirmed that the whole data pipeline
+produced consistent results. For example, the report of the antenatal
+coverage metric (number of pregnancies with four or more visits) could
+be reproduced per patient journey and aggregated (per year, per
+organization etc.) as required for the MomCare reports.
 
 \section{Discussion}\label{discussion}
 
@@ -962,10 +994,11 @@ computation}\label{federated-learning-and-multiparty-computation}
 ELT & Extract, Load and Transform \\
 FAIR & Findable, Accessible, Interoperable and Reusable \\
 FHIR & Fast Healthcare Interoperability Resources \\
+FL & Federated learning \\
 HDP & Health data platform, explicitly differentiated from health
 digital platform \\
 HIE & Health Information Exchange \\
-FL & Federated learning \\
+IR & Intermediate Representation \\
 LMIC & Low- and middle income countries \\
 PET & Privacy-enhancing technologies \\
 \end{longtable}

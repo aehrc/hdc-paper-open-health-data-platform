@@ -218,7 +218,7 @@ div.csl-indent {
 </section>
 <section id="from-health-information-exchanges-to-health-data-platforms" class="level3">
 <h3 class="anchored" data-anchor-id="from-health-information-exchanges-to-health-data-platforms">From health information exchanges to health data platforms</h3>
-<p>This paper is motivated by the conflation of a number of developments relevant to the design and implementation of solidarity-based HDPs in LMICs. First, the OpenHIE framework <span class="citation" data-cites="openhie">(<a href="#ref-openhie" role="doc-biblioref"><span>“<span>OpenHIE Framework</span> v5.0,”</span> 2022</a>)</span> has been adopted by many sub-Saharan African countries <span class="citation" data-cites="mamuye2022health">(<a href="#ref-mamuye2022health" role="doc-biblioref">Mamuye et al., 2022</a>)</span> as the architectural blueprint for implementing nation-wide health information exchanges (HIE), including Nigeria <span class="citation" data-cites="dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>)</span>, Kenya <span class="citation" data-cites="thaiya2021adoption">(<a href="#ref-thaiya2021adoption" role="doc-biblioref">Thaiya et al., 2021</a>)</span> and Tanzania <span class="citation" data-cites="nsaghurwe2021one">(<a href="#ref-nsaghurwe2021one" role="doc-biblioref">Nsaghurwe et al., 2021</a>)</span>. These countries have, as a matter of course, extended the framework to include “analytics services” as an additional domain. The rationale for this addition is to facilitate secondary reuse of health data for academic research, real-world evidence studies etc. which can be framed within the context of ongoing efforts towards Findable, Accessible, Interoperable and Reusable (FAIR) sharing of health data <span class="citation" data-cites="guillot2023fair">(<a href="#ref-guillot2023fair" role="doc-biblioref">Guillot et al., 2023</a>)</span>. In doing so, however, we have implicitly moved from conceptualizing digital health platforms (the original OpenHIE specification) to health data platforms. This is problematic because the notion of openness, which is assumed to be essential in establishing solidarity-based approaches to data sharing, is inherently different for a data platform compared to a digital platform.</p>
+<p>This paper is motivated by the conflation of a number of developments relevant to the design and implementation of open, solidarity-based HDPs in LMICs. First, the OpenHIE framework <span class="citation" data-cites="openhie">(<a href="#ref-openhie" role="doc-biblioref"><span>“<span>OpenHIE Framework</span> v5.0,”</span> 2022</a>)</span> has been adopted by many sub-Saharan African countries <span class="citation" data-cites="mamuye2022health">(<a href="#ref-mamuye2022health" role="doc-biblioref">Mamuye et al., 2022</a>)</span> as the architectural blueprint for implementing nation-wide health information exchanges (HIE), including Nigeria <span class="citation" data-cites="dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>)</span>, Kenya <span class="citation" data-cites="thaiya2021adoption">(<a href="#ref-thaiya2021adoption" role="doc-biblioref">Thaiya et al., 2021</a>)</span> and Tanzania <span class="citation" data-cites="nsaghurwe2021one">(<a href="#ref-nsaghurwe2021one" role="doc-biblioref">Nsaghurwe et al., 2021</a>)</span>. These countries have, as a matter of course, extended the framework to include “analytics services” as an additional domain. The rationale for this addition is to facilitate secondary reuse of health data for academic research, real-world evidence studies etc. which can be framed within the context of ongoing efforts towards Findable, Accessible, Interoperable and Reusable (FAIR) sharing of health data <span class="citation" data-cites="guillot2023fair">(<a href="#ref-guillot2023fair" role="doc-biblioref">Guillot et al., 2023</a>)</span>. In doing so, however, we have implicitly moved from conceptualizing digital health platforms (the original OpenHIE specification) to health data platforms. This is problematic because the notion of openness, which is assumed to be essential in establishing solidarity-based approaches to data sharing, is inherently different for a data platform compared to a digital platform.</p>
 <p>Conceptually, the OpenHIE framework constitutes a framework for an open digital platform. Openness for digital platforms refers to i) the use of open boundary resources, that is, specifications for the various healthcare specific workflows and information standards such as FHIR; and ii) the use of open source components that are available as digital public goods<span class="citation" data-cites="digitalpublicgoods">(<a href="#ref-digitalpublicgoods" role="doc-biblioref"><span>“Digital <span>Public Goods Alliance</span>,”</span> 2024</a>)</span>. If we are to use the OpenHIE framework as an open data platform, we need to extend the standards, technologies and architecture to include functionality for data sharing and reuse. Distinguishing four types of data sharing (<a href="#tbl-types-data-sharing" class="quarto-xref">Table&nbsp;1</a>), the purpose of this paper is to investigate how new standards and technologies that can establish openness of health data platforms can be integrated into the OpenHIE architecture framework. The lack of detailed specifications and consensus of this addition to OpenHIE currently stands in the way of development projects that aim to establish HDPs in LMICs. In addition, we explicitly address the requirement of downward scalability as we aim to implement health data platforms in resource constrained setting of LMICs.</p>
 <div id="tbl-types-data-sharing" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -302,27 +302,27 @@ Table&nbsp;2: Comparison of OpenEHR, ISO 13606 and FHIR standards
 <h3 class="anchored" data-anchor-id="open-architecture-extending-openhie-with-a-composable-data-stack">Open architecture: extending OpenHIE with a composable data stack</h3>
 <section id="evolving-the-data-lakehouse-to-a-composable-data-stack" class="level4">
 <h4 class="anchored" data-anchor-id="evolving-the-data-lakehouse-to-a-composable-data-stack">Evolving the data lakehouse to a composable data stack</h4>
-<p>Data management and analytics platforms have undergone significant changes since the first generation of data warehouses were introduced. Recent studies have shown that the current practice has converged towards the lakehouse as one of the most commonly used solution designs <span class="citation" data-cites="armbrust2021lakehouse hai2023data harby2022data">(<a href="#ref-armbrust2021lakehouse" role="doc-biblioref">Armbrust et al., 2021</a>; <a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>; <a href="#ref-harby2022data" role="doc-biblioref">Harby and Zulkernine, 2022</a>)</span>. Lakehouses typically have a zonal architecture that follow the Extract-Load-Transform pattern (ELT) <span class="citation" data-cites="hai2023data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>)</span> where data is ingested from the source systems in bulk (E), delivered to storage with aligned schemas (L) and transformed into a format ready for analysis (T). The discerning characteristic of the lakehouse architecture is its foundation on low-cost and directly-accessible storage that also provides traditional analytical DBMS management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization <span class="citation" data-cites="armbrust2021lakehouse">(<a href="#ref-armbrust2021lakehouse" role="doc-biblioref">Armbrust et al., 2021</a>)</span>. Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter.</p>
+<p>Data management and analytics platforms have undergone significant changes since the first generation of data warehouses were introduced. Recent studies have shown that the current practice has converged towards the lakehouse as one of the most commonly used solution designs <span class="citation" data-cites="armbrust2021lakehouse hai2023data harby2022data">(<a href="#ref-armbrust2021lakehouse" role="doc-biblioref">Armbrust et al., 2021</a>; <a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>; <a href="#ref-harby2022data" role="doc-biblioref">Harby and Zulkernine, 2022</a>)</span>. Lakehouses typically have a zonal architecture that follow the Extract-Load-Transform pattern (ELT) where data is ingested from the source systems in bulk (E), delivered to storage with aligned schemas (L) and transformed into a format ready for analysis (T) <span class="citation" data-cites="hai2023data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>)</span>. The discerning characteristic of the lakehouse architecture is its foundation on low-cost and directly-accessible storage that also provides traditional analytical DBMS management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization <span class="citation" data-cites="armbrust2021lakehouse">(<a href="#ref-armbrust2021lakehouse" role="doc-biblioref">Armbrust et al., 2021</a>)</span>. Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter.</p>
 <p>With respect to current implementations of lakehouse data platforms, we observe a proliferation of tools with as yet limited standards to improve technical interoperability. In the analysis of Pedreira et al. <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span> the requirement for specialization in data management systems has evolved faster than our software development practices. This situation has created a siloed landscape composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. It has also affected the end users, who are often required to learn the idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects, and settle for systems with incomplete functionality and inconsistent semantics. To remedy this, Pedreira et al.&nbsp;call to (re-)design and implement modern data platforms in terms of a ‘composable data stack’ as a means to decrease development and maintenance cost and pick-up the speed of innovation.</p>
-<p>While the lakehouse architecture separates the concerns of compute and storage, the composable data stack takes the separation of concerns is taken one step further. A composable data system (<a href="#fig-composable-data-stack" class="quarto-xref">Figure&nbsp;1</a>), not only separates the storage (layer 3) and execution (layer 2), but also separates the user interface (layer 1) from the execution engine by introducing standards including Substrait for Intermediate Representation (standard A) and Apache Arrow (standard B and C). The composable data stack can be implemented with current open source technologies (<a href="#fig-cds-examples" class="quarto-xref">Figure&nbsp;2</a>). As an example, the Ibis user interface is currently sufficiently mature to offer a standardized dataframe interface to 19 different execution engines.</p>
+<p>While the lakehouse architecture separates the concerns of compute and storage, the composable data stack takes the separation of concerns is taken one step further. A composable data system (<a href="#fig-composable-data-stack" class="quarto-xref">Figure&nbsp;1</a>), not only separates the storage (layer 3) and execution (layer 2), but also separates the user interface (layer 1) from the execution engine by introducing standards including Substrait for Intermediate Representation (standard A, IR) and Apache Arrow for data connectivity and data memory layout (standards B and C, respectively). The composable data stack can be implemented with current open source technologies (<a href="#fig-cds-examples" class="quarto-xref">Figure&nbsp;2</a>). As an example, the Ibis user interface is currently sufficiently mature to offer a standardized dataframe interface to 19 different execution engines.</p>
 <div id="fig-composable-data-stack" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-composable-data-stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The composable data stack. Image source: <a href="https://voltrondata.com/codex">https://voltrondata.com/codex</a>.
+</figcaption>
 <div aria-describedby="fig-composable-data-stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/composable-data-stack.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-composable-data-stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Composable data stack
-</figcaption>
 </figure>
 </div>
 <div id="fig-cds-examples" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-cds-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Examples of implementations of the composable data stack. Image source: <a href="https://voltrondata.com/codex">https://voltrondata.com/codex</a>.
+</figcaption>
 <div aria-describedby="fig-cds-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/composable-data-stack-implementation-2.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cds-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Examples of implementations of the composable data stack
-</figcaption>
 </figure>
 </div>
 </section>
@@ -336,12 +336,12 @@ Figure&nbsp;2: Examples of implementations of the composable data stack
 <p>We propose to extend the OpenHIE architecture with a “Data and Analytics Services” domain with 5 services by synthesizing the architecture of Hai et al. <span class="citation" data-cites="hai2023data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>)</span> and the composable data stack <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span> (<a href="#fig-ohie" class="quarto-xref">Figure&nbsp;3</a>, <a href="#tbl-data-and-analysis-services" class="quarto-xref">Table&nbsp;3</a>).</p>
 <div id="fig-ohie" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ohie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Proposed extension of the OpenHIE architecture that includes “Data and Analytics Services” as an additional service domain.
+</figcaption>
 <div aria-describedby="fig-ohie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="./images/hie.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ohie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Proposed extension of the OpenHIE architecture that includes “Data and Analytics Services” as an additional service domain.
-</figcaption>
 </figure>
 </div>
 <div id="tbl-data-and-analysis-services" class="quarto-float anchored">
@@ -475,17 +475,11 @@ Table&nbsp;4: Overview of current open source implementations of components incl
 </section>
 <section id="momcare-programme" class="level3">
 <h3 class="anchored" data-anchor-id="momcare-programme">Momcare programme</h3>
-<p>MomCare was launched in Kenya <span class="citation" data-cites="huisman2022digital sanctis2022maintaining">(<a href="#ref-huisman2022digital" role="doc-biblioref">Huisman et al., 2022</a>; <a href="#ref-sanctis2022maintaining" role="doc-biblioref">Sanctis et al., 2022</a>)</span> and Tanzania <span class="citation" data-cites="shija2021access mrema2021application">(<a href="#ref-mrema2021application" role="doc-biblioref">Mrema, 2021</a>; <a href="#ref-shija2021access" role="doc-biblioref">Shija et al., 2021</a>)</span> in 2017 and 2019 respectively, with the objective to create transparency on the journeys of pregnant mothers. The programme is built on three pillars: journey tracking, quality support and a mobile wallet (<a href="#fig-momcare" class="quarto-xref">Figure&nbsp;4</a>). MomCare distinguishes two user groups: mothers are supported during their pregnancy through reminders and surveys, using SMS as the digital mode of engagement. Health workers are equipped with an Android-based application, in which visits, care activities and clinical observations are recorded. Reimbursements of the maternal clinic are based on the data captured with SMS and the app, thereby creating a conditional payment scheme, where providers are partially reimbursed up-front for a fixed bundle of activities, supplemented by bonus payments based on a predefined set of care activities.</p>
-<div id="fig-momcare" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-momcare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/momcare.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-momcare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Overview of the Momcare programme
-</figcaption>
-</figure>
-</div>
+<p>MomCare was launched in Kenya <span class="citation" data-cites="huisman2022digital sanctis2022maintaining">(<a href="#ref-huisman2022digital" role="doc-biblioref">Huisman et al., 2022</a>; <a href="#ref-sanctis2022maintaining" role="doc-biblioref">Sanctis et al., 2022</a>)</span> and Tanzania <span class="citation" data-cites="shija2021access mrema2021application">(<a href="#ref-mrema2021application" role="doc-biblioref">Mrema, 2021</a>; <a href="#ref-shija2021access" role="doc-biblioref">Shija et al., 2021</a>)</span> in 2017 and 2019 respectively, with the objective to create transparency on the journeys of pregnant mothers. The programme is built on three pillars: journey tracking, quality support and a mobile wallet. MomCare distinguishes two user groups: mothers are supported during their pregnancy through reminders and surveys, using SMS as the digital mode of engagement. Health workers are equipped with an Android-based application, in which visits, care activities and clinical observations are recorded. Reimbursements of the maternal clinic are based on the data captured with SMS and the app, thereby creating a conditional payment scheme, where providers are partially reimbursed up-front for a fixed bundle of activities, supplemented by bonus payments based on a predefined set of care activities.</p>
+<p>In its original form, the MomCare programme uses predominantly closed digital platforms. In Kenya, M-TIBA is the primary digital platform, on top of which a relatively lightweight custom app has been built as the engagement layer for the health workers <span class="citation" data-cites="huisman2022digital">(<a href="#ref-huisman2022digital" role="doc-biblioref">Huisman et al., 2022</a>)</span>. M-TIBA provides data access through its data warehouse platform for the MomCare programme, however, this is not a standardized, general purpose API. In the case of Tanzania, a stand-alone custom app is used which does not provide an interface of any kind for interacting with the platform <span class="citation" data-cites="mrema2021application">(<a href="#ref-mrema2021application" role="doc-biblioref">Mrema, 2021</a>)</span>. Given these constraints, to date the MomCare programme uses a custom-built data warehouse environment as its main data platform, on which data extractions, transformations and analysis are performed to generate the operational reports. Feedback reports for the health workers, in the form of operational dashboards, are made accessible through the app. Similar reports are provided to the back-office for the periodic reimbursement to the clinics.</p>
+<p>In the periode 2022-2023, a new iteration of MomCare …One of the practical objectives of the DataCare project was to assess the complexity and effort required to implement the data transformation scripts, and reproduce the existing analytic reports. The data was transformed into 10 FHIR v4 resources as listed in table 1 with the number of records per resource type. The conceptual data model of the existing MomCare app could readily be transformed into the FHIR standard using SQL and validated with a Python library <span class="citation" data-cites="islam2023fhir">(<a href="#ref-islam2023fhir" role="doc-biblioref">Islam, 2023</a>)</span>.</p>
+<p>The largest challenge during the transformation process pertained to the absence of unique business identifiers for patients and healthcare organizations. For patients, either the mobile phone number or the healthcare insurance number was taken, depending on availability. A combination of name, address and latitude/longitude coordinates were used to uniquely identify organizations and locations, as Tanzania does not have a system in place for this purpose.</p>
+<p>The transformed and validated data is uploaded into the FHIR server on a daily basis using an automated cloud function. Analysis of bulk data was done by directly reading the standard newline delimited JSON into the Python pandas data analysis library. Cross checking the output with queries on the original data confirmed that the whole data pipeline produced consistent results. For example, the report of the antenatal coverage metric (number of pregnancies with four or more visits) could be reproduced per patient journey and aggregated (per year, per organization etc.) as required for the MomCare reports.</p>
 </section>
 </section>
 <section id="discussion" class="level2">
@@ -549,22 +543,26 @@ Figure&nbsp;4: Overview of the Momcare programme
 <td style="text-align: left;">Fast Healthcare Interoperability Resources</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">HDP</td>
-<td style="text-align: left;">Health data platform, explicitly differentiated from health digital platform</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">HIE</td>
-<td style="text-align: left;">Health Information Exchange</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">FL</td>
 <td style="text-align: left;">Federated learning</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">HDP</td>
+<td style="text-align: left;">Health data platform, explicitly differentiated from health digital platform</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HIE</td>
+<td style="text-align: left;">Health Information Exchange</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IR</td>
+<td style="text-align: left;">Intermediate Representation</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">LMIC</td>
 <td style="text-align: left;">Low- and middle income countries</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">PET</td>
 <td style="text-align: left;">Privacy-enhancing technologies</td>
 </tr>
@@ -642,6 +640,9 @@ Huisman, L., van Duijn, S.M., Silva, N., van Doeveren, R., Michuki, J., Kuria, M
 </div>
 <div id="ref-InstantOpenHIEv2" class="csl-entry" role="listitem">
 Instant <span>OpenHIE</span> v2.2.0, 2024.
+</div>
+<div id="ref-islam2023fhir" class="csl-entry" role="listitem">
+Islam, M.N., 2023. Fhir.resources: <span>FHIR Resources</span> as <span>Model Class</span>.
 </div>
 <div id="ref-jones2021landscape" class="csl-entry" role="listitem">
 Jones, J., Gottlieb, D., Mandel, J.C., Ignatov, V., Ellis, A., Kubick, W., Mandl, K.D., 2021. A landscape survey of planned <span>SMART</span>/<span>HL7</span> bulk <span>FHIR</span> data access <span>API</span> implementations and tools. Journal of the American Medical Informatics Association 28, 1284–1287. <a href="https://doi.org/10.1093/jamia/ocab028">https://doi.org/10.1093/jamia/ocab028</a>
