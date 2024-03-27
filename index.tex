@@ -288,7 +288,7 @@ destabilizing effects of dominant platforms on (democratic) societies.
 Instead of access to information, the control of personal data has
 emerged in the age of platforms as the critical contention.''
 \citep{keller2021paradox}. These conflicts are particularly salient in
-the healthcare domain, as is evidenced by polemic surrounding data
+the healthcare domain, as is evidenced by the polemic surrounding data
 spaces \citep{otto2022designing} and data solidarity
 \citep{kickbusch2021lancet, prainsack2022data, prainsack2023beyond}.
 Openness is particularly relevant if we are to realize a
@@ -332,13 +332,12 @@ technologies and architecture to include functionality for data sharing
 and reuse. Distinguishing four types of data sharing
 (Table~\ref{tbl-types-data-sharing}), the purpose of this paper is to
 investigate how new standards and technologies that can establish
-openness of health data platforms can be integrated into the OpenHIE
-architecture framework. The lack of detailed specifications and
-consensus of this addition to OpenHIE currently stands in the way of
-development projects that aim to establish HDPs in LMICs. In addition,
-we explicitly address the requirement of downward scalability as we aim
-to implement health data platforms in resource constrained setting of
-LMICs.
+openness of HDPs can be integrated into the OpenHIE architecture
+framework. The lack of detailed specifications and consensus of this
+addition to OpenHIE currently stands in the way of development projects
+that aim to establish HDPs in LMICs. In addition, we explicitly address
+the requirement of downward scalability as we aim to implement health
+data platforms in resource constrained setting of LMICs.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1200}}
@@ -407,21 +406,26 @@ platform that can be configured and reused across a variety of
 use-cases. Subsequently, we employ a formative, naturalistic evaluation
 to assess the technical risk and efficacy of the design
 \citep{venable2016feds}. Given that it is prohibitively expensive to
-evaluate with real users and real systems in the real setting, we aim to
-minimize technological risks and maximize the efficacy of the design by
-considering three real-world examples of health data platoform in LMICs,
-namely i) the OpenHIM platform
-(\url{https://jembi.gitbook.io/openhim-platform/}); ii) the ONA Canopy
-platform \url{https://ona.io/home/services/canopy/}; and iii) the work
-conducted at PharmAccess Foundation as part of the MomCare programme
-(\url{https://health-data-commons.pharmaccess.org}). As part of our
-design research, we have taken a narrative approach in surveying
-existing scientific studies on health data platforms, focusing on the
-seminal reports and subsequently searching forward citations. In
+evaluate the design a real-world setting, we aim to minimize
+technological risks and maximize the efficacy of the design by
+considering three examples of health data platforms in LMICs, namely i)
+the OpenHIM platform (\url{https://jembi.gitbook.io/openhim-platform/});
+ii) the ONA Canopy platform \url{https://ona.io/home/services/canopy/};
+and iii) the work conducted at PharmAccess Foundation as part of the
+MomCare programme (\url{https://health-data-commons.pharmaccess.org}).
+As part of our design research, we have taken a narrative approach in
+surveying existing scientific studies on health data platforms, focusing
+on the seminal reports and subsequently searching forward citations. In
 addition, we have searched the open source repositories (most notably
 GitHub) and the online communities (OpenHIE community, FHIR community)
 to search for relevant open standards, technologies and architectures.
 This paper should not be considered as a proper systematic review.
+
+The main contributions of this paper is that: - It provides a framework
+for the components of the Data \& Analysis Services that builds on
+current best practices from the data engineering community into the
+OpenHIE framework - Provides details on type 1 and 2 data sharing,
+comparing the different design options
 
 \section{Design}\label{design}
 
@@ -610,13 +614,13 @@ is directly related to the key objective of the SQL-on-FHIR project
 large-scale analysis of FHIR data accessible to a larger audience,
 portable between systems and to make FHIR data work well with the best
 available analytic tools, regardless of the technology stack. However,
-as FHIR is represented as a graph of resources, with detailed semantics
-defined for references between resources, data types, terminology,
-extensions, and many other aspects of the specification. To use FHIR
-effectively analysts require a thorough understanding of the
-specification. Most analytic and machine learning use cases require the
-preparation of FHIR data using transformations and tabular projections
-from its original form. The task of authoring these transformations and
+to use FHIR effectively analysts require a thorough understanding of the
+specification as FHIR is represented as a graph of resources, with
+detailed semantics defined for references between resources, data types,
+terminology, extensions, and many other aspects of the specification.
+Most analytic and machine learning use cases require the preparation of
+FHIR data using transformations and tabular projections from its
+original form. The task of authoring these transformations and
 projections is not trivial and there is currently no standard mechanisms
 to support reuse.
 
@@ -632,16 +636,21 @@ use of annotations to optimize performance.
 stack}\label{extending-openhie-with-a-fhir-based-composable-data-stack}
 
 We propose to extend the OpenHIE architecture with a ``Data and
-Analytics Services'' domain with 5 services by synthesizing the
-architecture of Hai et al. \citep{hai2023data} and the composable data
-stack \citep{pedreira2023composable} (Figure~\ref{fig-ohie},
-Table~\ref{tbl-data-and-analysis-services}).
+Analytics Services'' domain with different service layers by
+synthesizing the current best practices of the a lakehouse architecture
+of \citep{hai2023data, harby2022data, harby2024data} and the composable
+data stack \citep{pedreira2023composable} (Figure~\ref{fig-ohie},
+Table~\ref{tbl-data-and-analysis-services}). These 5 services are
+considered the core of the FHIR data platform, and although it practice
+often a downstream dashboarding or visualization component is used, that
+component is not considered part of this architecture as such. NB:
+distinction between exploration and dashboarding is not absolute.
 
 \begin{figure}
 
 \centering{
 
-\includegraphics{./images/hie.png}
+\includegraphics{./images/openhie-extended-architecture.png}
 
 }
 
@@ -678,9 +687,9 @@ Ingestion & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
 \tightlist
 \item
-  Metadata extraction
+  Bulk
 \item
-  Metadata modeling
+  Streaming
 \end{itemize}
 \end{minipage} \\
 Storage & \begin{minipage}[t]{\linewidth}\raggedright
@@ -688,15 +697,8 @@ Storage & \begin{minipage}[t]{\linewidth}\raggedright
 \tightlist
 \item
   File-based blob storage
-\end{itemize}
-\end{minipage} \\
-Query \& Processing & \begin{minipage}[t]{\linewidth}\raggedright
-\begin{itemize}
-\tightlist
 \item
-  SQL-on-FHIR Runner
-\item
-  Execution engine on tabular data as defined in composable data stack
+  Database optimized for online analytical processing (OLAP)
 \end{itemize}
 \end{minipage} \\
 Maintenance & \begin{minipage}[t]{\linewidth}\raggedright
@@ -705,17 +707,33 @@ Maintenance & \begin{minipage}[t]{\linewidth}\raggedright
 \item
   SQL-on-FHIR View defintions
 \item
-  Maintenance-related functions as defined by Hai et al.
+  Catalog and other maintenance-related functions as defined by Hai et
+  al.
 \end{itemize}
 \end{minipage} \\
-Exploration & \begin{minipage}[t]{\linewidth}\raggedright
+Processing \& API & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
 \tightlist
 \item
-  Interactive computing environment \citep{granger2021jupyter}
+  SQL-on-FHIR Runner
 \item
-  Capability to participate as a node in a federative learning network,
-  including MPC
+  Execution engine on tabular data as defined in composable data stack
+\item
+  Capability to participate as a node in federated learning / MPC
+  network
+\item
+  Read-only access to storage
+\end{itemize}
+\end{minipage} \\
+Data Consumer & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  SQL interactive development environment (IDE)
+\item
+  Interactive notebook computing environment \citep{granger2021jupyter}
+\item
+  BI reporting, dashboarding and data visualization
 \end{itemize}
 \end{minipage} \\
 \end{longtable}
@@ -742,12 +760,27 @@ requirements. Issues that need to be solved by these services:
 \begin{itemize}
 \tightlist
 \item
-  from ndjson to parquet
+  File-based:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    from ndjson to parquet
+  \item
+    possibly used delta lake for time versioning
+  \item
+    separation of storage from compute not only for benefits of lower
+    TCO, but also be ready for federated learning and MPC in future
+  \end{itemize}
 \item
-  possibly used delta lake for time versioning
-\item
-  separation of storage from compute not only for benefits of lower TCO,
-  but also be ready for federated learning and MPC in future
+  OLAP DBMS
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Often columnar, like Clickhouse and BigQuery
+  \item
+  \end{itemize}
 \end{itemize}
 
 \paragraph{Query \& Processing}\label{query-processing}
@@ -775,7 +808,9 @@ requirements. Issues that need to be solved by these services:
   NB: orchestration falls under data provenance
 \end{itemize}
 
-\paragraph{Exploration}\label{exploration}
+\paragraph{Data consumers}\label{data-consumers}
+
+Strictly speaking not part of the architecture,
 
 \subsection{Open technologies: available digital public
 goods}\label{open-technologies-available-digital-public-goods}
@@ -823,12 +858,35 @@ public goods is beyond the scope of this document.}
 
 \end{table}%
 
+Allows for the Data Warehouse data to be visualised via a BI tool
+(Apache Superset)
+
 \section{Evaluation}\label{evaluation}
 
 \subsection{OpenHIM platform}\label{openhim-platform}
 
 \begin{itemize}
 \tightlist
+\item
+  One of the most used IOL layers in LMICs. Leading development of
+  InstantHIE library to configure OpenHIE infrastructures
+\end{itemize}
+
+\url{https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing}
+
+\begin{itemize}
+\item
+  Accept FHIR bundles submitted securely through an IOL (OpenHIM)
+\item
+  Stores Clinical FHIR data to a FHIR store (HAPI FHIR)
+\item
+  Stores Patient Demographic data to an MPI (JeMPI)
+\item
+  Pushes FHIR resources to Kafka for the reporting pipeline (and other
+  systems) to use
+\item
+  Pulls FHIR data out of Kafka and maps it to flattened tables in the
+  Data Warehouse (Clickhouse)
 \item
   View generation in different packages, not portable
 
@@ -837,7 +895,8 @@ public goods is beyond the scope of this document.}
   \item
     Logstash for bulk
   \item
-    Kafka for streaming
+    Kafka for streaming, uses JSON for mappings which looks similar to
+    SQL-on-FHIR
   \end{itemize}
 \item
 \end{itemize}
@@ -949,16 +1008,28 @@ Requirements are similar, but implementation differs: Datamodel is
 non-FHIR, focused on DataValue, which conceptually equates to FHIR
 Measure
 
-\subsection{FHIR and FAIR}\label{fhir-and-fair}
+\subsection{The need to a semantic
+layer?}\label{the-need-to-a-semantic-layer}
 
 \begin{itemize}
 \tightlist
 \item
-  How does FHIR relate to approaches taken by the FAIR community, which
-  tend to take more an approach of using knowledge graphs. For example,
-  VODAN Africa \citep{gebreslassie2023fhir4fair, purnamajati2022data}.
+  FHIR and FAIR
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How does FHIR relate to approaches taken by the FAIR community,
+    which tend to take more an approach of using knowledge graphs. For
+    example, VODAN Africa
+    \citep{gebreslassie2023fhir4fair, purnamajati2022data}.
+  \item
+    FAIR principles vs FHIR graph: is FHIR a FAIR Data Object
+  \end{itemize}
 \item
-  FAIR principles vs FHIR graph: is FHIR a FAIR Data Object
+  Since we use FHIR, we don't need a semantic layer because that is
+  already provided
+\item
 \end{itemize}
 
 \subsection{Attribute-based access
@@ -971,6 +1042,9 @@ control}\label{attribute-based-access-control}
   to manage security?
 \item
   Cerbos, attribute based on lineage or anonymized tables
+\item
+  Catalogs solve this: Tabular.io, Google BigLake. What is open source
+  option?
 \end{itemize}
 
 \subsection{Federated learning and multiparty

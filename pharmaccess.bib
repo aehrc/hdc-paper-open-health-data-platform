@@ -49,6 +49,24 @@
   file = {/Users/dkapitan/Zotero/storage/PCAEPPR7/sql-on-fhir.html}
 }
 
+@article{aiterrami2023spatial,
+  title = {Spatial Big Data Architecture: {{From Data Warehouses}} and {{Data Lakes}} to the {{LakeHouse}}},
+  shorttitle = {Spatial Big Data Architecture},
+  author = {Ait Errami, Soukaina and Hajji, Hicham and Ait El Kadi, Kenza and Badir, Hassan},
+  year = {2023},
+  month = jun,
+  journal = {Journal of Parallel and Distributed Computing},
+  volume = {176},
+  pages = {70--79},
+  issn = {0743-7315},
+  doi = {10.1016/j.jpdc.2023.02.007},
+  urldate = {2023-04-23},
+  abstract = {The construction of systems supporting spatial data has experienced great enthusiasm in the past, due to the richness of this type of data and their semantics, which can be used in the decision-making process in various fields. Thus, the problem of integrating spatial data into existing databases and information systems has been addressed by creating spatial extensions to relational tables or by creating spatial data warehouses, while arranging data structures and query languages by making them more spatially-aware. With the advent of Big Data, these conventional storage and spatial representation structures are becoming increasingly outdated, and required a new organization of spatial data. Approaches based on distributed storage and data lakes have been proposed, to integrate the complexity of spatial data, with operational and analytical systems which unfortunately quickly showed their limits. Recently the concept of lakehouse was introduced in order to integrate, among other things, the notion of reliability and ACID properties to the volume of data to be managed. This new data architecture is a combination of governed and reliable Data Warehouses and flexible, scalable and cost-effective Data Lakes. In this paper, we present how traditional approaches of spatial data management in the context of spatial big data have quickly shown their limits. We present a literature overview of these approaches, and how they led to the Data LakeHouse. We detail how the Lakehouse paradigm can be used and extended for managing spatial big data, by giving the different components and best practices for building a spatial data LakeHouse architecture optimized for the storage and computing over spatial big data.},
+  langid = {english},
+  keywords = {Data architecture,Data LakeHouse,Distributed systems,Spatial data,Storage},
+  file = {/Users/dkapitan/Zotero/storage/J9HI983U/Ait Errami et al. - 2023 - Spatial big data architecture From Data Warehouse.pdf;/Users/dkapitan/Zotero/storage/TSKL9UKN/errami2023spatial.pdf;/Users/dkapitan/Zotero/storage/KYF9PFNE/S0743731523000229.html}
+}
+
 @article{akintunde2019health,
   title = {{{HEALTH INFORMATION EXCHANGE MODEL FOR NIGERIAN HEALTH INFORMATION SYSTEMS}}},
   author = {Akintunde, Oluwaseyi and Adebola, Akinsanya and Nzechukwu, Otuneme and Adetunji, Oluwatofunmi},
@@ -505,7 +523,15 @@
   doi = {10.1109/TKDE.2023.3270101},
   urldate = {2024-01-11},
   abstract = {Data lakes are becoming increasingly prevalent for Big Data management and data analytics. In contrast to traditional `schema-on-write' approaches such as data warehouses, data lakes are repositories storing raw data in its original formats and providing a common access interface. Despite the strong interest raised from both academia and industry, there is a large body of ambiguity regarding the definition, functions and available technologies for data lakes. A complete, coherent picture of data lake challenges and solutions is still missing. This survey reviews the development, architectures, and systems of data lakes. We provide a comprehensive overview of research questions for designing and building data lakes. We classify the existing approaches and systems based on their provided functions for data lakes, which makes this survey a useful technical reference for designing, implementing and deploying data lakes. We hope that the thorough comparison of existing solutions and the discussion of open research challenges in this survey will motivate the future development of data lake research and practice.},
-  file = {/Users/dkapitan/Zotero/storage/2XHLKXDF/Hai et al. - 2023 - Data Lakes A Survey of Functions and Systems.pdf;/Users/dkapitan/Zotero/storage/RADUVS6X/Data_Lakes_A_Survey_of_Functions_and_Systems.pdf}
+  file = {/Users/dkapitan/Zotero/storage/2XHLKXDF/Hai et al. - 2023 - Data Lakes A Survey of Functions and Systems.pdf}
+}
+
+@article{halevymanaging,
+  title = {Managing {{Google}}'s Data Lake: An Overview of the {{GOODS}} System},
+  author = {Halevy, Alon and Korn, Flip and Noy, Natalya F and Olston, Christopher and Polyzotis, Neoklis and Roy, Sudip and Whang, Steven Euijong},
+  abstract = {For most large enterprises today, data constitutes their core asset, along with code and infrastructure. For most enterprises, the amount of data that they produce internally has exploded in recent years. At the same time, in many cases, engineers and data scientists do not use centralized data-management systems and end up creating what became known as a data lake---a collection of datasets that often are not well organized or not organized at all and where one needs to ``fish'' for useful datasets. In this paper, we describe our experience building and deploying GOODS, a system to manage Google's internal data lake. GOODS crawls Google's infrastructure and builds a catalog of discovered datasets, including structured files, databases, spreadsheets, and even services that provide access to the data. GOODS extracts metadata about datasets in a post-hoc way: engineers continue to generate and organize datasets in the same way that they have before, and GOODS provides value without disrupting teams' practices. The technical challenges that we had to address resulted both from the scale and heterogeneity of Google's data lake and from our decision to extract metadata in a post-hoc manner. We believe that many of the lessons that we learned are applicable to building large-scale enterprise-level data-management systems in general.},
+  langid = {english},
+  file = {/Users/dkapitan/Zotero/storage/Z8GPV4JJ/Halevy et al. - Managing Google’s data lake an overview of the GO.pdf}
 }
 
 @inproceedings{harby2022data,
@@ -524,6 +550,23 @@
   isbn = {978-1-66548-045-1},
   langid = {english},
   file = {/Users/dkapitan/Zotero/storage/AITAYT82/Harby and Zulkernine - 2022 - From Data Warehouse to Lakehouse A Comparative Re.pdf}
+}
+
+@misc{harby2024data,
+  type = {{{SSRN Scholarly Paper}}},
+  title = {Data {{Lakehouse}}: {{A Survey}} and {{Experimental Study}}},
+  shorttitle = {Data {{Lakehouse}}},
+  author = {Harby, Ahmed A. and Zulkernine, Farhana},
+  year = {2024},
+  month = mar,
+  number = {4765588},
+  address = {Rochester, NY},
+  doi = {10.2139/ssrn.4765588},
+  urldate = {2024-03-27},
+  abstract = {Efficient big data management is a dire necessity to manage the exponential growth in data generated by digital information systems to produce usable knowledge. Structured databases, data lakes, and warehouses have each provided a solution with varying degrees of success. However, a new and superior solution, the data Lakehouse, has emerged to extract actionable insights from unstructured data ingested from distributed sources. By combining the strengths of data warehouses and data lakes, the data Lakehouse can process and merge data quickly while ingesting and storing high-speed unstructured data with post-storage transformation and analytics capabilities. The Lakehouse architecture offers the necessary features for optimal functionality and has gained significant attention in the big data management research community. In this paper, we compare data lake, warehouse, and lakehouse systems, highlight their strengths and shortcomings, identify the desired features to handle the evolving challenges in big data management and analysis and propose an advanced data Lakehouse architecture. We also demonstrate the performance of three state-of-the-art data management systems namely HDFS data lake, Hive data warehouse, and Delta lakehouse in managing data for analytical query responses through an experimental study.},
+  langid = {english},
+  keywords = {Big data,Data Lake,Data Lakehouse,Data Warehouse},
+  file = {/Users/dkapitan/Zotero/storage/L5TPEWSG/Harby and Zulkernine - 2024 - Data Lakehouse A Survey and Experimental Study.pdf}
 }
 
 @article{haverinen2022national,
@@ -600,6 +643,22 @@
   title = {Home - {{FHIR Implementation Guide}} for {{ABDM}} v6.0.0},
   urldate = {2024-03-07},
   howpublished = {https://nrces.in/ndhm/fhir/r4/index.html}
+}
+
+@misc{hoseini2023semantic,
+  title = {Semantic {{Data Management}} in {{Data Lakes}}},
+  author = {Hoseini, Sayed and {Theissen-Lipp}, Johannes and Quix, Christoph},
+  year = {2023},
+  month = oct,
+  number = {arXiv:2310.15373},
+  eprint = {2310.15373},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  urldate = {2024-03-27},
+  abstract = {In recent years, data lakes emerged as away to manage large amounts of heterogeneous data for modern data analytics. One way to prevent data lakes from turning into inoperable data swamps is semantic data management. Some approaches propose the linkage of metadata to knowledge graphs based on the Linked Data principles to provide more meaning and semantics to the data in the lake. Such a semantic layer may be utilized not only for data management but also to tackle the problem of data integration from heterogeneous sources, in order to make data access more expressive and interoperable. In this survey, we review recent approaches with a specific focus on the application within data lake systems and scalability to Big Data. We classify the approaches into (i) basic semantic data management, (ii) semantic modeling approaches for enriching metadata in data lakes, and (iii) methods for ontologybased data access. In each category, we cover the main techniques and their background, and compare latest research. Finally, we point out challenges for future work in this research area, which needs a closer integration of Big Data and Semantic Web technologies.},
+  archiveprefix = {arxiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Databases,Computer Science - Human-Computer Interaction},
+  file = {/Users/dkapitan/Zotero/storage/CTUC9UI8/Hoseini et al. - 2023 - Semantic Data Management in Data Lakes.pdf;/Users/dkapitan/Zotero/storage/EZI2PUEN/2310.html}
 }
 
 @article{huisman2022digital,
@@ -857,6 +916,13 @@
   langid = {english},
   keywords = {Africa,Communication in health care,Computer architecture,Data management,Global health,Health care policy,Health services administration and management,Health systems strengthening},
   file = {/Users/dkapitan/Zotero/storage/D5JF3VTH/Mamuye et al. - 2022 - Health information exchange policy and standards f.pdf}
+}
+
+@misc{managing,
+  title = {Managing {{Personal Identifiable Information}} in {{Data Lakes}} {\textbar} {{IEEE Journals}} \& {{Magazine}} {\textbar} {{IEEE Xplore}}},
+  urldate = {2024-03-27},
+  howpublished = {https://ieeexplore-ieee-org.dianus.libr.tue.nl/abstract/document/10431740},
+  file = {/Users/dkapitan/Zotero/storage/9QWSW8C6/Managing Personal Identifiable Information in Data.pdf;/Users/dkapitan/Zotero/storage/A3J9BHZZ/10431740.html}
 }
 
 @article{mandl2020push,
@@ -1440,6 +1506,13 @@
   file = {/Users/dkapitan/Zotero/storage/5NKF8FX9/Swartout and Balzer - 1982 - On the inevitable intertwining of specification an.pdf}
 }
 
+@misc{tabular,
+  title = {Tabular -- {{An}} Independent Storage Engine from the Creators of {{Apache Iceberg}}},
+  urldate = {2024-03-26},
+  howpublished = {https://tabular.io/},
+  file = {/Users/dkapitan/Zotero/storage/2G4B8QRX/tabular.io.html}
+}
+
 @article{taylor2023search,
   title = {In {{Search}} of {{Public Values}} in {{Private Systems}}: {{A Response}} to the {{Montesquieu Lecture}} by {{Karen Yeung}}},
   shorttitle = {In {{Search}} of {{Public Values}} in {{Private Systems}}},
@@ -1619,4 +1692,20 @@
   urldate = {2024-02-29},
   abstract = {In less than two decades, open source software has come to dominate the technology landscape across a wide swathe of key software categories, including operating systems, machine learning, databases, web servers, and more. The open source innovation model has evolved to support a rapidly expanding ecosystem and body of practice supplanting traditional technology development, sales, marketing, and management practices. Open source is also increasingly sparking innovation and forming communities to tackle broad industry problems in diverse fields, including agriculture, public health, motion pictures, and telecommunications. Building on the foundational work of Henry Chesbrough, Eric von Hippel, and Yochai Benkler in Open Innovation, hobbyist technology innovation, and peer-based production, this chapter explores the rise to dominance of open source, the market disruption this emergence has created, and how open source is reshaping legacy business practices not only for early-stage innovation but also for later-stage innovation and collaboration, at scale.},
   isbn = {978-0-19-289979-8}
+}
+
+@inproceedings{zhao2021zonebased,
+  title = {A {{Zone-Based Data Lake Architecture}} for {{IoT}}, {{Small}} and {{Big Data}}},
+  booktitle = {25th {{International Database Engineering}} \& {{Applications Symposium}}},
+  author = {Zhao, Yan and Megdiche, Imen and Ravat, Franck and Dang, Vincent-nam},
+  year = {2021},
+  month = jul,
+  pages = {94--102},
+  publisher = {ACM},
+  address = {Montreal QC Canada},
+  doi = {10.1145/3472163.3472185},
+  urldate = {2024-03-27},
+  isbn = {978-1-4503-8991-4},
+  langid = {english},
+  file = {/Users/dkapitan/Zotero/storage/ZP3PBHU8/Zhao et al. - 2021 - A Zone-Based Data Lake Architecture for IoT, Small.pdf}
 }
