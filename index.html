@@ -270,14 +270,14 @@ Table&nbsp;1: Types of data sharing and in relation to new standards and technol
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
 <p>In the paper, we present a design that extends the OpenHIE specification to include the four types of data sharing mentioned above. Using the full-STAC approach <span class="citation" data-cites="mehl2023fullstac">(<a href="#ref-mehl2023fullstac" role="doc-biblioref">Mehl et al., 2023</a>)</span> we combine open standards, open technologies and open architectures into a coherent modular HDP platform that can be configured and reused across a variety of use-cases. Subsequently, we employ a formative, naturalistic evaluation to assess the technical risk and efficacy of the design <span class="citation" data-cites="venable2016feds">(<a href="#ref-venable2016feds" role="doc-biblioref">Venable et al., 2016</a>)</span>. Given that it is prohibitively expensive to evaluate the design a real-world setting, we aim to minimize technological risks and maximize the efficacy of the design by considering three examples of health data platforms in LMICs, namely i) the OpenHIM platform (<a href="https://jembi.gitbook.io/openhim-platform/">https://jembi.gitbook.io/openhim-platform/</a>); ii) the ONA Canopy platform <a href="https://ona.io/home/services/canopy/">https://ona.io/home/services/canopy/</a>; and iii) the work conducted at PharmAccess Foundation as part of the MomCare programme (<a href="https://health-data-commons.pharmaccess.org">https://health-data-commons.pharmaccess.org</a>). As part of our design research, we have taken a narrative approach in surveying existing scientific studies on health data platforms, focusing on the seminal reports and subsequently searching forward citations. In addition, we have searched the open source repositories (most notably GitHub) and the online communities (OpenHIE community, FHIR community) to search for relevant open standards, technologies and architectures. This paper should not be considered as a proper systematic review.</p>
-<p>The main contributions of this paper is that: - It provides a framework for the components of the Data &amp; Analysis Services that builds on current best practices from the data engineering community into the OpenHIE framework - Provides details on type 1 and 2 data sharing, comparing the different design options</p>
+<p>The main contributions of this paper are i) description of a framework for the components of the Data &amp; Analysis Services that builds on current best practices from the data engineering community into the OpenHIE framework; and ii) evaluation of different implementations and design options for type 1 and 2 data sharing within an extended OpenHIE architecture. As such, it aims to inform future developments and implementation of open digital health platforms in LMICs.</p>
 </section>
 <section id="design" class="level2">
 <h2 class="anchored" data-anchor-id="design">Design</h2>
 <section id="open-standards-using-fhir-as-the-common-data-model" class="level3">
 <h3 class="anchored" data-anchor-id="open-standards-using-fhir-as-the-common-data-model">Open standards: using FHIR as the common data model</h3>
 <p>The recent convergence to FHIR as the de facto standard for information exchange has fuelled the development of OpenHIE. FHIR is currently used both for routine healthcare settings <span class="citation" data-cites="ayaz2021fast">(<a href="#ref-ayaz2021fast" role="doc-biblioref">Ayaz et al., 2021</a>)</span> and clinical research settings <span class="citation" data-cites="duda2022hl7 vorisek2022fast">(<a href="#ref-duda2022hl7" role="doc-biblioref">Duda et al., 2022</a>; <a href="#ref-vorisek2022fast" role="doc-biblioref">Vorisek et al., 2022</a>)</span> and is increasingly being used in LMICs as well. The guidelines and standards of the African Union explicitly state FHIR is to be used as the messaging standard <span class="citation" data-cites="2023african">(<a href="#ref-2023african" role="doc-biblioref"><em>African <span>Union Health Information Exchange Guidelines</span> and <span>Standards</span></em>, 2023</a>)</span>. The FHIR-native OpenSRP platform <span class="citation" data-cites="mehl2020open">(<a href="#ref-mehl2020open" role="doc-biblioref">Mehl, 2020</a>)</span> has been deployed in 14 countries targeting various patient populations, amongst which a reference implementation of the WHO antenatal and neonatal care guidelines for midwives in Lombok, Indonesia <span class="citation" data-cites="summitinstitutefordevelopment2023bunda kurniawan2019midwife">(<a href="#ref-kurniawan2019midwife" role="doc-biblioref">Kurniawan et al., 2019</a>; <a href="#ref-summitinstitutefordevelopment2023bunda" role="doc-biblioref">Summit Institute for Development, 2023</a>)</span>. In India, FHIR is used as the underlying technology for the open Health Claims Exchange protocol specification, which has been adopted by the Indian government as the standard for e-claims handling <span class="citation" data-cites="hcx">(<a href="#ref-hcx" role="doc-biblioref"><span>“<span>HCX Protocol</span> v0.9,”</span> 2023</a>)</span>. This range of utilizations showcase the standards’ widespread applicability. The proceedings of the OpenHIE conference 2023 attest to the fact that FHIR and open source technologies are embraced as critical enablers in implementing health information exchanges in LMICs <span class="citation" data-cites="ohie2023unconference">(<a href="#ref-ohie2023unconference" role="doc-biblioref"><span>“<span>OHIE23 Unconference</span> 101,”</span> 2023</a>)</span>.</p>
-<p>Various studies have investigated the merits of FHIR and its performance vis-a-vis other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP and FHIR have been made <span class="citation" data-cites="ayaz2023transforming mullie2023coda rinaldi2021openehr cremonesi2023need sinaci2023data">(<a href="#ref-ayaz2023transforming" role="doc-biblioref">Ayaz et al., 2023</a>; <a href="#ref-cremonesi2023need" role="doc-biblioref">Cremonesi et al., 2023</a>; <a href="#ref-mullie2023coda" role="doc-biblioref">Mullie et al., 2023</a>; <a href="#ref-rinaldi2021openehr" role="doc-biblioref">Rinaldi and Thun, 2021</a>; <a href="#ref-sinaci2023data" role="doc-biblioref">Sinaci et al., 2023</a>)</span>. A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR concluded that i) these three standards are functionally and technically compatible, and therefore can be used side by side; and that ii) each of these standards have their strengths and limitations that correlate with their intended use as summarized in the <a href="#tbl-comparison" class="quarto-xref">Table&nbsp;2</a>.</p>
+<p>Various studies have investigated the merits of FHIR and its performance vis-a-vis other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP and FHIR have been made <span class="citation" data-cites="ayaz2023transforming mullie2023coda rinaldi2021openehr cremonesi2023need sinaci2023data tsafnat2024converge">(<a href="#ref-ayaz2023transforming" role="doc-biblioref">Ayaz et al., 2023</a>; <a href="#ref-cremonesi2023need" role="doc-biblioref">Cremonesi et al., 2023</a>; <a href="#ref-mullie2023coda" role="doc-biblioref">Mullie et al., 2023</a>; <a href="#ref-rinaldi2021openehr" role="doc-biblioref">Rinaldi and Thun, 2021</a>; <a href="#ref-sinaci2023data" role="doc-biblioref">Sinaci et al., 2023</a>; <a href="#ref-tsafnat2024converge" role="doc-biblioref">Tsafnat et al., 2024</a>)</span>. A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR concluded that i) these three standards are functionally and technically compatible, and therefore can be used side by side; and that ii) each of these standards have their strengths and limitations that correlate with their intended use as summarized in the <a href="#tbl-comparison" class="quarto-xref">Table&nbsp;2</a>.</p>
 <div id="tbl-comparison" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -334,7 +334,7 @@ Figure&nbsp;2: Examples of implementations of the composable data stack. Image s
 </section>
 <section id="extending-openhie-with-a-fhir-based-composable-data-stack" class="level4">
 <h4 class="anchored" data-anchor-id="extending-openhie-with-a-fhir-based-composable-data-stack">Extending OpenHIE with a FHIR-based composable data stack</h4>
-<p>We propose to extend the OpenHIE architecture with a “Data and Analytics Services” domain with different service layers by synthesizing the current best practices of the a lakehouse architecture of <span class="citation" data-cites="hai2023data harby2022data harby2024data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>; <a href="#ref-harby2024data" role="doc-biblioref">Harby and Zulkernine, 2024</a>, <a href="#ref-harby2022data" role="doc-biblioref">2022</a>)</span> and the composable data stack <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span> (<a href="#fig-ohie" class="quarto-xref">Figure&nbsp;3</a>, <a href="#tbl-data-and-analysis-services" class="quarto-xref">Table&nbsp;3</a>). These 5 services are considered the core of the FHIR data platform, and although it practice often a downstream dashboarding or visualization component is used, that component is not considered part of this architecture as such. NB: distinction between exploration and dashboarding is not absolute.</p>
+<p>We propose to extend the OpenHIE architecture with a “Data and Analytics Services” domain with different service layers by synthesizing the current best practices of the a lakehouse architecture of <span class="citation" data-cites="hai2023data harby2022data harby2024data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>; <a href="#ref-harby2024data" role="doc-biblioref">Harby and Zulkernine, 2024</a>, <a href="#ref-harby2022data" role="doc-biblioref">2022</a>)</span> and the composable data stack <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span> (<a href="#fig-ohie" class="quarto-xref">Figure&nbsp;3</a>, <a href="#tbl-data-and-analysis-services" class="quarto-xref">Table&nbsp;3</a>). These 5 services are considered the core of the FHIR data platform, and although in practice often a downstream dashboarding or visualization component is used, that component is not the main focus of our analysis. Rather, we aim to elucidate and conceptualize the core “FHIR Data Lakehouse”.</p>
 <div id="fig-ohie" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-ohie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -441,14 +441,17 @@ Table&nbsp;3: Definition of Data and Analysis Services
 <section id="maintenance" class="level5">
 <h5 class="anchored" data-anchor-id="maintenance">Maintenance</h5>
 <ul>
-<li>SQL-on-FHIR Views provide new standard to support mADX aggregate reporting</li>
+<li>SQL-on-FHIR Views provide new standard to support mADX aggregate reporting !! We need to stress this, because this is an existing OpenHIE workflow</li>
 <li>Maintenance-related functions remain the same</li>
 <li>NB: orchestration falls under data provenance</li>
 </ul>
 </section>
 <section id="data-consumers" class="level5">
 <h5 class="anchored" data-anchor-id="data-consumers">Data consumers</h5>
-<p>Strictly speaking not part of the architecture,</p>
+<ul>
+<li>Many tools, often focus on creating information dashboards and visualizations</li>
+<li>Compatibility with processing &amp; API: which query languages and interfaces are supported. Some dialect of SQL, some dialect of NoSQL, dataframe API, all of the above?</li>
+</ul>
 </section>
 </section>
 </section>
@@ -469,29 +472,30 @@ Table&nbsp;4: Overview of current open source implementations of components incl
 </div>
 </figure>
 </div>
-<p>Allows for the Data Warehouse data to be visualised via a BI tool (Apache Superset)</p>
 </section>
 </section>
 <section id="evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
 <section id="openhim-platform" class="level3">
 <h3 class="anchored" data-anchor-id="openhim-platform">OpenHIM platform</h3>
+<p>To evaluate the extended OpenHIE architecture described above, we first consider the OpenHIM Platform. The Open Health Information Mediator (OpenHIM, <a href="OpenHIMhttp://openhim.org/">http://openhim.org/</a>)) component is the reference implementation of the Interoperability Layer (IOL) as defined in the OpenHIE specification. The most current version (8.4.2 at the time of writing) provides all the core functions including central point of access for the services of the HIE; routing functions; central logging for auditing and debugging purposes; and orchestration/mediation mechanisms to co-ordinate requests. This reference implementation of the IOL has recently been extended as a reference implementation of the so-called ‘Instant OpenHIE’ concept, that aims to address the primary needs of (i) allowing implementers to engage with a preconfigured health information exchange solution and running tools (based on the architecture) and test their applicability and functionality with a real health context problem; and (ii) having a packaged reference version of the OpenHIE architecture that is comprised of a set of reference technologies and other appropriate tools that form the building blocks of the health information exchange that can be configured and extended to support particular use cases <span class="citation" data-cites="digitalsquare2020instantopenhie">(<a href="#ref-digitalsquare2020instantopenhie" role="doc-biblioref"><span>“Advancing <span>Instant OpenHIE</span> <span></span> <span>Digital Square Open Application Platform</span>,”</span> n.d.</a>)</span>. The Instant HIE project allows OpenHIE components to be packages up, deployed, operated and scaled via a simple Command Line Interface (CLI, version 2 released in 2023 <a href="https://github.com/openhie/instant-v2">https://github.com/openhie/instant-v2</a>). The OpenHIM Platform (<a href="https://jembi.gitbook.io/openhim-platform">https://jembi.gitbook.io/openhim-platform</a>) provides a set of bundled packages (called recipes) that can be deployed using the Instant OpenHIE deployment tool. In the following we will evaluate the recipe for “a central data repository with a data warehouse” that provides “A FHIR-based Shared Health record linked to a Master Patient Index (MPI) for linking and mathing patient demographics and a default reporting pipeline to transform and visualise FHIR data” (<a href="https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing">https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing</a>).</p>
+<div id="fig-openhim-platform" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-openhim-platform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Overview of the default data stack of the OpenHIM Platform. The default stack (top, darkblue) consists of Kafka, Clickhouse and Superset. An alternative solution based on the ELK stack is also supported (bottom, lightblue), consisting of Elasticsearch, Logstash and Kibana.
+</figcaption>
+<div aria-describedby="fig-openhim-platform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/openhim-platform.png" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p><a href="#fig-openhim-platform" class="quarto-xref">Figure&nbsp;4</a> shows a schematic overview of two data stacks that are supported in the OpenHIM platform. The Shared Health Record (SHR, implemented with HAPI FHIR server) and the Client Registry (CR, implemented with JeMPI server) are the sources that store clinical FHIR data and patient demographic data, respectively. The default data stack is based on streaming ingestion using Kafka into a Clickhouse database. As part of the ingestion, incoming FHIR bundles that contain multiple FHIR resources are unbundled in separate topics. Subsequently, each FHIR resource topic is flatted using mappers Unbundling and flattening of FHIR resources is done in Kafka using FHIRPath. Superset is used as the tool for consuming the data to create dashboard visualizations.</p>
+<p>The OpenHIM platform also support data analytics based on the ELK stack, where data is ingested in bulk using Logstash, stored in Elasticsearch and made available for consumption in Kibana. Also here, the incoming FHIR bundles are unbundled in Logstash into separate FHIR resources. However, given that Elasticsearch is a document-based search engine, the FHIR resources are stored as-is with no flattening. Exploring and analysing the data requires writing queries in Elasticsearch Query Language (ES|QL), either through the query interface of Elasticsearch or using Kibana.</p>
+<p>Evaluating these two data stacks, we see the following:</p>
 <ul>
-<li>One of the most used IOL layers in LMICs. Leading development of InstantHIE library to configure OpenHIE infrastructures</li>
-</ul>
-<p><a href="https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing">https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing</a></p>
-<ul>
-<li><p>Accept FHIR bundles submitted securely through an IOL (OpenHIM)</p></li>
-<li><p>Stores Clinical FHIR data to a FHIR store (HAPI FHIR)</p></li>
-<li><p>Stores Patient Demographic data to an MPI (JeMPI)</p></li>
-<li><p>Pushes FHIR resources to Kafka for the reporting pipeline (and other systems) to use</p></li>
-<li><p>Pulls FHIR data out of Kafka and maps it to flattened tables in the Data Warehouse (Clickhouse)</p></li>
-<li><p>View generation in different packages, not portable</p>
-<ul>
-<li>Logstash for bulk</li>
-<li>Kafka for streaming, uses JSON for mappings which looks similar to SQL-on-FHIR</li>
-</ul></li>
-<li></li>
+<li>Pattern of flattening FHIR resources with FHIRPath expressions is very close to the idea of SQL-on-FHIR. Although it doesn’t adhere to this new standard in the strict sense, the philosophy of generating tabular views is the same</li>
+<li>When using the ELK stack, flattening is done at the end. Implementations of FHIRPath support Elasticsearch as an execution engine, also here</li>
+<li>Main limitations: both Clickhouse en Elasticsearch don’t follow decomposition of storage, compute and UI. Therefore, downward scaleability is limited.</li>
 </ul>
 </section>
 <section id="ona-canopy" class="level3">
@@ -561,40 +565,60 @@ Table&nbsp;4: Overview of current open source implementations of components incl
 </colgroup>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">CLI</td>
+<td style="text-align: left;">Command-line Interface</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CR</td>
+<td style="text-align: left;">Client Registry</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ELK</td>
+<td style="text-align: left;">Elasticsearch, Logstach and Kibana stack</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">ELT</td>
 <td style="text-align: left;">Extract, Load and Transform</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">FAIR</td>
 <td style="text-align: left;">Findable, Accessible, Interoperable and Reusable</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">FHIR</td>
 <td style="text-align: left;">Fast Healthcare Interoperability Resources</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">FL</td>
 <td style="text-align: left;">Federated learning</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">HDP</td>
 <td style="text-align: left;">Health data platform, explicitly differentiated from health digital platform</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">HIE</td>
 <td style="text-align: left;">Health Information Exchange</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">IR</td>
 <td style="text-align: left;">Intermediate Representation</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">LMIC</td>
 <td style="text-align: left;">Low- and middle income countries</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MPC</td>
+<td style="text-align: left;">Multiparty Computation</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">PET</td>
 <td style="text-align: left;">Privacy-enhancing technologies</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SHR</td>
+<td style="text-align: left;">Shared Health Record</td>
 </tr>
 </tbody>
 </table>
@@ -605,6 +629,9 @@ Table&nbsp;4: Overview of current open source implementations of components incl
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-digitalsquare2020instantopenhie" class="csl-entry" role="listitem">
+Advancing <span>Instant OpenHIE</span> <span></span> <span>Digital Square Open Application Platform</span>, n.d.
+</div>
 <div id="ref-2023african" class="csl-entry" role="listitem">
 African <span>Union Health Information Exchange Guidelines</span> and <span>Standards</span>, 2023. African Union.
 </div>
@@ -781,6 +808,9 @@ Summit Institute for Development, 2023. <span>BUNDA App</span>. Summit Institute
 </div>
 <div id="ref-thaiya2021adoption" class="csl-entry" role="listitem">
 Thaiya, M.S., Julia, K., Joram, M., Benard, M., Nambiro, D.A., 2021. Adoption of <span>ICT</span> to <span>Enhance Access</span> to <span>Healthcare</span> in <span>Kenya</span>.
+</div>
+<div id="ref-tsafnat2024converge" class="csl-entry" role="listitem">
+Tsafnat, G., Dunscombe, R., Gabriel, D., Grieve, G., Reich, C., 2024. Converge or collide? <span>Making</span> sense of a plethora of open data standards in healthcare: An editorial.
 </div>
 <div id="ref-venable2016feds" class="csl-entry" role="listitem">
 Venable, J., Pries-Heje, J., Baskerville, R., 2016. <span>FEDS</span>: A <span>Framework</span> for <span>Evaluation</span> in <span>Design Science Research</span>. European Journal of Information Systems 25, 77–89. <a href="https://doi.org/10.1057/ejis.2014.36">https://doi.org/10.1057/ejis.2014.36</a>

@@ -107,10 +107,7 @@ Conceptually, the OpenHIE framework constitutes a framework for an open digital 
 
 In the paper, we present a design that extends the OpenHIE specification to include the four types of data sharing mentioned above. Using the full-STAC approach [@mehl2023fullstac] we combine open standards, open technologies and open architectures into a coherent modular HDP platform that can be configured and reused across a variety of use-cases. Subsequently, we employ a formative, naturalistic evaluation to assess the technical risk and efficacy of the design [@venable2016feds]. Given that it is prohibitively expensive to evaluate the design a real-world setting, we aim to minimize technological risks and maximize the efficacy of the design by considering three examples of health data platforms in LMICs, namely i) the OpenHIM platform ([https://jembi.gitbook.io/openhim-platform/](https://jembi.gitbook.io/openhim-platform/)); ii) the ONA Canopy platform [https://ona.io/home/services/canopy/](https://ona.io/home/services/canopy/); and iii) the work conducted at PharmAccess Foundation as part of the MomCare programme ([https://health-data-commons.pharmaccess.org](https://health-data-commons.pharmaccess.org)). As part of our design research, we have taken a narrative approach in surveying existing scientific studies on health data platforms, focusing on the seminal reports and subsequently searching forward citations. In addition, we have searched the open source repositories (most notably GitHub) and the online communities (OpenHIE community, FHIR community) to search for relevant open standards, technologies and architectures. This paper should not be considered as a proper systematic review.
 
-The main contributions of this paper is that:
-- It provides a framework for the components of the Data & Analysis Services that builds on current best practices from the data engineering community into the OpenHIE framework
-- Provides details on type 1 and 2 data sharing, comparing the different design options
-
+The main contributions of this paper are i) description of a framework for the components of the Data & Analysis Services that builds on current best practices from the data engineering community into the OpenHIE framework; and ii) evaluation of different implementations and design options for type 1 and 2 data sharing within an extended OpenHIE architecture. As such, it aims to inform future developments and implementation of open digital health platforms in LMICs.
 
 
 ## Design
@@ -119,7 +116,7 @@ The main contributions of this paper is that:
 
 The recent convergence to FHIR as the de facto standard for information exchange has fuelled the development of OpenHIE. FHIR is currently used both for routine healthcare settings [@ayaz2021fast] and clinical research settings [@duda2022hl7;@vorisek2022fast] and is increasingly being used in LMICs as well. The guidelines and standards of the African Union explicitly state FHIR is to be used as the messaging standard [@2023african]. The FHIR-native OpenSRP platform [@mehl2020open] has been deployed in 14 countries targeting various patient populations, amongst which a reference implementation of the WHO antenatal and neonatal care guidelines for midwives in Lombok, Indonesia [@summitinstitutefordevelopment2023bunda;@kurniawan2019midwife]. In India, FHIR is used as the underlying technology for the open Health Claims Exchange protocol specification, which has been adopted by the Indian government as the standard for e-claims handling [@hcx]. This range of utilizations showcase the standards’ widespread applicability. The proceedings of the OpenHIE conference 2023 attest to the fact that FHIR and open source technologies are embraced as critical enablers in implementing health information exchanges in LMICs [@ohie2023unconference].
 
-Various studies have investigated the merits of FHIR and its performance vis-a-vis other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP and FHIR have been made [@ayaz2023transforming;@mullie2023coda;@rinaldi2021openehr;@cremonesi2023need;@sinaci2023data]. A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR concluded that i) these three standards are functionally and technically compatible, and therefore can be used side by side; and that ii) each of these standards have their strengths and limitations that correlate with their intended use as summarized in the @tbl-comparison.
+Various studies have investigated the merits of FHIR and its performance vis-a-vis other healthcare standards. Comparisons between OpenEHR, ISO 13606, OMOP and FHIR have been made [@ayaz2023transforming;@mullie2023coda;@rinaldi2021openehr;@cremonesi2023need;@sinaci2023data;@tsafnat2024converge]. A study involving 10 experts comparing OpenEHR, ISO 13606 and FHIR concluded that i) these three standards are functionally and technically compatible, and therefore can be used side by side; and that ii) each of these standards have their strengths and limitations that correlate with their intended use as summarized in the @tbl-comparison.
 
 ![Comparison of OpenEHR, ISO 13606 and FHIR standards](images/comparison-ehr-standards.png){width=auto #tbl-comparison}
 
@@ -157,7 +154,7 @@ The solution of the SQL-on-FHIR project is to provide a specification for defini
 
 #### Extending OpenHIE with a FHIR-based composable data stack
 
-We propose to extend the OpenHIE architecture with a "Data and Analytics Services" domain with different service layers by synthesizing the current best practices of the a lakehouse architecture of [@hai2023data;@harby2022data;@harby2024data] and the composable data stack [@pedreira2023composable] (@fig-ohie, @tbl-data-and-analysis-services). These 5 services are considered the core of the FHIR data platform, and although it practice often a downstream dashboarding or visualization component is used, that component is not considered part of this architecture as such. NB: distinction between exploration and dashboarding is not absolute.
+We propose to extend the OpenHIE architecture with a "Data and Analytics Services" domain with different service layers by synthesizing the current best practices of the a lakehouse architecture of [@hai2023data;@harby2022data;@harby2024data] and the composable data stack [@pedreira2023composable] (@fig-ohie, @tbl-data-and-analysis-services). These 5 services are considered the core of the FHIR data platform, and although in practice often a downstream dashboarding or visualization component is used, that component is not the main focus of our analysis. Rather, we aim to elucidate and conceptualize the core "FHIR Data Lakehouse".
 
 ![Proposed extension of the OpenHIE architecture that includes "Data and Analytics Services" as an additional service domain.](./images/openhie-extended-architecture.png){#fig-ohie}
 
@@ -213,13 +210,14 @@ Default workflow is extraction of data from SHR using Bulk FHIR API. Data contai
 
 ##### Maintenance
 
-- SQL-on-FHIR Views provide new standard to support mADX aggregate reporting
+- SQL-on-FHIR Views provide new standard to support mADX aggregate reporting !! We need to stress this, because this is an existing OpenHIE workflow
 - Maintenance-related functions remain the same
 - NB: orchestration falls under data provenance
 
 ##### Data consumers
 
-Strictly speaking not part of the architecture, 
+- Many tools, often focus on creating information dashboards and visualizations
+- Compatibility with processing & API: which query languages and interfaces are supported. Some dialect of SQL, some dialect of NoSQL, dataframe API, all of the above?
 
 
 
@@ -231,32 +229,27 @@ Many components of the OpenHIE specification are now available as a digital publ
 - the  “Open Smart Register Platform” (OpenSRP), that focuses on providing a mobile-first platform, including a FHIR native app designed to support the WHO Smart Guidelines
 - the OpenHIM Platform, a reference implementation of the Instant OpenHIE framework, providing an easy way to set up, manage and operate various HIE configurations
 
-![ Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document.](images/digital-public-goods.png){#tbl-digital-public-goods}
+![Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document.](images/digital-public-goods.png){#tbl-digital-public-goods}
 
-
-
-Allows for the Data Warehouse data to be visualised via a BI tool (Apache Superset)
 
 ## Evaluation
 
 ### OpenHIM platform
 
-- One of the most used IOL layers in LMICs. Leading development of InstantHIE library to configure OpenHIE infrastructures
+To evaluate the extended OpenHIE architecture described above, we first consider the OpenHIM Platform. The Open Health Information Mediator (OpenHIM, [http://openhim.org/](OpenHIMhttp://openhim.org/))) component is the reference implementation of the Interoperability Layer (IOL) as defined in the OpenHIE specification. The most current version (8.4.2 at the time of writing) provides all the core functions including central point of access for the services of the HIE; routing functions; central logging for auditing and debugging purposes; and orchestration/mediation mechanisms to co-ordinate requests. This reference implementation of the IOL has recently been extended as a reference implementation of the so-called 'Instant OpenHIE' concept, that aims to address the primary needs of (i) allowing implementers to engage with a preconfigured health information exchange solution and running tools (based on the architecture) and test their applicability and functionality with a real health context problem; and (ii) having a packaged reference version of the OpenHIE architecture that is comprised of a set of reference technologies and other appropriate tools that form the building blocks of the health information exchange that can be configured and extended to support particular use cases [@digitalsquare2020instantopenhie]. The Instant HIE project allows OpenHIE components to be packages up, deployed, operated and scaled via a simple Command Line Interface (CLI, version 2 released in 2023 [https://github.com/openhie/instant-v2](https://github.com/openhie/instant-v2)). The OpenHIM Platform ([https://jembi.gitbook.io/openhim-platform](https://jembi.gitbook.io/openhim-platform)) provides a set of bundled packages (called recipes) that can be deployed using the Instant OpenHIE deployment tool. In the following we will evaluate the recipe for "a central data repository with a data warehouse" that provides "A FHIR-based Shared Health record linked to a Master Patient Index (MPI) for linking and mathing patient demographics and a default reporting pipeline to transform and visualise FHIR data" ([https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing](https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing)).
 
-[https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing](https://jembi.gitbook.io/openhim-platform/recipes/central-data-repository-with-data-warehousing)
+![Overview of the default data stack of the OpenHIM Platform. The default stack (top, darkblue) consists of Kafka, Clickhouse and Superset. An alternative solution based on the ELK stack is also supported (bottom, lightblue), consisting of Elasticsearch, Logstash and Kibana.](images/openhim-platform.png){#fig-openhim-platform}
 
+@fig-openhim-platform shows a schematic overview of two data stacks that are supported in the OpenHIM platform. The Shared Health Record (SHR, implemented with HAPI FHIR server) and the Client Registry (CR, implemented with JeMPI server) are the sources that store clinical FHIR data and patient demographic data, respectively. The default data stack is based on streaming ingestion using Kafka into a Clickhouse database. As part of the ingestion, incoming FHIR bundles that contain multiple FHIR resources are unbundled in separate topics. Subsequently, each FHIR resource topic is flatted using mappers Unbundling and flattening of FHIR resources is done in Kafka using FHIRPath. Superset is used as the tool for consuming the data to create dashboard visualizations.
 
-- Accept FHIR bundles submitted securely through an IOL (OpenHIM)
-- Stores Clinical FHIR data to a FHIR store (HAPI FHIR)
-- Stores Patient Demographic data to an MPI (JeMPI)
-- Pushes FHIR resources to Kafka for the reporting pipeline (and other systems) to use
-- Pulls FHIR data out of Kafka and maps it to flattened tables in the Data Warehouse (Clickhouse)
+The OpenHIM platform also support data analytics based on the ELK stack, where data is ingested in bulk using Logstash, stored in Elasticsearch and made available for consumption in Kibana. Also here, the incoming FHIR bundles are unbundled in Logstash into separate FHIR resources. However, given that Elasticsearch is a document-based search engine, the FHIR resources are stored as-is with no flattening. Exploring and analysing the data requires writing queries in Elasticsearch Query Language (ES|QL), either through the query interface of Elasticsearch or using Kibana.
 
-- View generation in different packages, not portable
-  - Logstash for bulk
-  - Kafka for streaming, uses JSON for mappings which looks similar to SQL-on-FHIR
+Evaluating these two data stacks, we see the following:
 
-- 
+- Pattern of flattening FHIR resources with FHIRPath expressions is very close to the idea of SQL-on-FHIR. Although it doesn't adhere to this new standard in the strict sense, the philosophy of generating tabular views is the same
+- When using the ELK stack, flattening is done at the end. Implementations of FHIRPath support Elasticsearch as an execution engine, also here 
+- Main limitations: both Clickhouse en Elasticsearch don't follow decomposition of storage, compute and UI. Therefore, downward scaleability is limited.
+
 
 ### ONA Canopy
 
@@ -271,13 +264,6 @@ In the periode 2022-2023, a new iteration of MomCare ...One of the practical obj
 The largest challenge during the transformation process pertained to the absence of unique business identifiers for patients and healthcare organizations. For patients, either the mobile phone number or the healthcare insurance number was taken, depending on availability. A combination of name, address and latitude/longitude coordinates were used to uniquely identify organizations and locations, as Tanzania does not have a system in place for this purpose.
 
 The transformed and validated data is uploaded into the FHIR server on a daily basis using an automated cloud function. Analysis of bulk data was done by directly reading the standard newline delimited JSON into the Python pandas data analysis library. Cross checking the output with queries on the original data confirmed that the whole data pipeline produced consistent results. For example, the report of the antenatal coverage metric (number of pregnancies with four or more visits) could be reproduced per patient journey and aggregated (per year, per organization etc.) as required for the MomCare reports.
-
-
-
-
-
-
-
 
 
 ## Discussion
@@ -322,6 +308,9 @@ Requirements are similar, but implementation differs: Datamodel is non-FHIR, foc
 
 |    |    |
 |:---|:---|
+| CLI | Command-line Interface |
+| CR | Client Registry |
+| ELK | Elasticsearch, Logstach and Kibana stack |
 | ELT | Extract, Load and Transform |
 | FAIR |Findable, Accessible, Interoperable and Reusable |
 | FHIR |Fast Healthcare Interoperability Resources |
@@ -330,5 +319,7 @@ Requirements are similar, but implementation differs: Datamodel is non-FHIR, foc
 | HIE | Health Information Exchange |
 | IR | Intermediate Representation |
 | LMIC | Low- and middle income countries |
+| MPC | Multiparty Computation |
 | PET | Privacy-enhancing technologies |
+| SHR | Shared Health Record |
 
