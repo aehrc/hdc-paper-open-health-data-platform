@@ -314,7 +314,8 @@ Requirements are similar, but implementation differs: Datamodel is non-FHIR, foc
   - FAIR principles vs FHIR graph: is FHIR a FAIR Data Object
 
 - Since we use FHIR, we don't need a semantic layer because that is already provided
-- 
+- We do need different semantic layer, namely with metrics. Explain different types of semantics.
+  - The metrics layer same function as CQL. Discuss CQL vs generic metrics layer.
 
 ### Attribute-based access control
 
