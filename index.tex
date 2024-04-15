@@ -326,26 +326,24 @@ digital platform. Openness for digital platforms refers to i) the use of
 open boundary resources, that is, specifications for the various
 healthcare specific workflows and information standards such as FHIR;
 and ii) the use of open source components that are available as digital
-public goods\citep{digitalpublicgoods}. If we are to use the OpenHIE
+public goods \citep{digitalpublicgoods}. If we are to use the OpenHIE
 framework as an open data platform, we need to extend the standards,
 technologies and architecture to include functionality for data sharing
-and reuse. Distinguishing four types of data sharing
-(Table~\ref{tbl-types-data-sharing}), the purpose of this paper is to
-investigate how new standards and technologies that can establish
-openness of HDPs can be integrated into the OpenHIE architecture
-framework. The lack of detailed specifications and consensus of this
+and reuse. The lack of detailed specifications and consensus of this
 addition to OpenHIE currently stands in the way of development projects
-that aim to establish HDPs in LMICs. In addition, we explicitly address
-the requirement of downward scalability as we aim to implement health
-data platforms in resource constrained setting of LMICs.
+that aim to establish HDPs in LMICs. The purpose of this paper,
+therefore, is to specificy how new standards and technologies can be
+integrated into the OpenHIE architecture such that an open HDP can be
+realized that supports the four types of data sharing as defined by de
+Reuver at al.~(Table~\ref{tbl-types-data-sharing}).
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1200}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3200}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.5600}}@{}}
 \caption{Types of data sharing and in relation to new standards and
-technology enablers to create
-openness.}\label{tbl-types-data-sharing}\tabularnewline
+technology enablers to create openness. Taken from de Reuver et
+al.~(2022).}\label{tbl-types-data-sharing}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -398,16 +396,16 @@ an open format built to represent machine learning models. \\
 
 \section{Methods}\label{methods}
 
-In the paper, we present a design that extends the OpenHIE specification
-to include the four types of data sharing mentioned above. Using the
-full-STAC approach \citep{mehl2023fullstac} we combine open standards,
-open technologies and open architectures into a coherent modular HDP
-platform that can be configured and reused across a variety of
-use-cases. We employ a formative, naturalistic evaluation to assess the
-technical risk and efficacy of the design \citep{venable2016feds}. Given
-that it is prohibitively expensive to evaluate the design a real-world
-setting, we aim to minimize technological risks and maximize the
-efficacy of the design by considering three examples of health data
+In this paper, we present a design that extends the OpenHIE
+specification to include the four types of data sharing mentioned above.
+Using the full-STAC approach \citep{mehl2023fullstac} we combine open
+standards, open technologies and open architectures into a coherent
+modular HDP platform that can be configured and reused across a variety
+of use-cases. We employ a formative, naturalistic evaluation to assess
+the technical risk and efficacy of the design \citep{venable2016feds}.
+Given that it is prohibitively expensive to evaluate the design a
+real-world setting, we aim to minimize technological risks and maximize
+the efficacy of the design by considering three examples of health data
 platforms in LMICs, namely:
 
 \begin{enumerate}
@@ -423,6 +421,25 @@ platforms in LMICs, namely:
   programme (\url{https://health-data-commons.pharmaccess.org}).
 \end{enumerate}
 
+These three real-world implementations are evaluated along the following
+dimensions:
+
+\begin{itemize}
+\tightlist
+\item
+  What is the level of openness of the implementation, specifically in
+  terms of the four types of data sharing and platform-to-platform
+  opennenss?
+\item
+  How are the core maintenance functions of the HDP implemented, where
+  we particularly focus on functions related to metadata management,
+  data lineage and access control mechanisms?
+\item
+  Is the solution suitable for downward scalability, where we focus on
+  the computer and storage requirements of the solution and assess the
+  minimal requirements for on-site resources (computers, edge devices)
+\end{itemize}
+
 As part of our design research, we have taken a narrative approach in
 surveying existing scientific studies on health data platforms, focusing
 on the seminal reports and subsequently searching forward citations. In
@@ -434,10 +451,12 @@ This paper should not be considered as a proper systematic review.
 The main contributions of this paper are i) description of a framework
 for the components of the Data \& Analysis Services that builds on
 current best practices from the data engineering community into the
-OpenHIE framework; and ii) evaluation of different implementations and
+OpenHIE framework; ii) evaluation of different implementations and
 design options for type 1 and 2 data sharing within an extended OpenHIE
-architecture. As such, it aims to inform future developments and
-implementation of open digital health platforms in LMICs.
+architecture; and iii) provide open content for the MomCare
+implementation to facilitate adaptation and deployment. As such, it aims
+to inform future developments and implementation of open digital health
+platforms in LMICs.
 
 \section{Design}\label{design}
 
@@ -955,9 +974,35 @@ Evaluating these two data stacks, we see the following:
   scaleability is limited.
 \end{itemize}
 
+\subsubsection{Level of opennness}\label{level-of-opennness}
+
+TO DO: evaluate openness of OpenHIM platform
+
+\subsubsection{Core maintenance
+functions}\label{core-maintenance-functions}
+
+TO DO: evaluate maintenance functions
+
+\subsubsection{Downward scaleability}\label{downward-scaleability}
+
+TO DO: evaluate downward scalability
+
 \subsection{ONA Canopy}\label{ona-canopy}
 
 TO DO: add section describing ONA Canopy.
+
+\subsubsection{Level of opennness}\label{level-of-opennness-1}
+
+TO DO: evaluate openness of OpenHIM platform
+
+\subsubsection{Core maintenance
+functions}\label{core-maintenance-functions-1}
+
+TO DO: evaluate maintenance functions
+
+\subsubsection{Downward scaleability}\label{downward-scaleability-1}
+
+TO DO: evaluate downward scalability
 
 \subsection{Momcare programme}\label{momcare-programme}
 
@@ -1099,6 +1144,19 @@ data \& analytics services
 
 TO DO: Add diagram
 
+\subsubsection{Level of opennness}\label{level-of-opennness-2}
+
+TO DO: evaluate openness of OpenHIM platform
+
+\subsubsection{Core maintenance
+functions}\label{core-maintenance-functions-2}
+
+TO DO: evaluate maintenance functions
+
+\subsubsection{Downward scaleability}\label{downward-scaleability-2}
+
+TO DO: evaluate downward scalability
+
 \section{Discussion}\label{discussion}
 
 \subsection{Openness of data
@@ -1108,6 +1166,7 @@ We specifically address the notion of openness of HDPs in LMICs in terms
 of the design-related questions put forward by de Reuver at al.11:
 
 \begin{itemize}
+\tightlist
 \item
   Object of openness: what data-related resources should data platforms
   make available when opening up (e.g.~data, data products, datadriven

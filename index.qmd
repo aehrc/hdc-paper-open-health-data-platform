@@ -256,10 +256,34 @@ Evaluating these two data stacks, we see the following:
 - When using the ELK stack, flattening is done at the end. Implementations of FHIRPath support Elasticsearch as an execution engine, also here 
 - Main limitations: both Clickhouse en Elasticsearch don't follow decomposition of storage, compute and UI. Therefore, downward scaleability is limited.
 
+#### Level of opennness
+
+TO DO: evaluate openness of OpenHIM platform
+
+#### Core maintenance functions
+
+TO DO: evaluate maintenance functions
+
+#### Downward scaleability
+
+TO DO: evaluate downward scalability
+
 
 ### ONA Canopy
 
 TO DO: add section describing ONA Canopy.
+
+#### Level of opennness
+
+TO DO: evaluate openness of OpenHIM platform
+
+#### Core maintenance functions
+
+TO DO: evaluate maintenance functions
+
+#### Downward scaleability
+
+TO DO: evaluate downward scalability
 
 ### Momcare programme
 
@@ -292,8 +316,20 @@ Based on these experiments, we arrived at the following design for the data & an
   - duckdb
   - sveltekit
 
-
 TO DO: Add diagram
+
+#### Level of opennness
+
+TO DO: evaluate openness of OpenHIM platform
+
+#### Core maintenance functions
+
+TO DO: evaluate maintenance functions
+
+#### Downward scaleability
+
+TO DO: evaluate downward scalability
+
 
 ## Discussion
 
@@ -304,7 +340,6 @@ We specifically address the notion of openness of HDPs in LMICs in terms of the 
 - Object of openness: what data-related resources should data platforms make available when opening up (e.g. data, data products, datadriven insights, analytics modules)? Which user groups derive value from accessing data-related resources from data platforms (e.g. data providers, data users, intermediaries, developers)?
 - Unit of analysis: what is platform-to-platform openness in the context of data platforms, given the expectation that different HDPs will emerge at various aggregation levels? How do we distinguish meta-platforms, forking, and platform interoperability?
 - Risk of openness: What are the novel (negative) implications of opening up data platforms? How can reflexivity in design help providers to resolve the negative implications of openness?
-
 - Answers/insights to above:
   - Openness of standardized view on FHIR data and cross-language serialization of relational algebra makes it possible to fully standardize the workflow from start to finish
   - Platform-to-platform: MPC
