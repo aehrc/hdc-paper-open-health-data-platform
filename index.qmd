@@ -46,7 +46,7 @@ author:
       - name: IntelliSOFT
         city: Nairobi
         country: Kenya
-  - name: XXX
+  - name: Alessandro Pietrobon 
     affiliations:
       - name: ONA
         city: Nairobi
