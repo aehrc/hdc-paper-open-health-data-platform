@@ -258,8 +258,6 @@ Today, many components of the OpenHIE specification are now available as a digit
 | | Admin dashboard for SHR | [OpenSRP FHIR Web](https://github.com/onaio/fhir-web) |
 | | Configuration and deployment | [Instant OpenHIE](https://jembi.gitbook.io/instant-v2/) |
 
-
-
 : Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document. {#tbl-digital-public-goods .striped .hover .responsive}
 
 ## Evaluation

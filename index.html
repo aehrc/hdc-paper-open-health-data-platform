@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -470,13 +470,120 @@ Table&nbsp;3: Definition of Data and Analysis Services
 <section id="open-technologies-deploying-instant-openhie-with-digital-public-goods" class="level3">
 <h3 class="anchored" data-anchor-id="open-technologies-deploying-instant-openhie-with-digital-public-goods">Open technologies: deploying Instant OpenHIE with digital public goods</h3>
 <p>Today, many components of the OpenHIE specification are now available as a digital public goods, as listed in <a href="#tbl-digital-public-goods" class="quarto-xref">Table&nbsp;4</a>. To further ease the development, configuration and deployment of health information exchanges, the concept of ‘Instant OpenHIE’ has been championed to (i) allow implementers to engage with a preconfigured health information exchange solution and running tools (based on the architecture) and test their applicability and functionality with a real health context problem; and (ii) have a packaged reference version of the OpenHIE architecture that is comprised of a set of reference technologies and other appropriate tools that form the building blocks of the health information exchange that can be configured and extended to support particular use cases <span class="citation" data-cites="InstantOpenHIEv2">(<a href="#ref-InstantOpenHIEv2" role="doc-biblioref"><span>“Instant <span>OpenHIE</span> v2.2.0,”</span> 2024</a>)</span>. Besides the core functional components of the OpenHIE architecture, the Instant OpenHIE toolkit allows packaging and integration of generic components such as Identity and Access Managment (IAM) and a reverse proxy gateway. In the following, we will evaluatie three of such configurations, with the aim to conceptualize and evaluate the proposed Data and Analytics Services domain of of the OpenHIE architecture.</p>
-<div id="tbl-digital-public-goods" class="quarto-float anchored">
+<div id="tbl-digital-public-goods" class="striped hover responsive quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-digital-public-goods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;4: Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document.
 </figcaption>
 <div aria-describedby="tbl-digital-public-goods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/digital-public-goods.png" class="img-fluid figure-img">
+<div class="table-responsive">
+<table class="table-striped table-hover table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Digital Public Good</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Interoperability layer (IOL)</strong></td>
+<td style="text-align: left;">IOL</td>
+<td style="text-align: left;"><a href="http://openhim.org">OpenHIM</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Registry Services</strong></td>
+<td style="text-align: left;">Client Registry (CR)</td>
+<td style="text-align: left;"><a href="https://help.santesuite.org/product-overview/santesuite-products/master-patient-index-santempi">SanteMPI</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="https://jembi.gitbook.io/jempi/">JeMPI</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="https://www.openclientregistry.org/">OpenCR</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Facility Registry (FR)</td>
+<td style="text-align: left;"><a href="https://github.com/intrahealth/gofr">Global Open Facility Registry (GOFR)</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Health Worker Registry (HWR)</td>
+<td style="text-align: left;"><a href="https://www.ihris.org/ihris-50">iHRIS</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Terminology Service (TS)</td>
+<td style="text-align: left;"><a href="https://openconceptlab.org/terminology-service/">OCL Terminology Service</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Product Catalog (PC)</td>
+<td style="text-align: left;">not available</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Business Domain Services</strong></td>
+<td style="text-align: left;">Shared Health Record (SHR)</td>
+<td style="text-align: left;"><a href="https://hapifhir.io/">HAPI FHIR</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="https://www.health-samurai.io/fhirbase">Fhirbase</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="https://github.com/microsoft/fhir-server">FHIR Server for Azure</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="https://github.com/I-TECH-UW/shared-health-record">I-TECH-UW SHR</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Health Management Information System (HMIS)</td>
+<td style="text-align: left;"><a href="http://dhis2.org/">DHIS2</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Finance and Insurance Service (FIS)</td>
+<td style="text-align: left;"><a href="http://openimis.org/">OpenIMIS</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Logistics Management Information System (LMIS)</td>
+<td style="text-align: left;"><a href="http://openlmis.org/">OpenLMIS</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Generic</strong></td>
+<td style="text-align: left;">Identity and Access Management (IAM)</td>
+<td style="text-align: left;"><a href="https://www.keycloak.org/">Keycloak</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Gateway &amp; proxy</td>
+<td style="text-align: left;"><a href="https://github.com/google/fhir-gateway">FHIR Information Gateway</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Admin dashboard for SHR</td>
+<td style="text-align: left;"><a href="https://github.com/onaio/fhir-web">OpenSRP FHIR Web</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Configuration and deployment</td>
+<td style="text-align: left;"><a href="https://jembi.gitbook.io/instant-v2/">Instant OpenHIE</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </figure>
 </div>
@@ -985,24 +1092,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1037,11 +1126,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

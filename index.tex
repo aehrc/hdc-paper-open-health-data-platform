@@ -878,22 +878,75 @@ three of such configurations, with the aim to conceptualize and evaluate
 the proposed Data and Analytics Services domain of of the OpenHIE
 architecture.
 
-\begin{table}
-
-\caption{\label{tbl-digital-public-goods}Overview of current open source
-implementations of components included in the OpenHIE specification that
-are FHIR-compatible. The category Analytics Services is not a part of
-the original OpenHIE and is discussed in the paper. Point-of-Service
-systems are excluded for brevity. A systematic review of such digital
-public goods is beyond the scope of this document.}
-
-\centering{
-
-\includegraphics{images/digital-public-goods.png}
-
-}
-
-\end{table}%
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2558}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2558}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4884}}@{}}
+\caption{Overview of current open source implementations of components
+included in the OpenHIE specification that are FHIR-compatible. The
+category Analytics Services is not a part of the original OpenHIE and is
+discussed in the paper. Point-of-Service systems are excluded for
+brevity. A systematic review of such digital public goods is beyond the
+scope of this document.}\label{tbl-digital-public-goods}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Digital Public Good
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Component
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Digital Public Good
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Interoperability layer (IOL)} & IOL &
+\href{http://openhim.org}{OpenHIM} \\
+\textbf{Registry Services} & Client Registry (CR) &
+\href{https://help.santesuite.org/product-overview/santesuite-products/master-patient-index-santempi}{SanteMPI} \\
+& & \href{https://jembi.gitbook.io/jempi/}{JeMPI} \\
+& & \href{https://www.openclientregistry.org/}{OpenCR} \\
+& Facility Registry (FR) &
+\href{https://github.com/intrahealth/gofr}{Global Open Facility Registry
+(GOFR)} \\
+& Health Worker Registry (HWR) &
+\href{https://www.ihris.org/ihris-50}{iHRIS} \\
+& Terminology Service (TS) &
+\href{https://openconceptlab.org/terminology-service/}{OCL Terminology
+Service} \\
+& Product Catalog (PC) & not available \\
+\textbf{Business Domain Services} & Shared Health Record (SHR) &
+\href{https://hapifhir.io/}{HAPI FHIR} \\
+& & \href{https://www.health-samurai.io/fhirbase}{Fhirbase} \\
+& & \href{https://github.com/microsoft/fhir-server}{FHIR Server for
+Azure} \\
+& & \href{https://github.com/I-TECH-UW/shared-health-record}{I-TECH-UW
+SHR} \\
+& Health Management Information System (HMIS) &
+\href{http://dhis2.org/}{DHIS2} \\
+& Finance and Insurance Service (FIS) &
+\href{http://openimis.org/}{OpenIMIS} \\
+& Logistics Management Information System (LMIS) &
+\href{http://openlmis.org/}{OpenLMIS} \\
+\textbf{Generic} & Identity and Access Management (IAM) &
+\href{https://www.keycloak.org/}{Keycloak} \\
+& Gateway \& proxy & \href{https://github.com/google/fhir-gateway}{FHIR
+Information Gateway} \\
+& Admin dashboard for SHR &
+\href{https://github.com/onaio/fhir-web}{OpenSRP FHIR Web} \\
+& Configuration and deployment &
+\href{https://jembi.gitbook.io/instant-v2/}{Instant OpenHIE} \\
+\end{longtable}
 
 \section{Evaluation}\label{evaluation}
 
