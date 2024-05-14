@@ -52,12 +52,22 @@ author:
       - name: ONA
         city: Nairobi
         country: Kenya
+  - name: Ryan Chrichton
+    affiliations:
+      - name: Jembi Health Systems
+        city: Durban
+        country: South Africa
   - name: John Grimes
     affiliations:
       - name: Australian e-Health Research Centre
         city: Brisbane
         country: Australia
   - name: Mark van der Graaf
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+  - name: Nicole Spieker
     affiliations:
       - name: PharmAccess Foundation
         city: Amsterdam
