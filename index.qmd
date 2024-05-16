@@ -249,13 +249,17 @@ Today, many components of the OpenHIE specification are now available as a digit
 | Category  | Component | Digital Public Good |
 |:----------|:----------|:--------------------|
 | **Interoperability layer (IOL)** | IOL | [OpenHIM](http://openhim.org) |
+| | | [mHero](https://www.mhero.org/technology) |
+| | | [OpenFN](https://docs.openfn.org/) |
 | **Registry Services** | Client Registry (CR) | [SanteMPI](https://help.santesuite.org/product-overview/santesuite-products/master-patient-index-santempi) |
 | | | [JeMPI](https://jembi.gitbook.io/jempi/) |
 | | | [OpenCR](https://www.openclientregistry.org/) |
+| | | [OpenCRVS](https://www.opencrvs.org/) |
 | | Facility Registry (FR) | [Global Open Facility Registry (GOFR)](https://github.com/intrahealth/gofr) |
+| | | [GeoPrism Registry (GPR)](https://geoprismregistry.com/) `|
 | | Health Worker Registry (HWR) | [iHRIS](https://www.ihris.org/ihris-50) |
 | | Terminology Service (TS) | [OCL Terminology Service](https://openconceptlab.org/terminology-service/) |
-| | Product Catalog (PC) | not available |
+| | Product Catalog (PC) | [PCMT](https://productcatalog.io/) |
 | **Business Domain Services** | Shared Health Record (SHR) | [HAPI FHIR](https://hapifhir.io/) |
 | | | [Fhirbase](https://www.health-samurai.io/fhirbase) |
 | | | [FHIR Server for Azure](https://github.com/microsoft/fhir-server) |
@@ -263,12 +267,13 @@ Today, many components of the OpenHIE specification are now available as a digit
 | | Health Management Information System (HMIS) | [DHIS2](http://dhis2.org/) |
 | | Finance and Insurance Service (FIS) | [OpenIMIS](http://openimis.org/) |
 | | Logistics Management Information System (LMIS) | [OpenLMIS](http://openlmis.org/) |
+| | | [OpenBoxes](https://openboxes.com/features/) |
 | **Generic** | Identity and Access Management (IAM) | [Keycloak](https://www.keycloak.org/) |
 | | Gateway & proxy | [FHIR Information Gateway](https://github.com/google/fhir-gateway) |
 | | Admin dashboard for SHR | [OpenSRP FHIR Web](https://github.com/onaio/fhir-web) |
 | | Configuration and deployment | [Instant OpenHIE](https://jembi.gitbook.io/instant-v2/) |
 
-: Overview of current open source implementations of components included in the OpenHIE specification that are FHIR-compatible. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity. A systematic review of such digital public goods is beyond the scope of this document. {#tbl-digital-public-goods .striped .hover .responsive}
+: Overview of current open source implementations of components that fit in the OpenHIE specification. The category Analytics Services is not a part of the original OpenHIE and is discussed in the paper. Point-of-Service systems are excluded for brevity.List compiled using [Global Goods for Digital Health](https://digitalsquare.org/digital-health-global-goods), [Digital Public Goods Alliance](https://digitalpublicgoods.net/) and search of open source code repositories.  A systematic review of such digital public goods is beyond the scope of this document.  {#tbl-digital-public-goods .striped .hover .responsive}
 
 ## Evaluation
 
