@@ -129,7 +129,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Conceptualizing open health data platforms for low- and middle income countries},
-  pdfauthor={Daniel Kapitan; Femke Heddema; Julie Fleischer; Chris Ihure; Antragama Abbas; Steven Wanyee; Alessandro Pietrobon; Ryan Chrichton; John Grimes; Mark van der Graaf; Nicole Spieker; Mark de Reuver},
+  pdfauthor={Daniel Kapitan; Femke Heddema; Julie Fleischer; Chris Ihure; Antragama Abbas; Steven Wanyee; Alessandro Pietrobon; Ryan Chrichton; John Grimes; Paula van Brakel; Mark van der Graaf; Nicole Spieker; Mark de Reuver},
   pdfkeywords={Analytics-on-FHIR, SQL-on-FHIR, HIE, data
 platforms, LMICs, digital health},
   colorlinks=true,
@@ -181,6 +181,10 @@ income countries}
 %
 }
 
+\author[1]{Paula van Brakel%
+%
+}
+
 \author[1]{Mark van der Graaf%
 %
 }
@@ -214,6 +218,7 @@ Africa},countrysep={,},postcodesep={}}
 Centre},city={Brisbane},country={Australia},countrysep={,},postcodesep={}}
 
 \cortext[cor1]{Corresponding author}
+
 
 
 
@@ -278,16 +283,21 @@ Case studies on digital platforms in healthcare point to an emerging
 pattern where the focus shifts from the digital platform with its
 defining software and hardware components, to the data as the primary
 object of interest in and of itself
-\citep{ozalp2022digital, alaimo2022organizations}. This observation ties
-into the proposed research agenda by de Reuver et al.~to consider data
+\citep{ozalp2022digital, alaimo2022organizations}. This development
+roughly correlates with the commonly used distinction between primary
+and secondary health data sharing \citep{cascini2024health}. While
+people are generally willing to share their health data to receive the
+best care (primary use), the attitude towards secondary use of health
+data varies greatly depending on the type and context. The shift in
+perspective from digital platforms supporting primary data sharing
+toward data platforms supporting secondary data sharing, ties in with
+the proposed research agenda by de Reuver et al.~to consider data
 platforms as a phenomenon distinct from digital platforms
 \citep{dereuver2022openness}. Generally, data platforms inherit the
-characteristics of digital platforms. For example, the economic
-perspective on digital platforms stresses their multi-sidedness with
-developers and consumers, while data platforms are used by data owners,
-data consumers and third party solution providers. At the same time,
-data platforms differ as their main offerings revolve around data. From
-a market perspective, data platforms have more moderate network effects
+characteristics of digital platforms. From an economic perspective, for
+example, both types exhibit multi-sided markets. At the same time, data
+platforms differ as their main offerings revolve around data. From an
+ecosystem perspective, data platforms have more moderate network effects
 and are more susceptible to fragmentation and heterogeneity.
 
 Particularly relevant in the context of health data platforms (HDPs), is
@@ -339,16 +349,24 @@ digital platform. Openness for digital platforms refers to i) the use of
 open boundary resources, that is, specifications for the various
 healthcare specific workflows and information standards such as FHIR;
 and ii) the use of open source components that are available as digital
-public goods \citep{digitalpublicgoods}. If we are to use the OpenHIE
-framework as an open data platform, we need to extend the standards,
-technologies and architecture to include functionality for data sharing
-and reuse. The lack of detailed specifications and consensus of this
-addition to OpenHIE currently stands in the way of development projects
-that aim to establish HDPs in LMICs. The purpose of this paper,
-therefore, is to specificy how new standards and technologies can be
-integrated into the OpenHIE architecture such that an open HDP can be
-realized that supports the four types of data sharing as defined by de
-Reuver at al.~(Table~\ref{tbl-types-data-sharing}).
+public goods \citep{digitalpublicgoods}. Typically, these open source
+components are intended to support deployment in small countries
+(population up to 10 million) or large NGOs out of the box, and should
+provide a stepping stone for customized deployments in medium-sized
+countries (population around 40 million).\footnote{Although the OpenHIE
+  specification does not include details on dimensioning, these are
+  typically the requirements that are used within the community. See
+  \href{https://wiki.ohie.org/display/CP/Interoperability+Layer+-+Use+Cases+and+Requirements}{OpenHIE
+  Community Wiki}.} If we are to use the OpenHIE framework as an open
+data platform, we need to extend the standards, technologies and
+architecture to include functionality for data sharing and reuse. The
+lack of detailed specifications and consensus of this addition to
+OpenHIE currently stands in the way of development projects that aim to
+establish HDPs in LMICs. The purpose of this paper, therefore, is to
+specificy how new standards and technologies can be integrated into the
+OpenHIE architecture such that an open HDP can be realized that supports
+the four types of data sharing as defined by de Reuver at
+al.~(Table~\ref{tbl-types-data-sharing}).
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1200}}
@@ -586,7 +604,7 @@ source systems in bulk (E), delivered to storage with aligned schemas
 (L) and transformed into a format ready for analysis (T)
 \citep{hai2023data}. The discerning characteristic of the lakehouse
 architecture is its foundation on low-cost and directly-accessible
-storage that also provides traditional analytical DBMS management and
+storage that also provides traditional database management and
 performance features such as ACID transactions, data versioning,
 auditing, indexing, caching, and query optimization
 \citep{armbrust2021lakehouse}. Lakehouses thus combine the key benefits
@@ -618,33 +636,43 @@ taken one step further. A composable data system
 Substrait for Intermediate Representation (standard A, IR) and Apache
 Arrow for data connectivity and data memory layout (standards B and C,
 respectively). The composable data stack can be implemented with current
-open source technologies (Figure~\ref{fig-cds-examples}). As an example,
+open source technologies (\textbf{?@fig-cds-examples}). As an example,
 the Ibis user interface is currently sufficiently mature to offer a
 standardized dataframe interface to 19 different execution engines.
 
 \begin{figure}
 
-\centering{
+\begin{minipage}{\linewidth}
 
-\includegraphics{images/composable-data-stack.png}
+\begin{figure}[H]
+
+{\centering \includegraphics{images/composable-data-stack.png}
 
 }
 
-\caption{\label{fig-composable-data-stack}The composable data stack.
-Image source: \url{https://voltrondata.com/codex}.}
+\subcaption{a)}
 
 \end{figure}%
 
-\begin{figure}
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
 
-\centering{
+\begin{figure}[H]
 
-\includegraphics{images/composable-data-stack-implementation-2.png}
+{\centering \includegraphics{images/composable-data-stack-implementation-2.png}
 
 }
 
-\caption{\label{fig-cds-examples}Examples of implementations of the
-composable data stack. Image source:
+\subcaption{b)}
+
+\end{figure}%
+
+\end{minipage}%
+
+\caption{\label{fig-composable-data-stack}Schematic overview of the
+composable data stack showing a) the overall architecture and b)
+examples of implementations. Images taken from
 \url{https://voltrondata.com/codex}.}
 
 \end{figure}%
@@ -897,8 +925,10 @@ architecture.
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4884}}@{}}
 \caption{Overview of current open source implementations of components
 that fit in the OpenHIE specification. The category Analytics Services
-is not a part of the original OpenHIE and is discussed in the paper.
+is not a part of the original OpenHIE and is discussed in this paper.
 Point-of-Service systems are excluded for brevity.List compiled using
+\href{https://wiki.ohie.org/display/DR/OpenHIE+Reference+Technologies}{OpenHIE
+Reference Technologies},
 \href{https://digitalsquare.org/digital-health-global-goods}{Global
 Goods for Digital Health},
 \href{https://digitalpublicgoods.net/}{Digital Public Goods Alliance}
@@ -939,7 +969,12 @@ Digital Public Good
 & Facility Registry (FR) &
 \href{https://github.com/intrahealth/gofr}{Global Open Facility Registry
 (GOFR)} \\
-& & \href{https://geoprismregistry.com/}{GeoPrism Registry (GPR)} ` \\
+& & \href{https://geoprismregistry.com/}{GeoPrism Registry (GPR)} \\
+& & \href{http://instedd.org/technologies/resource-map/}{Resource
+Map} \\
+& & \href{https://healthsites.io/}{Healthsite.io} \\
+& & \href{https://geoprismregistry.com/}{GeoPrism Registry} \\
+& & \href{https://github.com/dhis2}{DHIS2} \\
 & Health Worker Registry (HWR) &
 \href{https://www.ihris.org/ihris-50}{iHRIS} \\
 & Terminology Service (TS) &
@@ -953,8 +988,13 @@ Service} \\
 Azure} \\
 & & \href{https://github.com/I-TECH-UW/shared-health-record}{I-TECH-UW
 SHR} \\
-& Health Management Information System (HMIS) &
-\href{http://dhis2.org/}{DHIS2} \\
+& Health Management Information System (HMIS)\footnote{Note that there
+  is often a confusion on the acronym HMIS. Strictly speaking, the
+  OpenHIE specification uses HMIS to refer to a Health Management
+  Information System that is part of the Business Domain Services.
+  Sometimes HMIS is used to refer to a Hospital Management Systems in
+  the Point-of-Service domain, synonymous with an Electronic Medical
+  Record (EMR) system.} & \href{http://dhis2.org/}{DHIS2} \\
 & Finance and Insurance Service (FIS) &
 \href{http://openimis.org/}{OpenIMIS} \\
 & Logistics Management Information System (LMIS) &
@@ -1357,6 +1397,7 @@ computation}\label{federated-learning-and-multiparty-computation}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
+ACID & Atomicity, Consistency, Isolation, and Durability \\
 CLI & Command-line Interface \\
 CR & Client Registry \\
 ELK & Elasticsearch, Logstach and Kibana stack \\
