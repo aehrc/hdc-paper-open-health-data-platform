@@ -1,0 +1,100 @@
+---
+title: "Conceptualizing open health data platforms for low- and middle income countries"
+format:
+  elsevier-html:
+    toc: true
+    toc-depth: 3
+    fig-cap-location: top
+    code-fold: true
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: JIMR
+      cite-style: authoryear
+author:
+  - name: Daniel Kapitan
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+      - name: Eindhoven University of Technology
+        city: Eindhoven
+        country: the Netherlands
+    orcid: 0000-0001-8979-9194
+    email: daniel@kapitan.net
+  - name: Femke Heddema
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+  - name: Julie Fleischer
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+  - name: Chris Ihure
+    affiliations:
+      - name: PharmAccess Kenya
+        city: Nairobi
+        country: Kenya
+  - name: Steven Wanyee
+    affiliations:
+      - name: IntelliSOFT
+        city: Nairobi
+        country: Kenya
+  - name: Alessandro Pietrobon 
+    affiliations:
+      - name: ONA
+        city: Nairobi
+        country: Kenya
+  - name: Ryan Chrichton
+    affiliations:
+      - name: Jembi Health Systems
+        city: Durban
+        country: South Africa
+  - name: John Grimes
+    affiliations:
+      - name: Australian e-Health Research Centre
+        city: Brisbane
+        country: Australia
+  - name: Paula van Brakel
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+
+  - name: Mark van der Graaf
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+  - name: Nicole Spieker
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+        
+abstract: |
+  TO DO: add abstract.
+keywords: [Analytics-on-FHIR, SQL-on-FHIR, HIE, data platforms, LMICs, digital health]
+reference-section-title: References
+bibliography: pharmaccess.bib
+---
+
+## Introduction {#sec-introduction}
+
+Digital transformation have the potential to make inclusive health systems in low- and middle income countries (LMICs) a reality by connecting patients and professionals, using data as a currency of trust. Adoption of digital technologies in healthcare means more than simply increasing efficiency or cutting costs. Instead, digital technologies have the potential to i) increase the availability, accessibility, acceptability, and quality of health services as we know them; ii) change nature and direction of health care, and the possibility of making it more preventive, personalised, and mobile through the use of such technologies; and iii) enfranchise patients and communities (and particularly vulnerable groups including children and young people) and evolve their relationship with health professionals and providers, thus helping shape the health system according to the needs of the patients and communities [@kickbusch2021lancet].
+
+Yet, to date the global digital health ecosystem is still project-centric, resulting in data fragmentation and technology lock-in, compromising health care delivery [@mehl2023fullstac]. There is no dearth of the number of digital health interventions: sub-Saharan Africa has seen over 700 such projects in the past 10 years. There is, however, a fundamental lack in coordination, integration, scalability, sustainability, and equitable distribution of investments in digital health. Health policymakers and the global health community at large need to urgently institute coordination mechanisms to terminate unending duplication and disjointed vertical implementations and manage solutions for scale [@karamagi2022ehealth].
+
+In this context it is essential to have a good understanding of digital platforms and their associated ecosystem as an essential enabling socio-technical infrastructure upon  which digital health interventions can be realized in a more standardized, scaleable and sustainable fashion. Digital platforms are a challenging research object because of their distributed nature and intertwinement with institutions, markets and technologies [@dereuver2018digital]. Digital platform ecosystems vary according to three core building blocks: (1) platform ownership, (2) value-creating mechanisms, and (3) complementor autonomy [@hein2020digital]. Digital platforms have disrupted many sectors but have just started to make inroads into highly regulated industries such as healthcare [@ozalp2022digital].
+
+
+
+
+In this light, the challenges faced by LMICs in establishing national digital health platforms have a lot in common with those faced by high income countries. From a technological perspective, interoperability issues, weak integrations, siloed data repositories and overall lack of openness are often reported as key impediments [@malm-nicolais2023exploring;@mehl2023fullstac]. From a societal perspective, issues pertaining to the winner-takes-all nature of digital platforms are hotly debated as many jurisdictions make work to ensure these new digital health platforms indeed serve the common good of achieving universal health coverage [@sharon2018when].
+
+
+
+
+ 
