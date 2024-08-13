@@ -129,7 +129,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Conceptualizing open health data platforms for low- and middle income countries},
-  pdfauthor={Daniel Kapitan; Femke Heddema; Julie Fleischer; Chris Ihure; Steven Wanyee; Alessandro Pietrobon; Ryan Chrichton; John Grimes; Paula van Brakel; Mark van der Graaf; Nicole Spieker; Antragama Abbas; Mark de Reuver},
+  pdfauthor={Daniel Kapitan; Femke Heddema; Julie Fleischer; Chris Ihure; Steven Wanyee; Alessandro Pietrobon; Ryan Chrichton; John Grimes; Paula van Brakel; Mark van der Graaf; Nicole Spieker},
   pdfkeywords={Analytics-on-FHIR, SQL-on-FHIR, HIE, data
 platforms, LMICs, digital health},
   colorlinks=true,
@@ -189,14 +189,6 @@ income countries}
 %
 }
 
-\author[8]{Antragama Abbas%
-%
-}
-
-\author[8]{Mark de Reuver%
-%
-}
-
 
 \affiliation[1]{organization={PharmAccess
 Foundation},city={Amsterdam},country={the
@@ -213,13 +205,8 @@ Systems},city={Durban},country={South
 Africa},countrysep={,},postcodesep={}}
 \affiliation[7]{organization={Australian e-Health Research
 Centre},city={Brisbane},country={Australia},countrysep={,},postcodesep={}}
-\affiliation[8]{organization={Delft University of
-Technology},city={Delft},country={the
-Netherlands},countrysep={,},postcodesep={}}
 
 \cortext[cor1]{Corresponding author}
-
-
 
 
 
@@ -262,7 +249,7 @@ challenges, including the current fragmentation of digital platforms and
 the lack of clear-cut pathways of scaling up digital health programmes,
 such that they can support sustainable and equitable change of national
 health systems in LMICs
-\citep{mccool2022mobile, who2019recommendations, neumark2021digital}.
+\citep{mehl2023fullstac, mccool2022mobile, who2019recommendations, neumark2021digital}.
 
 A commonly used perspective to scrutinize digital health is to consider
 it as a digital platform \citep{dereuver2018digital}. Digital platforms
@@ -291,15 +278,16 @@ characteristics of digital platforms. From an economic perspective, for
 example, both types exhibit multi-sided markets. At the same time, data
 platforms differ as their main offerings revolve around data. From an
 ecosystem perspective, data platforms have more moderate network effects
-and are more susceptible to fragmentation and heterogeneity.
+and are more susceptible to fragmentation and heterogeneity
+\citep{dereuver2022openness}.
 
-Particularly relevant in the context of health data platforms (HDPs), is
-the conceptualization of openness. The shift in perspective from digital
-platforms to data platforms coincides with the paradox of open
-\citep{keller2021paradox}. Originally, openness of digital platforms
-focused on open source, open standards and copyrights, which by has been
-superseded by ``\ldots{} conflicts about privacy, economic value
-extraction, the emergence of artificial intelligence, and the
+Particularly relevant in the context of open health data platforms
+(OHDPs), is the conceptualization of openness. The shift in perspective
+from digital platforms to data platforms coincides with the paradox of
+open \citep{keller2021paradox}. Originally, openness of digital
+platforms focused on open source, open standards and copyrights, which
+by has been superseded by ``\ldots{} conflicts about privacy, economic
+value extraction, the emergence of artificial intelligence, and the
 destabilizing effects of dominant platforms on (democratic) societies.
 Instead of access to information, the control of personal data has
 emerged in the age of platforms as the critical contention.''
@@ -312,7 +300,7 @@ from digital platforms supporting primary data sharing toward data
 platforms supporting secondary data sharing is one of the key issues
 surrounding the polemic of data spaces \citep{otto2022designing} and
 data solidarity
-\citep{kickbusch2021lancet, prainsack2022data, prainsack2023beyond}.
+\citep{kickbusch2021lancet, prainsack2022data, prainsack2023beyond, purtova2023data}.
 Openness is particularly relevant if we are to realize a
 solidarity-based approach to health data sharing that i) gives people a
 greater control over their data as active decision makers; ii) ensures
@@ -324,18 +312,18 @@ extraction \citep{prainsack2022data}.
 platforms}\label{from-health-information-exchanges-to-health-data-platforms}
 
 This paper is motivated by the conflation of a number of developments
-relevant to the design and implementation of open, solidarity-based HDPs
-in LMICs. First, the OpenHIE framework \citep{openhie} has been adopted
-by many sub-Saharan African countries \citep{mamuye2022health} as the
-architectural blueprint for implementing nation-wide health information
-exchanges (HIE), including Nigeria \citep{dalhatu2023paper}, Kenya
-\citep{thaiya2021adoption} and Tanzania \citep{nsaghurwe2021one}. These
-countries have, as a matter of course, extended the framework to include
-``data \& analytics services'' as an additional domain. The rationale
-for this addition is to facilitate secondary reuse of health data for
-academic research, real-world evidence studies etc. which can be framed
-within the context of ongoing efforts towards Findable, Accessible,
-Interoperable and Reusable (FAIR) sharing of health data
+relevant to the design and implementation of open, solidarity-based
+OHDPs in LMICs. First, the OpenHIE framework \citep{openhie} has been
+adopted by many sub-Saharan African countries \citep{mamuye2022health}
+as the architectural blueprint for implementing nation-wide health
+information exchanges (HIE), including Nigeria \citep{dalhatu2023paper},
+Kenya \citep{thaiya2021adoption} and Tanzania \citep{nsaghurwe2021one}.
+These countries have, as a matter of course, extended the framework to
+include ``data \& analytics services'' as an additional domain. The
+rationale for this addition is to facilitate secondary reuse of health
+data for academic research, real-world evidence studies etc. which can
+be framed within the context of ongoing efforts towards Findable,
+Accessible, Interoperable and Reusable (FAIR) sharing of health data
 \citep{guillot2023fair}. In doing so, however, we have implicitly moved
 from conceptualizing digital health platforms for primary data sharing
 (the original OpenHIE specification) to health data platforms for
@@ -354,10 +342,10 @@ framework as an open data platform, we need to extend the standards,
 technologies and architecture to include functionality for secondary
 data sharing and reuse. The lack of detailed specifications and
 consensus of this addition to OpenHIE currently stands in the way of
-development projects that aim to establish HDPs in LMICs. The purpose of
-this paper, therefore, is to specificy how new standards and
+development projects that aim to establish OHDPs in LMICs. The purpose
+of this paper, therefore, is to specificy how new standards and
 technologies can be integrated into the OpenHIE architecture such that
-an open HDP can be realized that supports the following different types
+an open OHDP can be realized that supports the following different types
 of data sharing.
 
 \subsubsection{1. Sharing of data sets at the most granular (patient)
@@ -451,15 +439,15 @@ response, for example:
 \section{Methods}\label{methods}
 
 In this paper, we present a design that extends the OpenHIE
-specification to include the four types of data sharing mentioned above.
-Using the full-STAC approach \citep{mehl2023fullstac} we combine open
-standards, open technologies and open architectures into a coherent
-modular HDP platform that can be configured and reused across a variety
-of use-cases. We employ a formative, naturalistic evaluation to assess
-the technical risk and efficacy of the design \citep{venable2016feds}.
-Given that it is prohibitively expensive to evaluate the design a
-real-world setting, we aim to minimize technological risks and maximize
-the efficacy of the design by considering three examples of health data
+specification to include the three types of data sharing mentioned
+above. Using the full-STAC approach \citep{mehl2023fullstac} we combine
+open standards, open technologies and open architectures into a coherent
+modular OHDP that can be configured and reused across a variety of
+use-cases. We employ a formative, naturalistic evaluation to assess the
+technical risk and efficacy of the design \citep{venable2016feds}. Given
+that it is prohibitively expensive to evaluate the design a real-world
+setting, we aim to minimize technological risks and maximize the
+efficacy of the design by considering three examples of health data
 platforms in LMICs, namely:
 
 \begin{enumerate}
@@ -483,10 +471,10 @@ dimensions:
 \tightlist
 \item
   What is the level of openness of the implementation, specifically in
-  terms of the four types of data sharing and platform-to-platform
+  terms of the three types of data sharing and platform-to-platform
   opennenss?
 \item
-  How are the core maintenance functions of the HDP implemented, where
+  How are the core maintenance functions of the OHDP implemented, where
   we particularly focus on functions related to metadata management,
   data lineage and access control mechanisms?
 \item
@@ -1068,9 +1056,16 @@ Information Gateway} \\
 \href{https://jembi.gitbook.io/instant-v2/}{Instant OpenHIE} \\
 \end{longtable}
 
+\subsection{Open content}\label{open-content}
+
+\begin{itemize}
+\tightlist
+\item
+\end{itemize}
+
 \section{Evaluation}\label{evaluation}
 
-\subsection{OpenHIM platform}\label{openhim-platform}
+\subsection{Jembi OpenHIM platform}\label{jembi-openhim-platform}
 
 To evaluate the extended OpenHIE architecture described above, we first
 consider the OpenHIM Platform. The Open Health Information Mediator
@@ -1148,37 +1143,158 @@ Evaluating these two data stacks, we see the following:
   scaleability is limited.
 \end{itemize}
 
-\subsubsection{Level of opennness}\label{level-of-opennness}
+\subsection{ONA OpenSRP 2}\label{ona-opensrp-2}
 
-TO DO: evaluate openness of OpenHIM platform
+Continuing our evaluation of the extended OpenHIE architecture, we can
+see a different flavor in the implementation driven by Ona. Ona is a
+social enterprise that has pioneered the adoption of FHIR data standard
+via the development of OpenSRP2, a FHIR-based data collection app built
+using Google's FHIR SDK and focused on enabling offline-first workflows
+for community-based care. OpenSRP 2 is a complete rewrite of the
+original OpenSRP application, a global public good maintained by Ona and
+deployed in XX countries worldwide.
 
-\subsubsection{Core maintenance
-functions}\label{core-maintenance-functions}
+OpenSRP2 applications are currently implemented in the field in three
+countries (Uganda, Liberia, and Madagascar) in collaboration with local
+Ministries of Health and with international donors such as UNICEF,
+supporting a variety of different workflows including antenatal care
+(ANC), postnatal Care (PNC), immunization, and last-mile logistics.
+Besides the OpenSRP Android application and HAPI-FHIR backend, in each
+of its projects Ona also implements a companion set of tools that
+support analytics and various reporting needs.
 
-TO DO: evaluate maintenance functions
+\subsubsection{Requirements for data
+sharing}\label{requirements-for-data-sharing}
 
-\subsubsection{Downward scaleability}\label{downward-scaleability}
+Based on years of work in global health, Ona has learned that the data
+stack implemented to support a national-scale implementation of its
+FHIR-based application responds to the following requirements.
 
-TO DO: evaluate downward scalability
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7143}}@{}}
+\caption{Requirements and rationale for open health data platform
+developed and used by ONA, based on OpenSRP 2
+(\url{https://opensrp.io/}).}\label{tbl-ona-requirements}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Requirement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Rationale
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Requirement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Rationale
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Ingest data from multiple sources, both FHIR and non-FHIR based. & While
+most health record data can be collected and aggregated in FHIR,
+Ministries of Health rely on other data sources to govern their
+operations. For example, operationalizing an immunization campaign
+usually includes tracking against specific targets for locations to be
+visited on specific days and number of children to immunize per day.
+Such targets are often stored in spreadsheets or other applications
+where the data is not FHIR. \\
+Ingest data in batches. & Most data ingestion can happen in batches,
+since Ona's applications are deployed in hard to reach areas where
+connectivity is an issue. Data ingestion closer to real-time can be
+relevant for disaster-response and other time-sensitive applications,
+but this is not a priority. \\
+Support national-scale data volumes. & A data store that can grow from
+dozens to thousands of devices and where data can be aggregated up to
+the national level, matching the scale of implementation of data
+collection applications in the field. \\
+Pre-compute complex business metrics. & Reporting on health systems
+requires pre-computing complex metrics and often performing cohort
+analyses to map trends in service provision. For example, understanding
+quality of care for children requires computing metrics such as the
+percentage of children fully immunized on schedule (i.e.~children 6-59
+months that have received the set of vaccines required by the Ministry
+of Health, and have received each of those vaccines within the expected
+age-window). For Business Intelligence applications, calculating such a
+vital metric cannot be performed at run time, to avoid long and
+expensive queries. \\
+Outbound integrations. & While aggregated data and reports should be
+accessible by other applications such as BI platforms via pulls, there
+should be an easy integration framework to push data to other
+applications used by the Ministry of Health for other purposes, such as
+DHIS2 for health systems management or RapidPro for communications with
+program beneficiaries. \\
+Open source and easily deployable in-country. & Given the extremely
+sensitive nature of health data, it is paramount for governments to have
+the flexibility to deploy the stack in various different environments,
+both on premise and in private clouds. \\
+\end{longtable}
 
-\subsection{ONA Canopy}\label{ona-canopy}
+The architecture Learning from experience in the field and internal
+research and development, Ona has developed preferences for a specific
+data stack responding to the aforementioned requirements.
 
-TO DO: add section describing ONA Canopy.
+{[}{[}graphic{]}{]}
 
-\subsubsection{Level of opennness}\label{level-of-opennness-1}
+Core toolings in the stack include: Data ingestion with Airbyte. Ona
+uses Airbyte as the primary data ingestion tool, leveraging the wide
+array of connectors that come standard with the application as well as a
+dedicated suite of connectors developed internally by Ona, including
+HAPI FHIR, RapidPro, Ona Data, Kobo Toolbox and others.\\
+Data storage with Clickhouse. While different health projects have
+varying requirements, Ona has found success in using Clickhouse as the
+main analytics data store in its most recent implementations. Clickhouse
+supports the scale required for analytics at a national level, as well
+as the speed that enables cross-application integrations and more
+real-time analytics. For example, in Madagascar Ona uses its reporting
+suite to identify facilities with stock in need of maintenance and can
+trigger the scheduling of a maintenance visit ad hoc. Data
+transformation with dbt. Following global best practice, Ona leverages
+dbt to segregate the data warehouse in different levels (staging, marts,
+metrics), as well as pre-computing complex indicators for ease of
+reporting and for transmissions into other systems. For example, in
+Liberia Ona implements OpenSRP at community health worker level, but can
+aggregate immunization data at facility level in the data warehouse and
+then push quarterly summary metrics to DHIS2. No recommendation on
+reporting / BI tooling. Ona recognizes that business users have their
+own strong preferences for BI tooling, and some already have licenses
+for specific software, so the architecture is flexible to provide easy
+connections to different BI tools.
 
-TO DO: evaluate openness of OpenHIM platform
+Evaluation
 
-\subsubsection{Core maintenance
-functions}\label{core-maintenance-functions-1}
+Evaluating the data stack, we see the following: Use of generic
+best-of-breed tooling. Ona focused on utilizing Open HIE tools that are
+widely adopted outside of the global health and development sectors.
+This approach aims to provide assurance on two main fronts, the ability
+to handle performance at scale and the long term dependability of the
+tools, rather than relying on smaller projects with uncertain long term
+funding or unproven implementations. Columnar data warehouse for
+analytics. The scale of Ona's project requires the implementation of a
+dedicated database for analytics. While original data can still be
+stored as parquet or other file system, being able to ingest it into a
+relational data store allows to create well defined indicators. Using
+clickhouse as a tool helps and combine the need accuracy with the speed
+of reporting as new data is ingested.\\
+Strong emphasis on SQL. While Ona has tested and experimented with
+FHIR-specific tooling, such as the definition of data projections using
+sql-on-fhir, Ona found that relying on sql for coding business logic
+remained the faster and most scalable approach.
 
-TO DO: evaluate maintenance functions
+In summary, for Ona building analytics with FHIR data looks similar to
+building analytics with any other type of data. While FHIR provides a
+clear and standard data model, managing information for most health
+systems requires custom integration of data between different sources,
+as well as computing indicators using business logic specific to the
+needs of the local users. Building upon well established best-of-breed
+tools allows Ona to implement FHIR applications at scale and provide
+trusted analytics on top.
 
-\subsubsection{Downward scaleability}\label{downward-scaleability-1}
-
-TO DO: evaluate downward scalability
-
-\subsection{Momcare programme}\label{momcare-programme}
+\subsection{PharmAccess demonstrator Momcare
+programme}\label{pharmaccess-demonstrator-momcare-programme}
 
 MomCare was launched in Kenya
 \citep{huisman2022digital, sanctis2022maintaining} and Tanzania
@@ -1215,24 +1331,23 @@ Clearly, a more open and scaleable platform was required if MomCare was
 to be implemented in more regions. This need led to a redesign of the
 underlying technical infrastructure of the MomCare project. The
 objectives of this work were in fact to demonstrate a solution design
-that could support the first three types of data sharing listed in
-\textbf{?@tbl-types-data-sharing}. First, to investigate the viability
-of using FHIR for bulk data sharing, MomCare Tanzania was used a testbed
-to assess the complexity and effort required to implement the facade
-pattern to integrate the legacy system into the FHIR data standard.
-Using the longitudinal dataset from approximately 28 thousand patient
-records, FHIR transformations script were developed and deployed using
-the mediator function of the IOL. The data was transformed into 10 FHIR
-v4 resources and the conceptual data model of the existing MomCare app
-could readily be transformed into the FHIR standard using SQL and
-validated with a Python library \citep{islam2023fhir}. The largest
-challenge during the transformation process pertained to the absence of
-unique business identifiers for patients and healthcare organizations.
-For patients, either the mobile phone number or the healthcare insurance
-number was taken, depending on availability. A combination of name,
-address and latitude/longitude coordinates were used to uniquely
-identify organizations and locations, as Tanzania does not have a system
-in place for this purpose.
+that could support the first three types of data sharing. First, to
+investigate the viability of using FHIR for bulk data sharing, MomCare
+Tanzania was used a testbed to assess the complexity and effort required
+to implement the facade pattern to integrate the legacy system into the
+FHIR data standard. Using the longitudinal dataset from approximately 28
+thousand patient records, FHIR transformations script were developed and
+deployed using the mediator function of the IOL. The data was
+transformed into 10 FHIR v4 resources and the conceptual data model of
+the existing MomCare app could readily be transformed into the FHIR
+standard using SQL and validated with a Python library
+\citep{islam2023fhir}. The largest challenge during the transformation
+process pertained to the absence of unique business identifiers for
+patients and healthcare organizations. For patients, either the mobile
+phone number or the healthcare insurance number was taken, depending on
+availability. A combination of name, address and latitude/longitude
+coordinates were used to uniquely identify organizations and locations,
+as Tanzania does not have a system in place for this purpose.
 
 The second objective was to reproduce existing analytic reports, using
 the bulk FHIR data format as input. Here, the focus was to standardize
@@ -1318,16 +1433,16 @@ data \& analytics services
 
 TO DO: Add diagram
 
-\subsubsection{Level of opennness}\label{level-of-opennness-2}
+\subsubsection{Level of opennness}\label{level-of-opennness}
 
 TO DO: evaluate openness of OpenHIM platform
 
 \subsubsection{Core maintenance
-functions}\label{core-maintenance-functions-2}
+functions}\label{core-maintenance-functions}
 
 TO DO: evaluate maintenance functions
 
-\subsubsection{Downward scaleability}\label{downward-scaleability-2}
+\subsubsection{Downward scaleability}\label{downward-scaleability}
 
 TO DO: evaluate downward scalability
 
@@ -1336,8 +1451,8 @@ TO DO: evaluate downward scalability
 \subsection{Openness of data
 platforms}\label{openness-of-data-platforms}
 
-We specifically address the notion of openness of HDPs in LMICs in terms
-of the design-related questions put forward by de Reuver at al.11:
+We specifically address the notion of openness of OHDPs in LMICs in
+terms of the design-related questions put forward by de Reuver at al.11:
 
 \begin{itemize}
 \tightlist
@@ -1349,7 +1464,7 @@ of the design-related questions put forward by de Reuver at al.11:
   providers, data users, intermediaries, developers)?
 \item
   Unit of analysis: what is platform-to-platform openness in the context
-  of data platforms, given the expectation that different HDPs will
+  of data platforms, given the expectation that different OHDPs will
   emerge at various aggregation levels? How do we distinguish
   meta-platforms, forking, and platform interoperability?
 \item
@@ -1463,7 +1578,7 @@ ELT & Extract, Load and Transform \\
 FAIR & Findable, Accessible, Interoperable and Reusable \\
 FHIR & Fast Healthcare Interoperability Resources \\
 FL & Federated learning \\
-HDP & Health data platform, explicitly differentiated from health
+OHDP & Health data platform, explicitly differentiated from health
 digital platform \\
 HIE & Health Information Exchange \\
 IR & Intermediate Representation \\
