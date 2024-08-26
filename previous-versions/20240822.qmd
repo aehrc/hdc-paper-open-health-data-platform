@@ -1,5 +1,5 @@
 ---
-title: "Design and implemention of open health data systems for low- and middle income countries"
+title: "Conceptualizing and implementing open, decentralized health data sharing platforms for low- and middle income countries"
 format:
   elsevier-html:
     toc: true
@@ -32,11 +32,6 @@ author:
       - name: PharmAccess Foundation
         city: Amsterdam
         country: the Netherlands
-  - name: Irni Gemzon
-    affiliations:
-      - name: PharmAccess Foundation
-        city: Amsterdam
-        country: the Netherlands
   - name: Chris Ihure
     affiliations:
       - name: PharmAccess Kenya
@@ -62,21 +57,22 @@ author:
       - name: Australian e-Health Research Centre
         city: Brisbane
         country: Australia
-  # - name: Paula van Brakel
-  #   affiliations:
-  #     - name: PharmAccess Foundation
-  #       city: Amsterdam
-  #       country: the Netherlands
-  # - name: Mark van der Graaf
-  #   affiliations:
-  #     - name: PharmAccess Foundation
-  #       city: Amsterdam
-  #       country: the Netherlands
-  # - name: Nicole Spieker
-  #   affiliations:
-  #     - name: PharmAccess Foundation
-  #       city: Amsterdam
-  #       country: the Netherlands
+  - name: Paula van Brakel
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+
+  - name: Mark van der Graaf
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
+  - name: Nicole Spieker
+    affiliations:
+      - name: PharmAccess Foundation
+        city: Amsterdam
+        country: the Netherlands
         
 abstract: |
   TO DO: add abstract.
@@ -93,60 +89,15 @@ Digital transformation have the potential to make inclusive health systems in lo
 
 Yet, to date the global digital health ecosystem is still project-centric, resulting in data fragmentation and technology lock-in, compromising health care delivery [@mehl2023fullstac]. There is no dearth of the number of digital health interventions: sub-Saharan Africa has seen over 700 such projects in the past 10 years. There is, however, a fundamental lack in coordination, integration, scalability, sustainability, and equitable distribution of investments in digital health. Health policymakers and the global health community at large need to urgently institute coordination mechanisms to terminate unending duplication and disjointed vertical implementations and manage solutions for scale [@karamagi2022ehealth].
 
-To achieve scaleability of digital health interventions, we need to design and implement standardized open health data systems (OHDS) and their associated ecosystems that can support the wider health sector in improving i) overall quality and continuity of care; ii) adherence to clinical guidelines and best practices; iii) efficiency and affordability of services and health commodities, by reducing duplication of effort and ensuring effective use of time and resources; iv) health-financing models and processes, regulation, oversight, and patient safety resulting from increased availability of performance data and reductions in errors; and v) health policy-making and resource allocation based on better quality data [@kelley2020digital]. The design and implementation of such OHDSs for sub-Saharan Africa is the focus of this paper, which is motivated insights obtained through our day-to-day engagement in the field. 
+To achieve scaleability of digital health interventions, we need to conceptualize and implement digital platforms and their associated ecosystems that constitute an important enabling socio-technical infrastructure upon which such interventions can be realized in a more standardized and sustainable fashion. Digital platforms are a challenging research object because of their distributed nature and intertwinement with institutions, markets and technologies [@dereuver2018digital]. Digital platform ecosystems vary according to three core building blocks: (1) platform ownership, (2) value-creating mechanisms, and (3) complementor autonomy [@hein2020digital]. Various studies have investigated why the healthcare domain has been slow in adopting platforms and their ecosystems [@hermes2020digital;@ozalp2022digital]. Before presenting our main contributions, we highlight two paradigmatic themes that are relevant to our paper.
 
+### From centralized to decentralized platforms
 
-### Data & analytics functions are essential in open health data systems
+Digital platforms have predominantly flourished in a business setting, as is exemplified by the well known success stories of cloud platforms providers (AWS, Microsoft, Google, Alibaba), two-sided market platforms (Airbnb, Spotify, Uber) and social media platforms (Meta, WeChat). While these examples allude to the potentional to generate social and economic value by using platforms as a key enabler of digital transformation of healthcare in LMICs, it is less obvious in what way a digital platform can trigger specific positive effects *for* development [@bonina2021digital]. Part of the problem in grasping the implications of platforms for development in the field of information systems has been the lack of clarity regarding the understanding of what digital platforms are, what their main features are and how they generate value [@dereuver2018digital]. Notably, even valuable landscape papers in information systems largely ignore the development implications of digital platforms [@dereuver2018digital] or may summarize them in rather naïve ways [@bonina2021digital]. Put more strongly, issues pertaining to the winner-takes-all nature of digital platforms have resulted in so-called 'transgression of spheres' where commercial platform providers acquire disproprotionately large market power which is at odds with realizing public value for the common good [@sharon2018when].
 
-Learnings from digital health interventions have shown that improvements along the five aforementioned dimensions is indeed within reach. As an example, in our experience with the MomCare programme, we have demonstrated that routinely collected health data, combined with financial data, can be effectively used to gain insight into the continuity of care, improve clinical adherence whilst maintaining efficiency and affordability of health services in LMICs. By actively coaxing pregnant mothers to undergo 4 antenatal check-ups, outcomes were improved whilst maintaining the average cost of MCH services [@huisman2022digital;@sanctis2022maintaining;@izudi2023experiences].
+It almost seems we have forgotten that digital platforms need not always be centralized, but that we have a choice to implement decentralized or distributed platforms. In his seminal paper in 1963, Baran distinguished three types of network topologies ([@fig-network-topologies]). In a centralized network, all communication is facilitated through a single, central hub, which is obviously vulnerable as "...destruction of single node destroys communication between the end stations" [@baran1964distributed]. At the opposite end of the spectrum, in a fully distributed network, stations are connected to all adjacent stations. In practice, a mixture of centralized and distributed components is the most commonly used topology, aptly called decentralized networks as they remove complete reliance upon a single point, while at the same time where is a hierarchy where smaller centralized networks are connected to higher-lying networks through interconnecting hubs (encircled in blue). Note that the internet has both the characteristics of a distributed network (for example, traffic and data processing are shared across multiple paths and servers) as well as that of a decentralized network (there is no single entity that controls the entire internet. Instead, numerous internet service providers (ISPs), organizations, and governments manage different parts of the network).
 
-To do so MomCare, as most other digital health interventions, is critically dependent on the availability of data and analytics functions within the OHDS. For example, the widely used DHIS2 reports that are most commonly used in LMICs contained insufficient information to run the programme. More detailed analytics at the patient level were required. It is, in fact, a widely held belief that data & analytics are an essential part of OHDSs. This is exemplified how the OpenHIE reference architecture [@openhie] has been adopted by many sub-Saharan African countries as the blueprint for implementing nation-wide health information exchanges (HIE) [@mamuye2022health], including Nigeria [@dalhatu2023paper], Kenya [@mbugua2021adoption] and Tanzania [@nsaghurwe2021one]. These countries have, as a matter of course, extended the framework to include “data & analytics services” as an additional domain [@mbugua2021adoption;@dalhatu2023paper]. The rationale for this addition is to facilitate secondary reuse of health data for academic research, real-world evidence studies etc. which can be framed within the context of ongoing efforts towards Findable, Accessible, Interoperable and Reusable (FAIR) sharing of health data [@guillot2023fair].
-
-
-### Extending OpenHIE to include modern data and analytics standards
-
-If we intend to use the OpenHIE standard not only for primary health data sharing, but also to support data and analytics for secondary health data sharing, we need to extend its specification. The main contribution of this paper is to propose how recent standards and open source implementations from the data engineering community could be integrated into the OpenHIE framework, as illustrated in @fig-ohie.
-
-![Proposed extension of the OpenHIE architecture that includes "Data and Analytics Services" as an additional service domain.](./images/openhie-extended-architecture.png){#fig-ohie}
-
-The original OpenHIE specification discerns four domains, namely Point-of-Service systems, the Interoperability Layer, Common Services and Business Services. We propose to extend the OpenHIE architecture with a "Data and Analytics Services" domain with different zones taken from the data lakehouse architecture, which currently is the most commonly used design pattern in this domain [@armbrust2021lakehouse;@hai2023data;@harby2022data;@harby2024data]. Lakehouses typically have a zonal architecture that follow the Extract-Load-Transform pattern (ELT) where data is ingested from the source systems in bulk (E), delivered to storage with aligned schemas (L) and transformed into a format ready for analysis (T) [@hai2023data]. The discerning characteristic of the lakehouse architecture is its foundation on low-cost and directly-accessible storage that also provides traditional database management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization [@armbrust2021lakehouse]. Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter.
-
-With respect to current implementations of lakehouse data platforms, we observe a proliferation of tools with as yet limited standards to improve technical interoperability. In the analysis of Pedreira et al. [@pedreira2023composable] the requirement for specialization in data management systems has evolved faster than our software development practices. This situation has created a siloed landscape composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. It has also affected the end users, who are often required to learn the idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects, and settle for systems with incomplete functionality and inconsistent semantics. To remedy this, Pedreira et al. call to (re-)design and implement modern data platforms in terms of a 'composable data stack’ as a means to decrease development and maintenance cost and pick-up the speed of innovation.
-
- and the composable data stack [@pedreira2023composable] (@fig-ohie, @tbl-data-and-analysis-services).
-
-
-These 5 services are considered the core of the FHIR data platform, and although in practice often a downstream dashboarding or visualization component is used, that component is not the main focus of our analysis. Rather, we aim to elucidate and conceptualize the core "FHIR Data Lakehouse". We have argued the choice of FHIR as the common data model elsewhere[^1].
-
-[^1]: Kapitan et al., working paper to be submitted ([link](https://plugin-healthcare.github.io/viewpoint-jimr/)).
-
-+-------------------+---------------------------------------------------------------------------------------+
-| Service           | Functional requirements                                                               |
-+===================+=======================================================================================+
-| Ingestion         | - Bulk                                                                                |
-|                   | - Streaming                                                                           |
-+-------------------+---------------------------------------------------------------------------------------+
-| Storage           | - File-based blob storage                                                             |
-|                   | - Database optimized for online analytical processing (OLAP)
-+-------------------+---------------------------------------------------------------------------------------+
-| Maintenance       | - SQL-on-FHIR View defintions                                                         |
-|                   | - Catalog and other maintenance-related functions as defined by Hai et al.            |
-+-------------------+---------------------------------------------------------------------------------------+
-| Processing        | - SQL-on-FHIR Runner                                                                  |
-| & API             | - Execution engine on tabular data as defined in composable data stack                |
-|                   | - Capability to participate as a node in federated learning / MPC network             |
-|                   | - Read-only access to storage                                                         |  
-+-------------------+---------------------------------------------------------------------------------------+
-| Data              | - SQL interactive development environment (IDE)                                       |
-| Consumer          | - Interactive notebook computing environment [@granger2021jupyter]                    |
-|                   | - BI reporting, dashboarding and data visualization                                   |  
-+-------------------+---------------------------------------------------------------------------------------+
-: Definition of Data and Analysis Services {#tbl-data-and-analysis-services}
-
-
-
-that constitute an important enabling socio-technical infrastructure upon which such interventions can be realized in a more standardized and sustainable fashion. Digital platforms are a challenging research object because of their distributed nature and intertwinement with institutions, markets and technologies [@dereuver2018digital]. Digital platform ecosystems vary according to three core building blocks: (1) platform ownership, (2) value-creating mechanisms, and (3) complementor autonomy [@hein2020digital]. Various studies have investigated why the healthcare domain has been slow in adopting platforms and their ecosystems [@hermes2020digital;@ozalp2022digital]. Before presenting our main contributions, we highlight two paradigmatic themes that are relevant to our paper.
-
+![Three network topologies, taken from Baran (1964). The nodes encircled in blue in the decentralized network are hubs that provide connections between sub-networks.](images/network-topologies.png){#fig-network-topologies}
 
 We are inspired by various fields of study that have shown that decentralized and/or distributed systems are often 'resilient by design' [@fiksel2003designing;@liu2010architectural;@mayar2022resilience], for example, allowing efficient deployments at different geographical scales. Given that LMICs are resource-constrained, we consider downward scaleability as a key design criterium [@fayad2005scalable;@duboc2006framework]. We consider the insights from the 'hourglass model', which provides clear design principles how the use of minimal standards in a layered, distributed systems allows implementation information systetms using a great diversity of services [@beck2019hourglass].
 
@@ -166,8 +117,46 @@ Case studies on digital platforms in healthcare point to an emerging pattern whe
 
 : Comparing digital and health data platforms, taken from de Reuver et al. (2022) {#tbl-comparing-platforms .striped .hover .responsive}
 
+To illustrate the relevance of conceptualising health platforms as data platforms, consider the OpenHIE framework [@openhie] which has been adopted by many sub-Saharan African countries as the architectural blueprint for implementing nation-wide health information exchanges (HIE) [@mamuye2022health], including Nigeria [@dalhatu2023paper], Kenya [@mbugua2021adoption] and Tanzania [@nsaghurwe2021one]. The OpenHIE standard is best described as a digital platform as it is designed to facilitate information exchange, using specific workflows and information standards (open boundary resources in @tbl-comparing-platforms), with a primary focus is on creating a cohesive infrastructure that supports the interaction and integration of various health information systems. Since its inception in 2013, the ICT for Development community (ICT4D) has pushed for the development of open source implementations of OpenHIE components, which are now available as digital public goods [@digitalpublicgoods]. @tbl-digital-public-goods list the currently available open source components that adhere to the OpenHIE specification.
 
+| Category  | Component | Digital Public Good |
+|:----------|:----------|:--------------------|
+| **Interoperability layer (IOL)** | IOL | [OpenHIM](http://openhim.org) |
+| | | [mHero](https://www.mhero.org/technology) |
+| | | [OpenFN](https://docs.openfn.org/) |
+| **Registry Services** | Client Registry (CR) | [SanteMPI](https://help.santesuite.org/product-overview/santesuite-products/master-patient-index-santempi) |
+| | | [JeMPI](https://jembi.gitbook.io/jempi/) |
+| | | [OpenCR](https://www.openclientregistry.org/) |
+| | | [OpenCRVS](https://www.opencrvs.org/) |
+| | Facility Registry (FR) | [Global Open Facility Registry (GOFR)](https://github.com/intrahealth/gofr) |
+| | | [GeoPrism Registry (GPR)](https://geoprismregistry.com/) |
+| | | [Resource Map](http://instedd.org/technologies/resource-map/) |
+| | | [Healthsite.io](https://healthsites.io/) |
+| | | [GeoPrism Registry](https://geoprismregistry.com/) |
+| | | [DHIS2](https://github.com/dhis2) |
+| | Health Worker Registry (HWR) | [iHRIS](https://www.ihris.org/ihris-50) |
+| | Terminology Service (TS) | [OCL Terminology Service](https://openconceptlab.org/terminology-service/) |
+| | Product Catalog (PC) | [PCMT](https://productcatalog.io/) |
+| **Business Domain Services** | Shared Health Record (SHR) | [HAPI FHIR](https://hapifhir.io/) |
+| | | [Fhirbase](https://www.health-samurai.io/fhirbase) |
+| | | [FHIR Server for Azure](https://github.com/microsoft/fhir-server) |
+| | | [I-TECH-UW SHR](https://github.com/I-TECH-UW/shared-health-record) |
+| | Health Management Information System (HMIS)[^1] | [DHIS2](http://dhis2.org/) |
+| | Finance and Insurance Service (FIS) | [OpenIMIS](http://openimis.org/) |
+| | Logistics Management Information System (LMIS) | [OpenLMIS](http://openlmis.org/) |
+| | | [OpenBoxes](https://openboxes.com/features/) |
+| **Generic** | Identity and Access Management (IAM) | [Keycloak](https://www.keycloak.org/) |
+| | Gateway & proxy | [FHIR Information Gateway](https://github.com/google/fhir-gateway) |
+| | Admin dashboard for SHR | [OpenSRP FHIR Web](https://github.com/onaio/fhir-web) |
+| | Configuration and deployment | [Instant OpenHIE](https://jembi.gitbook.io/instant-v2/) |
 
+: Overview of current open source implementations of components that fit in the OpenHIE specification. Point-of-Service systems are excluded for brevity. List compiled using [OpenHIE Reference Technologies](https://wiki.ohie.org/display/DR/OpenHIE+Reference+Technologies), [Global Goods for Digital Health](https://digitalsquare.org/digital-health-global-goods), [Digital Public Goods Alliance](https://digitalpublicgoods.net/) and search of open source code repositories. A systematic review of such digital public goods is beyond the scope of this paper.  {#tbl-digital-public-goods .striped .hover .responsive}
+
+[^1]: Note that there is often a confusion on the acronym HMIS. Strictly speaking, the OpenHIE specification uses HMIS to refer to a Health Management Information System that is part of the Business Domain Services. Sometimes HMIS is used to refer to a Hospital Management Systems in the Point-of-Service domain, synonymous with an Electronic Medical Record (EMR) system.
+
+The shift in perspective from digital platforms to data platforms coincides with the paradox of open [@keller2021paradox]. Originally, openness of digital platforms focused on open source and open standards (as shown above for OpenHIE) which by has been superseded by “... conflicts about privacy, economic value extraction, the emergence of artificial intelligence, and the destabilizing effects of dominant platforms on (democratic) societies. Instead of access to information, the control of personal data has emerged in the age of platforms as the critical contention.” [@keller2021paradox]. These conflicts are particularly salient in the healthcare domain, where people are generally willing to share their health data to receive the best care (primary use, which is aligned with the concept of digital platforms), while the attitude towards secondary use of health data (conceptually aligned with a data platform) varies greatly depending on the type and context [@cascini2024health]. The shift in perspective from digital platforms supporting primary data sharing toward data platforms supporting secondary data sharing is one of the key issues surrounding the polemic of data spaces [@otto2022designing] and data solidarity [@kickbusch2021lancet;@prainsack2022data;@prainsack2023beyond;@purtova2023data].
+
+This shift in perspective also has real implications for the design and implementation of OpenHIE. We observe that some African countries have, as a matter of course, extended the OpenHIE framework to include “data & analytics services” as an additional domain in their policies [@mbugua2021adoption;@dalhatu2023paper]. The rationale for this addition is indeed to facilitate secondary reuse of health data for academic research, real-world evidence studies etc. using the principles of Findable, Accessible, Interoperable and Reusable (FAIR) sharing of health data [@guillot2023fair]. In doing so, however, we have implicitly moved from conceptualizing digital health platforms for primary data sharing (the original OpenHIE specification) to health data platforms for secondary data sharing. If we are to use the OpenHIE framework as an open data platform as well, we need to extend the standards, technologies and architecture to include functionality for secondary data sharing and reuse. The lack of detailed specifications and consensus of this addition to OpenHIE currently stands in the way of development projects that aim to establish more comprehensive platforms to support primary and secondary health data sharing in LMICs. One of the motivations for this paper is integrate recent standards and open source implementations from the data engineering community into the OpenHIE framework.
 
 
 ### Conceptualizing and implementing open health data sharing platforms
@@ -267,6 +256,9 @@ Possible risks pertaining to the use of FHIR as the common data model, most nota
 
 #### Open architecture: extending OpenHIE with a composable data stack
 
+Data management and analytics platforms have undergone significant changes since the first generation of data warehouses were introduced. Recent studies have shown that the current practice has converged towards the lakehouse as one of the most commonly used solution designs [@armbrust2021lakehouse;@hai2023data;@harby2022data]. Lakehouses typically have a zonal architecture that follow the Extract-Load-Transform pattern (ELT) where data is ingested from the source systems in bulk (E), delivered to storage with aligned schemas (L) and transformed into a format ready for analysis (T) [@hai2023data]. The discerning characteristic of the lakehouse architecture is its foundation on low-cost and directly-accessible storage that also provides traditional database management and performance features such as ACID transactions, data versioning, auditing, indexing, caching, and query optimization [@armbrust2021lakehouse]. Lakehouses thus combine the key benefits of data lakes and data warehouses: low-cost storage in an open format accessible by a variety of systems from the former, and powerful management and optimization features from the latter.
+
+With respect to current implementations of lakehouse data platforms, we observe a proliferation of tools with as yet limited standards to improve technical interoperability. In the analysis of Pedreira et al. [@pedreira2023composable] the requirement for specialization in data management systems has evolved faster than our software development practices. This situation has created a siloed landscape composed of hundreds of products developed and maintained as monoliths, with limited reuse between systems. It has also affected the end users, who are often required to learn the idiosyncrasies of dozens of incompatible SQL and non-SQL API dialects, and settle for systems with incomplete functionality and inconsistent semantics. To remedy this, Pedreira et al. call to (re-)design and implement modern data platforms in terms of a 'composable data stack’ as a means to decrease development and maintenance cost and pick-up the speed of innovation.
 
 While the lakehouse architecture separates the concerns of compute and storage, the composable data stack takes the separation of concerns is taken one step further. A composable data system (@fig-composable-data-stack), not only separates the storage (layer 3) and execution (layer 2), but also separates the user interface (layer 1) from the execution engine by introducing standards including Substrait for Intermediate Representation (standard A, IR) and Apache Arrow for data connectivity and data memory layout (standards B and C, respectively). The first generation of open source components are already available. For example, the Ibis user interface is currently sufficiently mature to offer a standardized dataframe interface to 19 different execution engines [@ibisproject].
 
@@ -284,9 +276,33 @@ The solution of the SQL-on-FHIR project is to provide a specification for defini
 
 #### Extending OpenHIE with a FHIR-based composable data stack
 
+We propose to extend the OpenHIE architecture with a "Data and Analytics Services" domain with different service layers by synthesizing the current best practices of the a lakehouse architecture of [@hai2023data;@harby2022data;@harby2024data] and the composable data stack [@pedreira2023composable] (@fig-ohie, @tbl-data-and-analysis-services). These 5 services are considered the core of the FHIR data platform, and although in practice often a downstream dashboarding or visualization component is used, that component is not the main focus of our analysis. Rather, we aim to elucidate and conceptualize the core "FHIR Data Lakehouse".
 
+![Proposed extension of the OpenHIE architecture that includes "Data and Analytics Services" as an additional service domain.](./images/openhie-extended-architecture.png){#fig-ohie}
 
++-------------------+---------------------------------------------------------------------------------------+
+| Service           | Functional requirements                                                               |
++===================+=======================================================================================+
+| Ingestion         | - Bulk                                                                                |
+|                   | - Streaming                                                                           |
++-------------------+---------------------------------------------------------------------------------------+
+| Storage           | - File-based blob storage                                                             |
+|                   | - Database optimized for online analytical processing (OLAP)
++-------------------+---------------------------------------------------------------------------------------+
+| Maintenance       | - SQL-on-FHIR View defintions                                                         |
+|                   | - Catalog and other maintenance-related functions as defined by Hai et al.            |
++-------------------+---------------------------------------------------------------------------------------+
+| Processing        | - SQL-on-FHIR Runner                                                                  |
+| & API             | - Execution engine on tabular data as defined in composable data stack                |
+|                   | - Capability to participate as a node in federated learning / MPC network             |
+|                   | - Read-only access to storage                                                         |  
++-------------------+---------------------------------------------------------------------------------------+
+| Data              | - SQL interactive development environment (IDE)                                       |
+| Consumer          | - Interactive notebook computing environment [@granger2021jupyter]                    |
+|                   | - BI reporting, dashboarding and data visualization                                   |  
++-------------------+---------------------------------------------------------------------------------------+
 
+: Definition of Data and Analysis Services {#tbl-data-and-analysis-services}
 
 ##### Ingestion
 
@@ -456,9 +472,6 @@ TO DO: evaluate downward scalability
 
 ### Openness of health data sharing platforms
 
-The shift in perspective from digital platforms to data platforms coincides with the paradox of open [@keller2021paradox]. Originally, openness of digital platforms focused on open source and open standards (as shown above for OpenHIE) which by has been superseded by “... conflicts about privacy, economic value extraction, the emergence of artificial intelligence, and the destabilizing effects of dominant platforms on (democratic) societies. Instead of access to information, the control of personal data has emerged in the age of platforms as the critical contention.” [@keller2021paradox]. These conflicts are particularly salient in the healthcare domain, where people are generally willing to share their health data to receive the best care (primary use, which is aligned with the concept of digital platforms), while the attitude towards secondary use of health data (conceptually aligned with a data platform) varies greatly depending on the type and context [@cascini2024health]. The shift in perspective from digital platforms supporting primary data sharing toward data platforms supporting secondary data sharing is one of the key issues surrounding the polemic of data spaces [@otto2022designing] and data solidarity [@kickbusch2021lancet;@prainsack2022data;@prainsack2023beyond;@purtova2023data].
-
-
 We specifically address the notion of openness of OHDPs in LMICs in terms of the design-related questions put forward by de Reuver at al.11:
 
 - Object of openness: what data-related resources should data platforms make available when opening up (e.g. data, data products, datadriven insights, analytics modules)? Which user groups derive value from accessing data-related resources from data platforms (e.g. data providers, data users, intermediaries, developers)?
@@ -519,7 +532,7 @@ AP/ONA received funding from PharmAccess to develop a new version of components 
 | FAIR |Findable, Accessible, Interoperable and Reusable |
 | FHIR |Fast Healthcare Interoperability Resources |
 | FL | Federated learning |
-| HDSP	|	Open health data system |
+| HDSP	|	Health data sharing platform |
 | HIE | Health Information Exchange |
 | ICT4D | ICT for Development |
 | IR | Intermediate Representation |
