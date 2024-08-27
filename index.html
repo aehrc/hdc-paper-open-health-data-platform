@@ -79,6 +79,8 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#the-need-for-standardized-open-health-data-systems" id="toc-the-need-for-standardized-open-health-data-systems" class="nav-link" data-scroll-target="#the-need-for-standardized-open-health-data-systems">The need for standardized open health data systems</a></li>
   <li><a href="#data-analytics-functions-are-essential-in-open-health-data-systems" id="toc-data-analytics-functions-are-essential-in-open-health-data-systems" class="nav-link" data-scroll-target="#data-analytics-functions-are-essential-in-open-health-data-systems">Data &amp; analytics functions are essential in open health data systems</a></li>
+  <li><a href="#objects-of-openness-in-secondary-data-sharing" id="toc-objects-of-openness-in-secondary-data-sharing" class="nav-link" data-scroll-target="#objects-of-openness-in-secondary-data-sharing">Objects of openness in secondary data sharing</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a></li>
   </ul></li>
   <li><a href="#extending-openhie-to-include-modern-data-and-analytics-standards" id="toc-extending-openhie-to-include-modern-data-and-analytics-standards" class="nav-link" data-scroll-target="#extending-openhie-to-include-modern-data-and-analytics-standards">Extending OpenHIE to include modern data and analytics standards</a>
   <ul class="collapse">
@@ -223,7 +225,7 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="sec-introduction">Introduction</h2>
 <section id="the-need-for-standardized-open-health-data-systems" class="level3">
 <h3 class="anchored" data-anchor-id="the-need-for-standardized-open-health-data-systems">The need for standardized open health data systems</h3>
-<p>Digital transformation should be considered as a key determinant of health, but also requires a radical rethink how digital technologies should be used <span class="citation" data-cites="kickbusch2021lancet">(<a href="#ref-kickbusch2021lancet" role="doc-biblioref">Kickbusch et al., 2021</a>)</span>. Digital technologies have the potential to increase the availability, accessibility, acceptability, and quality of health services as we know them; change nature and direction of health care, and the possibility of making it more preventive, personalised, and mobile; and enfranchise patients and communities (particularly vulnerable groups), thus helping shape the health system according to the needs of the patients and communities.</p>
+<p>It is a widely held belief in the global health community that digital technologies have an important role to play in strengthening healthcare in low- and middle income countries (LMICs). Digital technologies have the potential to increase the availability, accessibility, acceptability, and quality of health services; make healthcare more preventive, personalised, and mobile; and enfranchise patients and communities, particularly those who are most vulnerable <span class="citation" data-cites="kickbusch2021lancet">(<a href="#ref-kickbusch2021lancet" role="doc-biblioref">Kickbusch et al., 2021</a>)</span>.</p>
 <p>Yet, to date the global digital health ecosystem is still project-centric, resulting in data fragmentation and technology lock-in, compromising health care delivery <span class="citation" data-cites="mehl2023fullstac">(<a href="#ref-mehl2023fullstac" role="doc-biblioref">Mehl et al., 2023</a>)</span>. There is no dearth of the number of digital health interventions: sub-Saharan Africa has seen over 700 such projects in the past 10 years. There is, however, a fundamental lack in coordination, integration, scalability, sustainability, and equitable distribution of investments in digital health. Health policymakers and the global health community at large need to urgently institute coordination mechanisms to terminate unending duplication and disjointed vertical implementations and manage solutions for scale <span class="citation" data-cites="karamagi2022ehealth">(<a href="#ref-karamagi2022ehealth" role="doc-biblioref">Karamagi et al., 2022</a>)</span>.</p>
 <p>To achieve scaleability of digital health interventions, we need to design and implement standardized open health data systems (OHDS) and their associated ecosystems that can support improvements in the wider health sector along five dimensions, namely <span class="citation" data-cites="kelley2020digital">(<a href="#ref-kelley2020digital" role="doc-biblioref">Kelley et al., 2020</a>)</span>:</p>
 <ol type="1">
@@ -236,9 +238,64 @@ div.csl-indent {
 </section>
 <section id="data-analytics-functions-are-essential-in-open-health-data-systems" class="level3">
 <h3 class="anchored" data-anchor-id="data-analytics-functions-are-essential-in-open-health-data-systems">Data &amp; analytics functions are essential in open health data systems</h3>
-<p>Learnings from digital health interventions have shown that improvements along the five aforementioned dimensions is within reach. As an example, in our experience with the MomCare programme, we have demonstrated that routinely collected health data, combined with financial data, can be effectively used to gain insight into the continuity of care, improve clinical adherence whilst maintaining efficiency and affordability of health services in LMICs. By actively coaxing pregnant mothers to undergo 4 antenatal check-ups, outcomes were improved whilst maintaining the average cost of maternal, newborn and child health (MNCH) services <span class="citation" data-cites="huisman2022digital sanctis2022maintaining izudi2023experiences">(<a href="#ref-huisman2022digital" role="doc-biblioref">Huisman et al., 2022</a>; <a href="#ref-izudi2023experiences" role="doc-biblioref">Izudi et al., 2023</a>; <a href="#ref-sanctis2022maintaining" role="doc-biblioref">Sanctis et al., 2022</a>)</span>.</p>
-<p>MomCare, like most other digital health interventions, is critically dependent on the availability of data and analytics functions within its underlying supportive OHDS. For example, the widely used DHIS2 reports that are most commonly used in LMICs contained insufficient information and analytical functions to support such interventions. To implement the value-based healthcare business logic, more detailed analytics of patient journeys is required.</p>
-<p>It is in fact a widely held belief in the global digital health community that data &amp; analytics services are an essential capibility of OHDSs. This is exemplified how the OpenHIE reference architecture <span class="citation" data-cites="openhie">(<a href="#ref-openhie" role="doc-biblioref"><span>“<span>OpenHIE Framework</span> v5.0,”</span> 2022</a>)</span> has been adopted by many sub-Saharan African countries as the blueprint for implementing nation-wide health information exchanges (HIE) <span class="citation" data-cites="mamuye2022health">(<a href="#ref-mamuye2022health" role="doc-biblioref">Mamuye et al., 2022</a>)</span>, including Nigeria <span class="citation" data-cites="dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>)</span>, Kenya <span class="citation" data-cites="mbugua2021adoption">(<a href="#ref-mbugua2021adoption" role="doc-biblioref">Mbugua et al., 2021</a>)</span> and Tanzania <span class="citation" data-cites="nsaghurwe2021one">(<a href="#ref-nsaghurwe2021one" role="doc-biblioref">Nsaghurwe et al., 2021</a>)</span>. These countries have, as a matter of course, extended the framework to include “data &amp; analytics services” as an additional domain <span class="citation" data-cites="mbugua2021adoption dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>; <a href="#ref-mbugua2021adoption" role="doc-biblioref">Mbugua et al., 2021</a>)</span>. In terms of the often-used distinction between primary and secondary health data use <span class="citation" data-cites="cascini2024health">(<a href="#ref-cascini2024health" role="doc-biblioref">Cascini et al., 2024</a>)</span>, these countries aim to extend OpenHIE beyond it original scope of primary data sharing to also include secondary use of health data for academic research, real-world evidence studies etc. If we are to use the OpenHIE framework for data &amp; analytics as well, we need to extend the standards, technologies and architecture to include functionality to do so. The lack of detailed specifications and consensus of this addition to OpenHIE currently stands in the way of development projects that aim to establish more comprehensive platforms to support primary and secondary health data sharing in LMICs.</p>
+<p>Learnings from digital health interventions have shown that improvements along the five aforementioned dimensions are within reach. As an example, in our experience with the MomCare programme, we have demonstrated that routinely collected health data, combined with financial data, can be effectively used to gain insight into the continuity of care, improve clinical adherence whilst maintaining efficiency and affordability of health services in LMICs. By actively coaxing pregnant mothers to undergo 4 antenatal check-ups, outcomes were improved whilst maintaining the average cost of maternal, newborn and child health (MNCH) services <span class="citation" data-cites="huisman2022digital sanctis2022maintaining izudi2023experiences">(<a href="#ref-huisman2022digital" role="doc-biblioref">Huisman et al., 2022</a>; <a href="#ref-izudi2023experiences" role="doc-biblioref">Izudi et al., 2023</a>; <a href="#ref-sanctis2022maintaining" role="doc-biblioref">Sanctis et al., 2022</a>)</span>.</p>
+<p>MomCare is critically dependent on the availability of data and analytics functions within its underlying supportive OHDS. For example, to implement the value-based healthcare business logic of MomCare, detailed analysis of patient journeys is required. This functionality is currently not available as a standard; standardized reports that are available, such as DHIS2, contained insufficient information and analytical functions to support intervention that aim to improve continuity of care and adherence to clinical guidelines. As such, a large part of the day-to-day operation of MomCare revolved performaing data and analytics: data acquisition, data integration, analysis etc.</p>
+<p>This situation is not unique to MomCare. In fact, many in the global digital health community think that data &amp; analytics services should be an essential capibility of OHDSs going forward. This is exemplified how the OpenHIE reference architecture <span class="citation" data-cites="openhie">(<a href="#ref-openhie" role="doc-biblioref"><span>“<span>OpenHIE Framework</span> v5.2-en,”</span> 2024</a>)</span> has been adopted by many sub-Saharan African countries as the blueprint for implementing nation-wide health information exchanges (HIE) <span class="citation" data-cites="mamuye2022health">(<a href="#ref-mamuye2022health" role="doc-biblioref">Mamuye et al., 2022</a>)</span>, including Nigeria <span class="citation" data-cites="dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>)</span>, Kenya <span class="citation" data-cites="mbugua2021adoption">(<a href="#ref-mbugua2021adoption" role="doc-biblioref">Mbugua et al., 2021</a>)</span> and Tanzania <span class="citation" data-cites="nsaghurwe2021one">(<a href="#ref-nsaghurwe2021one" role="doc-biblioref">Nsaghurwe et al., 2021</a>)</span>. These countries have, as a matter of course, extended the framework to include “data &amp; analytics services” as an additional domain <span class="citation" data-cites="mbugua2021adoption dalhatu2023paper">(<a href="#ref-dalhatu2023paper" role="doc-biblioref">Dalhatu et al., 2023</a>; <a href="#ref-mbugua2021adoption" role="doc-biblioref">Mbugua et al., 2021</a>)</span>. In terms of the often-used distinction between primary and secondary health data use <span class="citation" data-cites="cascini2024health">(<a href="#ref-cascini2024health" role="doc-biblioref">Cascini et al., 2024</a>)</span>, these countries aim to extend OpenHIE beyond it original scope of primary data sharing to also include secondary use of health data for academic research, real-world evidence studies etc. If we are to use the OpenHIE framework for secondary use, supported by data &amp; analytics as well, we need to extend the standards, technologies and architecture to include functionality to do so. The lack of detailed specifications and consensus of this addition to OpenHIE currently stands in the way of development projects that aim to establish more comprehensive platforms to support primary and secondary health data sharing in LMICs.</p>
+</section>
+<section id="objects-of-openness-in-secondary-data-sharing" class="level3">
+<h3 class="anchored" data-anchor-id="objects-of-openness-in-secondary-data-sharing">Objects of openness in secondary data sharing</h3>
+<p>To set the scene of for the main contributions of this viewpoint paper, consider four types of secondary data sharing as shown in <a href="#tbl-types-data-sharing" class="quarto-xref">Table&nbsp;1</a>, where we follow the research agenda proposed by de Reuver et al.&nbsp;to scrutinize how openness of data platforms can be achieved <span class="citation" data-cites="dereuver2022openness">(<a href="#ref-dereuver2022openness" role="doc-biblioref">de Reuver et al., 2022</a>)</span>.</p>
+<div id="tbl-types-data-sharing" class="striped hover responsive quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-types-data-sharing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Types of secondary data sharing, and there relevance to the proposed extension of the OpenHIE specification.
+</figcaption>
+<div aria-describedby="tbl-types-data-sharing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="table-responsive">
+<table class="table-striped table-hover table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 32%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: left;"><strong>Type of data sharing</strong></th>
+<th style="text-align: left;"><strong>Relevance to extension of OpenHIE specification</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Data at the most granular level with which the patient journey (timeline) can be reconstructed and used for various analytic tasks.</td>
+<td style="text-align: left;">The Shared Health Record (SHR) is specified as an operational, real-time transactional data source, distinct from a data warehouse. A seperate specification of data and analytics functions, typically provided by a datawarehouse, is required.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: left;">Aggregated data, typically used for routine reports and benchmarking.</td>
+<td style="text-align: left;">The Health Management Information System (HMIS) should support Aggregate Data Exchange (ADX) workflow standard. More flexible and extensive workflows are emerging based on FHIR.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Data analytics modules, that provide secure and privacy-preserving computational environments to work with the data.</td>
+<td style="text-align: left;">Federated learning (FL) <span class="citation" data-cites="rieke2020future">(<a href="#ref-rieke2020future" role="doc-biblioref">Rieke et al., 2020</a>)</span> and privacy- enhancing technologies (PETs) <span class="citation" data-cites="scheibner2021revolutionizing jordan2022selecting">(<a href="#ref-jordan2022selecting" role="doc-biblioref">Jordan et al., 2022</a>; <a href="#ref-scheibner2021revolutionizing" role="doc-biblioref">Scheibner et al., 2021</a>)</span> provide new paradigms that address the problem of data governance and privacy by training algorithms collaboratively without exchanging the data itself. Requires use of a common data model, such as FHIR, to analyze the data in a collaborative, decentralized fashion.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: left;">Trained models that have been derived from the data and can be used stand-alone for decision support.</td>
+<td style="text-align: left;">Increasing need to open source trained AI models <span class="citation" data-cites="osi2024open">(<a href="#ref-osi2024open" role="doc-biblioref"><span>“The <span>Open Source AI Definition</span> v0.0.9,”</span> 2024</a>)</span>, enabled by technologies such as ONNX <span class="citation" data-cites="onnx">(<a href="#ref-onnx" role="doc-biblioref"><span>“<span>ONNX</span> v1.15.0,”</span> 2023</a>)</span>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+<p>[TO DO: add more text here to clarify our position and intention with this paper.]</p>
+</section>
+<section id="outline" class="level3">
+<h3 class="anchored" data-anchor-id="outline">Outline</h3>
 <p>The main contribution of this paper is to propose how recent standards and open source implementations from the data engineering community can be integrated into the OpenHIE framework. In the following, we first describe how the lakehouse design pattern, being the most widely used data &amp; analytics solution architecture, can be integrated in OpenHIE. To demonstrate the feasibility of this design, we present a proof-of-concept impelementation using open source technologies within the context of the MomCare programme. Code and digital artifacts of this demonstrator is available as supplementary material [TO DO: include links to support GitHub repositories]. Subquently, we compare this solution design with two widely used and operational OpenHIE-compliant open source frameworks, namely the OpenHIM platform (<a href="https://jembi.gitbook.io/openhim-platform/">https://jembi.gitbook.io/openhim-platform/</a>) and the OnaData platform <a href="https://ona.io/home/products/ona-data/features/">https://ona.io/home/products/ona-data/features/</a>. Finally, we discuss our findings and propose routes for future development.</p>
 <p>We take a narrative approach in presenting our design and the case studies, surveying existing scientific studies on OHDSs, focusing on the seminal reports and subsequently searching forward citations. In addition, we have searched the open source repositories (most notably GitHub) and the online communities (OpenHIE community, FHIR community) to search for relevant open standards, technologies and architectures. This paper should not be considered as a proper systematic review. The main contributions of this paper are i) description of a framework for the components of the Data &amp; Analysis Services that builds on current best practices from the data engineering community into the OpenHIE framework; and ii) evaluation of different implementations and design options for various data sharing scenarios within an extended OpenHIE architecture.</p>
 </section>
@@ -260,7 +317,7 @@ Figure&nbsp;1: Proposed extension of the OpenHIE architecture that includes “D
 </div>
 <p>Following the terminology proposed by Hai et al. <span class="citation" data-cites="hai2023data">(<a href="#ref-hai2023data" role="doc-biblioref">Hai et al., 2023</a>)</span>, summarizes how the different zones of the lakehouse architecture can be adapted for healthcare and integrated into the OpeHIE specification. Taking Fast Healthcare Interoperability Resources (FHIR) as the open data standard<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, we envisage the extended OpenHIE architecture to include a ‘OpenHIE Lakehouse’ with the following healthcare specific adaptations of the various data &amp; analytics services:</p>
 <ul>
-<li><strong>Ingestion Services:</strong> use of FHIR standard to harmonize all incoming healthcare data to a common data model, including metadata extraction and metadata modeling. Should support both single-records streaming ingest as well as bulk data ingestion in batches using the Bulk FHIR API as interface <span class="citation" data-cites="mandl2020push">(<a href="#ref-mandl2020push" role="doc-biblioref">Mandl et al., 2020</a>)</span>.</li>
+<li><strong>Ingestion Services:</strong> use of FHIR standard to harmonize all incoming healthcare data to a common data model, including metadata extraction and metadata modeling. Should support both single-records streaming ingest as well as bulk data ingestion in batches using the Bulk FHIR API as interface <span class="citation" data-cites="mandl2020push jones2021landscape">(<a href="#ref-jones2021landscape" role="doc-biblioref">Jones et al., 2021</a>; <a href="#ref-mandl2020push" role="doc-biblioref">Mandl et al., 2020</a>)</span>.</li>
 <li><strong>Storage Service:</strong> should support columnar storage engines optimized for analytical workloads. In case of file-based storage, use columnar file formats such as Apache Parquet. In case of databases, prefer open source engines such as Clickhouse or PostgreSQL that also support external, file-based tabels <span class="citation" data-cites="pedreira2023composable">(<a href="#ref-pedreira2023composable" role="doc-biblioref">Pedreira et al., 2023</a>)</span>.</li>
 <li><strong>Maintenance:</strong> use one of the open table formats such as Apache Iceberg, Apache Hudi and/or Delta Lake <span class="citation" data-cites="jain2023analyzing">(<a href="#ref-jain2023analyzing" role="doc-biblioref">Jain et al., 2023</a>)</span> to realize dataset organization, data integration, schema evolution and data provenance. Use of SQL-on-FHIR v2 View definitions to facilitate access to FHIR resources in flattened, tabular format <span class="citation" data-cites="sql-on-fhir">(<a href="#ref-sql-on-fhir" role="doc-biblioref"><span>“<span>SQL</span> on <span>FHIR</span> speciification v0.0.1-pre,”</span> 2024</a>)</span></li>
 <li><strong>Exploration:</strong> use on-demand, read-only analytical processing engines to provide a unified querying interface to access the heterogeneously structured data using new dataprocessing technologies such as DuckDB, polars etc. Should support SQL-on-FHIR Runners, such as Pathling, to generate the standardized views on demand.</li>
@@ -387,7 +444,7 @@ Figure&nbsp;2: Overview of the default data stack of the OpenHIM Platform. The d
 <div id="tbl-ona-requirements" class="striped hover responsive quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ona-requirements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Requirements and rationale for open health data platform developed and used by ONA, based on OpenSRP 2 (<a href="https://opensrp.io/">https://opensrp.io/</a>).
+Table&nbsp;2: Requirements and rationale for open health data platform developed and used by ONA, based on OpenSRP 2 (<a href="https://opensrp.io/">https://opensrp.io/</a>).
 </figcaption>
 <div aria-describedby="tbl-ona-requirements-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="table-responsive">
@@ -467,7 +524,7 @@ Strong emphasis on SQL. While Ona has tested and experimented with FHIR-specific
 <div id="tbl-kenya-facilities" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-kenya-facilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Number of healthcare facilities in Kenya. Source: Kenya Health Facility Census, Ministry of Health, September 2023.
+Table&nbsp;3: Number of healthcare facilities in Kenya. Source: Kenya Health Facility Census, Ministry of Health, September 2023.
 </figcaption>
 <div aria-describedby="tbl-kenya-facilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
@@ -640,6 +697,9 @@ Cascini, F., Pantovic, A., Al-Ajlouni, Y.A., Puleo, V., De Maio, L., Ricciardi, 
 <div id="ref-dalhatu2023paper" class="csl-entry" role="listitem">
 Dalhatu, I., Aniekwe, C., Bashorun, A., Abdulkadir, A., Dirlikov, E., Ohakanu, S., Adedokun, O., Oladipo, A., Jahun, I., Murie, L., Yoon, S., Abdu-Aguye, M.G., Sylvanus, A., Indyer, S., Abbas, I., Bello, M., Nalda, N., Alagi, M., Odafe, S., Adebajo, S., Ogorry, O., Akpu, M., Okoye, I., Kakanfo, K., Onovo, A.A., Ashefor, G., Nzelu, C., Ikpeazu, A., Aliyu, G., Ellerbrock, T., Boyd, M., Stafford, K.A., Swaminathan, M., 2023. From <span>Paper Files</span> to <span>Web-Based Application</span> for <span>Data-Driven Monitoring</span> of <span>HIV Programs</span>: <span>Nigeria</span>’s <span>Journey</span> to a <span>National Data Repository</span> for <span>Decision-Making</span> and <span>Patient Care</span>. Methods of Information in Medicine 62, 130–139. <a href="https://doi.org/10.1055/s-0043-1768711">https://doi.org/10.1055/s-0043-1768711</a>
 </div>
+<div id="ref-dereuver2022openness" class="csl-entry" role="listitem">
+de Reuver, M., Ofe, H., Agahari, W., Abbas, A.E., Zuiderwijk, A., 2022. The openness of data platforms: A research agenda, in: Proceedings of the 1st <span>International Workshop</span> on <span>Data Economy</span>, <span>DE</span> ’22. Association for Computing Machinery, New York, NY, USA, pp. 34–41. <a href="https://doi.org/10.1145/3565011.3569056">https://doi.org/10.1145/3565011.3569056</a>
+</div>
 <div id="ref-gebreslassie2023fhir4fair" class="csl-entry" role="listitem">
 Gebreslassie, T.G., van Reisen, M., Amare, S.Y., Taye, G.T., Plug, R., 2023. <span>FHIR4FAIR</span>: <span>Leveraging FHIR</span> in health data <span>FAIRfication</span> process: <span>In</span> the case of <span>VODAN-A</span>. FAIR Connect 1, 49–54. <a href="https://doi.org/10.3233/FC-230504">https://doi.org/10.3233/FC-230504</a>
 </div>
@@ -676,6 +736,12 @@ Izudi, J., Owoko, H.O., Bagayoko, M., Kadengye, D., 2023. Experiences of mothers
 <div id="ref-jain2023analyzing" class="csl-entry" role="listitem">
 Jain, P., Kraft, P., Power, C., Das, T., Stoica, I., Zaharia, M., 2023. Analyzing and <span>Comparing Lakehouse Storage Systems</span>.
 </div>
+<div id="ref-jones2021landscape" class="csl-entry" role="listitem">
+Jones, J., Gottlieb, D., Mandel, J.C., Ignatov, V., Ellis, A., Kubick, W., Mandl, K.D., 2021. A landscape survey of planned <span>SMART</span>/<span>HL7</span> bulk <span>FHIR</span> data access <span>API</span> implementations and tools. Journal of the American Medical Informatics Association 28, 1284–1287. <a href="https://doi.org/10.1093/jamia/ocab028">https://doi.org/10.1093/jamia/ocab028</a>
+</div>
+<div id="ref-jordan2022selecting" class="csl-entry" role="listitem">
+Jordan, S., Fontaine, C., Hendricks-Sturrup, R., 2022. Selecting <span>Privacy-Enhancing Technologies</span> for <span>Managing Health Data Use</span>. Frontiers in Public Health 10, 814163. <a href="https://doi.org/10.3389/fpubh.2022.814163">https://doi.org/10.3389/fpubh.2022.814163</a>
+</div>
 <div id="ref-karamagi2022ehealth" class="csl-entry" role="listitem">
 Karamagi, H.C., Muneene, D., Droti, B., Jepchumba, V., Okeibunor, J.C., Nabyonga, J., Asamani, J.A., Traore, M., Kipruto, H., 2022. <span class="nocase">eHealth</span> or e-<span>Chaos</span>: <span>The</span> use of <span>Digital Health Interventions</span> for <span>Health Systems Strengthening</span> in sub-<span>Saharan Africa</span> over the last 10 years: <span>A</span> scoping review. Journal of Global Health 12, 04090. <a href="https://doi.org/10.7189/jogh.12.04090">https://doi.org/10.7189/jogh.12.04090</a>
 </div>
@@ -709,8 +775,11 @@ Nsaghurwe, A., Dwivedi, V., Ndesanjo, W., Bamsi, H., Busiga, M., Nyella, E., Mas
 <div id="ref-ogundaini2022systematic" class="csl-entry" role="listitem">
 Ogundaini, O.O., Achieng, M.S., 2022. Systematic review: <span>Decentralised</span> health information systems implementation in sub-<span>Saharan Africa</span>. Journal for Transdisciplinary Research in Southern Africa 18, 1–10. <a href="https://doi.org/10.4102/td.v18i1.1216">https://doi.org/10.4102/td.v18i1.1216</a>
 </div>
+<div id="ref-onnx" class="csl-entry" role="listitem">
+<span>ONNX</span> v1.15.0, 2023.
+</div>
 <div id="ref-openhie" class="csl-entry" role="listitem">
-<span>OpenHIE Framework</span> v5.0, 2022. OpenHIE.
+<span>OpenHIE Framework</span> v5.2-en, 2024. OpenHIE.
 </div>
 <div id="ref-otto2022designing" class="csl-entry" role="listitem">
 Otto, B., Ten Hompel, M., Wrobel, S. (Eds.), 2022. Designing <span>Data Spaces</span>: <span>The Ecosystem Approach</span> to <span>Competitive Advantage</span>. Springer International Publishing, Cham. <a href="https://doi.org/10.1007/978-3-030-93975-5">https://doi.org/10.1007/978-3-030-93975-5</a>
@@ -730,14 +799,23 @@ Purnama Jati, P.H., van Reisen, M., Flikkenschild, E., Oladipo, F., Meerman, B.,
 <div id="ref-purtova2023data" class="csl-entry" role="listitem">
 Purtova, N., van Maanen, G., 2023. Data as an economic good, data as a commons, and data governance. Law, Innovation and Technology 0, 1–42. <a href="https://doi.org/10.1080/17579961.2023.2265270">https://doi.org/10.1080/17579961.2023.2265270</a>
 </div>
+<div id="ref-rieke2020future" class="csl-entry" role="listitem">
+Rieke, N., Hancox, J., Li, W., Milletarì, F., Roth, H.R., Albarqouni, S., Bakas, S., Galtier, M.N., Landman, B.A., Maier-Hein, K., Ourselin, S., Sheller, M., Summers, R.M., Trask, A., Xu, D., Baust, M., Cardoso, M.J., 2020. The future of digital health with federated learning. npj Digital Medicine 3, 1–7. <a href="https://doi.org/10.1038/s41746-020-00323-1">https://doi.org/10.1038/s41746-020-00323-1</a>
+</div>
 <div id="ref-sanctis2022maintaining" class="csl-entry" role="listitem">
 Sanctis, T.D., Etiebet, M.-A., Janssens, W., Graaf, M.H. van der, Montfort, C. van, Waiyaiya, E., Spieker, N., 2022. Maintaining <span>Continuity</span> of <span>Care</span> for <span>Expectant Mothers</span> in <span>Kenya During</span> the <span>COVID-19 Pandemic</span>: <span>A Study</span> of <span>MomCare</span>. Global Health: Science and Practice 10. <a href="https://doi.org/10.9745/GHSP-D-21-00665">https://doi.org/10.9745/GHSP-D-21-00665</a>
+</div>
+<div id="ref-scheibner2021revolutionizing" class="csl-entry" role="listitem">
+Scheibner, J., Raisaro, J.L., Troncoso-Pastoriza, J.R., Ienca, M., Fellay, J., Vayena, E., Hubaux, J.-P., 2021. Revolutionizing <span>Medical Data Sharing Using Advanced Privacy-Enhancing Technologies</span>: <span>Technical</span>, <span>Legal</span>, and <span>Ethical Synthesis</span>. Journal of Medical Internet Research 23, e25120. <a href="https://doi.org/10.2196/25120">https://doi.org/10.2196/25120</a>
 </div>
 <div id="ref-shija2021access" class="csl-entry" role="listitem">
 Shija, L., Yokoyana, J., Mrema, A., Bwakea, J., Kiwale, T., Massawe, N., 2021. Access to <span>Essential Maternal Health Commodities Key</span> to <span>Improving Quality</span> and <span>Adherence</span> to <span>Maternal Healthcare Regimes</span>: <span>Experience</span> from a <span>MomCare Project</span> in <span>Northern Tanzania</span>. AIJR Abstracts.
 </div>
 <div id="ref-sql-on-fhir" class="csl-entry" role="listitem">
 <span>SQL</span> on <span>FHIR</span> speciification v0.0.1-pre, 2024.
+</div>
+<div id="ref-osi2024open" class="csl-entry" role="listitem">
+The <span>Open Source AI Definition</span> v0.0.9, 2024. HackMD.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
